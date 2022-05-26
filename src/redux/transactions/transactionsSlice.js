@@ -7,6 +7,7 @@ const transactionsSlice = createSlice({
       incomes: [],
       expenses: [],
       monthStats: [],
+      periodData: [],
     },
     loading: false,
     error: null,
