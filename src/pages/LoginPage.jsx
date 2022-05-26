@@ -1,7 +1,9 @@
 import React from 'react';
 
+import FormAuth from '../components/FormAuth/FormAuth';
+
 const LoginPage = () => {
-  return <h1>Login page</h1>;
+  return <FormAuth />;
 };
 
 export default LoginPage;

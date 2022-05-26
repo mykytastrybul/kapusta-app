@@ -1,0 +1,41 @@
+@import '../../assets/sass/rootColors';
+
+.wrapper {
+  width: 426px;
+  padding: 56px 84px;
+
+  background-color: rgb(221, 255, 0);
+}
+
+.text {
+  margin: 0;
+  margin-bottom: 20px;
+
+  font-size: 12px;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+
+  color: var(--primary-text-color);
+}
+
+.button {
+  width: 122px;
+  padding: 12px;
+
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.15;
+
+  background-color: var(--background-grey);
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.button.primary {
+  background-color: var(--background-orange);
+  color: var(--highlight-white-color);
+}
+.button.secondary {
+  color: var(--primary-text-color);
+}
