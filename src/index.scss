@@ -1,10 +1,10 @@
 @import '../node_modules/modern-normalize/modern-normalize.css';
-@import './assets/sass/common';
+@import './assets/sass/rootColors';
 @import './assets/sass/stylesheet';
 
 body {
   margin: 0;
-  font-family: 'robotoblack';
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
