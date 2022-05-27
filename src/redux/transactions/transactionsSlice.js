@@ -23,7 +23,8 @@ const transactionsSlice = createSlice({
     loading: false,
     error: null,
   },
-  reducers: {
+  reducers: {},
+  extraReducers: {
     [setBalance.pending](state) {
       state.loading = true;
     },
@@ -65,7 +66,7 @@ const transactionsSlice = createSlice({
     },
     [allUserInfo.fulfilled](state, action) {
       state.loading = false;
-      console.log(action.payload); // хрен знает, что приходит
+      console.log(action.payload);
     },
     [allUserInfo.rejected](state, action) {
       state.loading = false;

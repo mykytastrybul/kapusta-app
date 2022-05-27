@@ -7,9 +7,6 @@ import {
 } from './authOperations';
 import {
   allUserInfo,
-  deleteTransaction,
-  expenseTransaction,
-  incomeTransaction,
   setBalance,
 } from '../transactions/transactionsOperations';
 
@@ -97,15 +94,6 @@ const authSlice = createSlice({
     },
     [setBalance.fulfilled](state, action) {
       state.balance = action.payload;
-    },
-    [incomeTransaction.fulfilled](state, action) {
-      state.balance = action.payload.newBalance;
-    },
-    [expenseTransaction.fulfilled](state, action) {
-      state.balance = action.payload.newBalance;
-    },
-    [deleteTransaction.fulfilled](state, action) {
-      state.balance = action.payload.newBalance;
     },
     [allUserInfo.fulfilled](state, action) {
       state.loading = false;

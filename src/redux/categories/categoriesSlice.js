@@ -11,7 +11,8 @@ const categoriesSlice = createSlice({
     loading: false,
     error: null,
   },
-  reducers: {
+  reducers: {},
+  extraReducers: {
     [getIncomeCats.pending](state) {
       state.loading = true;
     },
