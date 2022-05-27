@@ -5,7 +5,7 @@ export const getTransactionsPerPeriod = createAsyncThunk(
   'transactions/getTransactionsPerPeriod',
   async (period, { rejectWithValue }) => {
     try {
-      const { data } = await fetchTransactionsPerPeriod(period);
+      const data = await fetchTransactionsPerPeriod(period);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
