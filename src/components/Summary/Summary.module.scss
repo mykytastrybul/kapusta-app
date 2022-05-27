@@ -1,0 +1,47 @@
+@import '../../assets/sass/rootColors';
+@import '../../assets/sass/mixins';
+
+.summary {
+  display: none;
+  @include mq(tablet) {
+    display: block;
+    width: 230px;
+  }
+  @include mq(desktop) {
+    width: 213px;
+  }
+}
+.title {
+  margin-bottom: 4px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  border-radius: 20px 20px 0 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  background-color: var(--background-grey);
+}
+.list {
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  @include mq(tablet) {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2px;
+    padding-right: 20px;
+    padding-left: 20px;
+    @include font-style(12px, null, 1.17, null, var(--primary-text-color));
+    background-color: var(--background-grey);
+    &:last-child {
+      border-bottom-right-radius: 20px;
+    }
+  }
+  @include mq(desktop) {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+}
