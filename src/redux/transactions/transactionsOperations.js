@@ -59,9 +59,9 @@ export const deleteTransaction = createAsyncThunk(
 
 export const allUserInfo = createAsyncThunk(
   'transactions/allUserInfo',
-  async (_, { rejectWithValue }) => {
+  async (token, { rejectWithValue }) => {
     try {
-      const { data } = await fetchAllUserInfo();
+      const data = await fetchAllUserInfo(token);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
