@@ -3,10 +3,12 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import PrivateRoute from '../utils/PrivateRoute';
 import PublicRoute from '../utils/PublicRoute';
 
-const CostsAndIncomesPage = lazy(()=> import('../pages/CostsAndIncomesPage/CostsAndIncomesPage'));
+const CostsAndIncomesPage = lazy(() =>
+  import('../pages/CostsAndIncomesPage/CostsAndIncomesPage')
+);
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
 // const HomePage = lazy(() => import('../pages/CostsAndIncomesPage'));
-// const ReportPage = lazy(() => import('../pages/ReportPage'));
+const ReportPage = lazy(() => import('../pages/ReportPage'));
 
 function App() {
   return (
@@ -25,7 +27,7 @@ function App() {
             path="report"
             element={
               <PrivateRoute redirectTo={'/login'}>
-                {/* <ReportPage /> */}
+                <ReportPage />
               </PrivateRoute>
             }
           />
