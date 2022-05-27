@@ -1,0 +1,47 @@
+@import '../../../assets/sass/rootColors';
+@import '../../../assets/sass/mixins';
+
+.modal {
+  position: absolute;
+  top: 135px;
+  left: calc(50% - 135px);
+  padding: 32px 25px;
+  width: 280px;
+  height: 152px;
+  background: linear-gradient(117.84deg, #1d346a 2.84%, #031634 67.28%);
+  box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &::before {
+    content: '';
+    width: 22px;
+    height: 22px;
+    background: linear-gradient(57.84deg, #1d346a -1.16%, #031634 113.28%);
+    position: absolute;
+    top: -11px;
+    left: 60px;
+    transform: rotate(-45deg);
+  }
+  @include mq(tablet) {
+    top: 50px;
+    left: calc(50% - 260px);
+  }
+  @include mq(desktop) {
+    top: 50px;
+    left: calc(50% - 80px);
+  }
+}
+
+.info {
+  margin: 0;
+  margin-bottom: 20px;
+  @include font-style(14px, 400, 1.42, null, var(--highlight-white-color));
+}
+
+.text {
+  margin: 0;
+  @include font-style(12px, 400, 1.33, null, var(--highlight-white-color));
+}
