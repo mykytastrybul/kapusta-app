@@ -14,13 +14,17 @@ const setToken = token => {
 
 //AUTH
 export const fetchRegisterUser = async newUserObject => {
-  const resp = await axios.post('/auth/register', newUserObject);
-  return resp.data;
+  const registerResp = await axios.post('/auth/register', newUserObject);
+  console.log('registered. response', registerResp.data);
+  const loginResp = await fetchLoginUser(newUserObject);
+  return loginResp.data;
 };
 
 export const fetchLoginUser = async userDataObject => {
   const resp = await axios.post('/auth/login', userDataObject);
   setToken('Bearer ' + resp.data.accessToken);
+  console.log('logged in. response', resp.data);
+
   return resp.data;
 };
 
@@ -80,6 +84,6 @@ export const fetchExpenseCats = async () => {
 };
 
 export const fetchTransactionsPerPeriod = async period => {
-  const resp = await axios.get('/transaction/' + period);
+  const resp = await axios.get('/transaction/period-data?date=' + period);
   return resp.data;
 };

@@ -6,7 +6,8 @@ import CostsAndIncomesForm from './CostsAndIncomesForm/CostsAndIncomesForm';
 const CostsAndIncomesBox = () => {
 
   return (
-    <>
+    <section className={s['page', 'section']}>
+      <div className={s.container}>
       {/* ========== Возможно кнопки это должны быть отдельные компоненты, я пока не понял ==========*/}
       <CostsAndIncomesButtons/>
       {/* ========== Возможно кнопки это должны быть отдельные компоненты, я пока не понял ==========*/}
@@ -15,7 +16,8 @@ const CostsAndIncomesBox = () => {
           {/* Место для компонента табилы */}
           {/* Место для компонента Summary */}
       </div>
-      </>
+      </div>
+      </section>
   );
 };
 
