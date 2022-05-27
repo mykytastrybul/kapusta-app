@@ -3,6 +3,8 @@ import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import sprite from '../../assets/images/symbol-defs.svg';
 import s from './FormAuth.module.scss';
+import { useDispatch } from 'react-redux';
+import { loginUser, registerUser } from '../../redux/auth/authOperations';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -17,6 +19,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const FormAuth = () => {
+  const dispatch = useDispatch();
   const [type, setType] = useState('login');
 
   const onClickGoogleButton = () => {
@@ -47,13 +50,14 @@ const FormAuth = () => {
         validationSchema={validationSchema}
         onSubmit={async (values, { resetForm }) => {
           if (type === 'login') {
-            console.log('Login', values);
+            console.log('logging...', values);
+            dispatch(loginUser(values));
+
             resetForm();
           }
           if (type === 'register') {
-            console.log('Registration', values);
-            console.log('Login', values);
-            resetForm();
+            console.log('registering...', values);
+            dispatch(registerUser(values));
           }
         }}
       >
