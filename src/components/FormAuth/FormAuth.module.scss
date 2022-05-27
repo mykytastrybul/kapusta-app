@@ -1,0 +1,143 @@
+@import '../../assets/sass/rootColors';
+@import '../../assets//sass/mixins';
+
+.wrapper {
+  width: calc(100% - 40px);
+  min-width: 280px;
+  max-width: 426px;
+  padding: 40px 20px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-radius: 30px;
+  box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+  background-color: var(--highlight-white-color);
+
+  @include mq(tablet) {
+    margin: 0;
+    padding: 56px 84px;
+  }
+}
+
+.text {
+  margin: 0;
+  margin-bottom: 20px;
+
+  font-size: 10px;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  text-align: center;
+
+  color: var(--primary-text-color);
+
+  @include mq(tablet) {
+    font-size: 12px;
+    text-align: start;
+  }
+}
+
+.wrapper-buttons {
+  margin-top: 40px;
+  display: flex;
+}
+
+.button {
+  width: 122px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.15;
+
+  background-color: var(--background-grey);
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.button.primary {
+  margin-right: 15px;
+
+  background-color: var(--background-orange);
+  color: var(--highlight-white-color);
+  filter: drop-shadow(1px 3px 5px rgba(255, 107, 8, 0.35));
+}
+.button.secondary {
+  color: var(--primary-text-color);
+  filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+}
+
+.button.google {
+  margin-bottom: 32px;
+  font-size: 14px;
+  filter: drop-shadow(1px 2px 3px rgba(170, 178, 197, 0.2));
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.field {
+  width: 240px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  font-size: 10px;
+  line-height: 1.15;
+
+  @include mq(tablet) {
+    width: 260px;
+    font-size: 12px;
+  }
+
+  &:not(:last-of-type) {
+    margin-bottom: 20px;
+
+    @include mq(tablet) {
+      margin-bottom: 32px;
+    }
+  }
+}
+
+.input {
+  height: 52px;
+  padding: 17px 20px;
+  margin-top: 12px;
+
+  border: none;
+  border-radius: 30px;
+  color: #a6abb9;
+  background-color: var(--background-grey-secondary);
+
+  &.password {
+    padding: 5px 23px;
+
+    font-size: 44px;
+    color: var(--highlight-black-color);
+  }
+}
+
+.error {
+  position: absolute;
+  bottom: -14px;
+
+  color: #eb5757;
+
+  @include mq(tablet) {
+    bottom: -20px;
+  }
+}

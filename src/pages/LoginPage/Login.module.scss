@@ -1,0 +1,117 @@
+@import '../../assets//sass/mixins';
+@import '../../assets/sass/rootColors';
+
+.container {
+  min-height: calc(100vh - 56px);
+  max-width: 466px;
+  padding-top: 86px;
+  margin: 0 auto;
+
+  @include mq(tablet) {
+    padding-top: 80px;
+    max-width: none;
+    width: 466px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  @include mq(desktop) {
+    padding-top: 0;
+    width: 1098px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+.wrapper-title {
+  width: 100%;
+  padding: 0 20px;
+  margin: 0 0 50px 0;
+  @include mq(tablet) {
+    margin: 0 0 80px 0;
+  }
+  @include mq(desktop) {
+    padding: 0;
+    margin: 0 157px 0 0;
+  }
+}
+
+.title {
+  position: relative;
+  margin: 0;
+  font-weight: 900;
+  font-size: 60px;
+  line-height: 1.17;
+
+  @include mq(tablet) {
+    font-size: 88px;
+  }
+  @include mq(desktop) {
+    font-size: 102px;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 6px;
+    position: absolute;
+    top: 18px;
+    left: 150px;
+
+    background-color: var(--highlight-black-color);
+
+    @include mq(tablet) {
+      width: 8px;
+      height: 13px;
+      top: 24px;
+      left: 220px;
+    }
+    @include mq(desktop) {
+      top: 28px;
+      left: 255px;
+    }
+  }
+  &::before {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 6px;
+    position: absolute;
+    top: 55px;
+    left: 150px;
+
+    background-color: var(--highlight-black-color);
+
+    @include mq(tablet) {
+      width: 8px;
+      height: 13px;
+      top: 80px;
+      left: 220px;
+    }
+    @include mq(desktop) {
+      top: 96px;
+      left: 255px;
+    }
+  }
+}
+
+.text {
+  margin: 0;
+  margin-left: 15px;
+  margin-top: 4px;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.15;
+  letter-spacing: 0.15em;
+
+  color: var(--primary-text-color);
+
+  @include mq(tablet) {
+    margin-left: 70px;
+    font-size: 16px;
+    letter-spacing: 0.18em;
+  }
+}

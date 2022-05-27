@@ -3,11 +3,13 @@ import { createSlice } from '@reduxjs/toolkit';
 const transactionsSlice = createSlice({
   name: 'transactions',
   initialState: {
-    transactions: {
+    data: {
       incomes: [],
       expenses: [],
-      monthStats: [],
-      periodData: [],
+    },
+    monthStats: {
+      incomes: [],
+      expenses: [],
     },
     loading: false,
     error: null,

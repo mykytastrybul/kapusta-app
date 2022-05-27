@@ -4,8 +4,8 @@ const categoriesSlice = createSlice({
   name: 'categories',
   initialState: {
     categories: {
-      income: [],
-      expence: [],
+      incomes: [],
+      expenses: [],
     },
     loading: false,
     error: null,
