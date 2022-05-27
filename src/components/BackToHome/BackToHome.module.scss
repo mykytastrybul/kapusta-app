@@ -1,0 +1,20 @@
+@import '../../assets/sass/mixins';
+.backLink {
+  display: inline-flex;
+  align-items: flex-end;
+  text-decoration: none;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.text {
+  margin-left: 18px;
+
+  @include font-style(12px, 400, 1.2, null, var(--primary-text-color));
+  @include mq(mobile-only) {
+    display: none;
+  }
+}
