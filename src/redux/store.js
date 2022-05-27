@@ -18,7 +18,7 @@ import categories from './categories/categoriesSlice';
 const persistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token', 'refreshToken'],
+  whitelist: ['token', 'sid'],
 };
 
 export const store = configureStore({
