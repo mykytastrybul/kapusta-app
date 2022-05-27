@@ -105,6 +105,8 @@ const authSlice = createSlice({
       state.loading = false;
       state.user.email = action.payload.email;
       state.user.balance = action.payload.balance;
+      state.user.transactions = action.payload.transactions;
+      state.user.id = action.payload.id;
     },
   },
 });
