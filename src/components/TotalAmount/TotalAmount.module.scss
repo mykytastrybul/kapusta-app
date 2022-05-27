@@ -1,0 +1,47 @@
+@import '../../assets/sass/mixins';
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  padding: 7px 10px;
+  border-radius: 20px;
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  @include font-style(14px, 700, 1.5, 0, var(--primary-text-color));
+}
+
+.costsWrap {
+  height: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  padding-right: 10px;
+  border-right: 1px solid #e0e5eb;
+  @include mq(tablet) {
+    height: 36px;
+    padding-right: 20px;
+  }
+}
+
+.incomesWrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  padding-left: 10px;
+  @include mq(tablet) {
+    padding-left: 20px;
+  }
+}
+
+.costsNumber {
+  color: var(--highlight-red-color);
+}
+.incomesNumber {
+  color: var(--highlight-green-color);
+}
+
+.text {
+  margin-right: 15px;
+}
