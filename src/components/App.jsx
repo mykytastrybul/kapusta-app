@@ -13,7 +13,7 @@ const CostsAndIncomesPage = lazy(() =>
 );
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
 // const HomePage = lazy(() => import('../pages/CostsAndIncomesPage'));
-// const ReportPage = lazy(() => import('../pages/ReportPage'));
+const ReportPage = lazy(() => import('../pages/ReportPage'));
 
 function App() {
   const { accessToken, refreshToken, sid } = queryString.parse(
@@ -54,7 +54,11 @@ function App() {
           />
           <Route
             path="report"
-            element={<PrivateRoute redirectTo={'/login'}>Report</PrivateRoute>}
+            element={
+              <PrivateRoute redirectTo={'/login'}>
+                <ReportPage />
+              </PrivateRoute>
+            }
           />
           <Route
             path="login"

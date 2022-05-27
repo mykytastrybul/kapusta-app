@@ -1,0 +1,27 @@
+.wrapp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.balance {
+}
+
+.text {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+  color: rgba(82, 85, 95, 0.7);
+}
+
+.sum {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #000000;
+}
