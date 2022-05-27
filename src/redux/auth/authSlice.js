@@ -8,6 +8,7 @@ const authSlice = createSlice({
       balance: 0,
       id: null,
     },
+    sid: null,
     token: null,
     refreshToken: null,
     loading: false,
