@@ -1,5 +1,5 @@
-import styles from './CostsAndIncomesForm.module.css'
-
+import styles from './_CostsAndIncomesForm.module.scss'
+import React from 'react';
 const CostsAndIncomesForm = () => {
     return (
         <form action="submit" className={styles.form}>

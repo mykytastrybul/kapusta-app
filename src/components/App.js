@@ -1,11 +1,11 @@
-import LoginPage from '../pages/LoginPage';
-import CostsAndIncomesBox from './CostsAndIncomesSection/CostsAndIncomesBox';
+import LoginPage from '../pages/LoginPage/LoginPage';
+import CostsAndIncomesPage from '../pages/CostsAndIncomesPage/CostsAndIncomesPage';
 
 function App() {
   return (
     <>
       <LoginPage />
-      <CostsAndIncomesBox />
+      <CostsAndIncomesPage />
     </>
   );
 }
