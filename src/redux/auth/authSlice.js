@@ -5,6 +5,13 @@ import {
   refreshUser,
   registerUser,
 } from './authOperations';
+import {
+  allUserInfo,
+  deleteTransaction,
+  expenseTransaction,
+  incomeTransaction,
+  setBalance,
+} from '../transactions/transactionsOperations';
 
 const initialState = {
   user: {
@@ -87,6 +94,23 @@ const authSlice = createSlice({
     [refreshUser.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
+    },
+    [setBalance.fulfilled](state, action) {
+      state.balance = action.payload;
+    },
+    [incomeTransaction.fulfilled](state, action) {
+      state.balance = action.payload.newBalance;
+    },
+    [expenseTransaction.fulfilled](state, action) {
+      state.balance = action.payload.newBalance;
+    },
+    [deleteTransaction.fulfilled](state, action) {
+      state.balance = action.payload.newBalance;
+    },
+    [allUserInfo.fulfilled](state, action) {
+      state.loading = false;
+      state.user.email = action.payload.email;
+      state.user.balance = action.payload.balance;
     },
   },
 });
