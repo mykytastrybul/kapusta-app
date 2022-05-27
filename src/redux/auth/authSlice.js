@@ -5,9 +5,10 @@ const authSlice = createSlice({
   initialState: {
     user: {
       email: null,
-      balance: null,
+      balance: 0,
       id: null,
     },
+    sid: null,
     token: null,
     refreshToken: null,
     loading: false,
