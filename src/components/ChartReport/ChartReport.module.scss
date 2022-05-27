@@ -1,0 +1,15 @@
+@import '../../assets/sass/mixins';
+
+.chart {
+  display: block;
+  margin: 0 auto;
+
+  @include mq(tablet) {
+    display: block;
+    width: 704px;
+  }
+
+  @include mq(desktop) {
+    width: 1034px;
+  }
+}
