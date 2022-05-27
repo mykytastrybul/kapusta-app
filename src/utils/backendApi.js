@@ -86,6 +86,6 @@ export const fetchExpenseCats = async () => {
 };
 
 export const fetchTransactionsPerPeriod = async period => {
-  const resp = await axios.get('/transaction/' + period);
+  const resp = await axios.get('/transaction/period-data?date=' + period);
   return resp.data;
 };

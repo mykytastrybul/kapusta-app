@@ -7,6 +7,9 @@ import { loginGoogle } from '../redux/auth/authOperations';
 import queryString from 'query-string';
 import { useDispatch } from 'react-redux';
 
+const CostsAndIncomesPage = lazy(() =>
+  import('../pages/CostsAndIncomesPage/CostsAndIncomesPage')
+);
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
 // const HomePage = lazy(() => import('../pages/CostsAndIncomesPage'));
 // const ReportPage = lazy(() => import('../pages/ReportPage'));
@@ -31,7 +34,11 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<PrivateRoute redirectTo={'/login'}>Home</PrivateRoute>}
+            element={
+              <PrivateRoute redirectTo={'/login'}>
+                <CostsAndIncomesPage />
+              </PrivateRoute>
+            }
           />
           <Route
             path="report"

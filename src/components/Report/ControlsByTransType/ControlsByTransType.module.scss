@@ -1,0 +1,25 @@
+.control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #000000;
+
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
