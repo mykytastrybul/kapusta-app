@@ -19,7 +19,7 @@ import periodData from './periodData/periodDataSlice';
 const persistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token', 'sid'],
+  whitelist: ['token', 'sid', 'refreshToken'],
 };
 
 export const store = configureStore({
