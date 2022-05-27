@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import PrivateRoute from '../utils/PrivateRoute';
 import PublicRoute from '../utils/PublicRoute';
 
+const CostsAndIncomesPage = lazy(()=> import('../pages/CostsAndIncomesPage/CostsAndIncomesPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
 // const HomePage = lazy(() => import('../pages/CostsAndIncomesPage'));
 // const ReportPage = lazy(() => import('../pages/ReportPage'));
@@ -16,7 +17,7 @@ function App() {
             path="/home"
             element={
               <PrivateRoute redirectTo={'/login'}>
-                {/* <HomePage /> */}
+                <CostsAndIncomesPage />
               </PrivateRoute>
             }
           />
