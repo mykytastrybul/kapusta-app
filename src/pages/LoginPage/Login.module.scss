@@ -2,7 +2,7 @@
 @import '../../assets/sass/rootColors';
 
 .container {
-  height: 100vh;
+  min-height: calc(100vh - 56px);
   max-width: 466px;
   padding-top: 86px;
   margin: 0 auto;
@@ -16,6 +16,7 @@
     align-items: center;
   }
   @include mq(desktop) {
+    padding-top: 0;
     width: 1098px;
     display: flex;
     flex-direction: row;
