@@ -50,3 +50,13 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+export const loginGoogle = createAsyncThunk(
+  'auth/loginGoogle',
+  async ({ accessToken, refreshToken, sid }, thunkApi) => {
+    try {
+      return { accessToken, refreshToken, sid };
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);

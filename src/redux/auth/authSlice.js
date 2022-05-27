@@ -4,6 +4,7 @@ import {
   logoutUser,
   refreshUser,
   registerUser,
+  loginGoogle,
 } from './authOperations';
 import {
   allUserInfo,
@@ -46,6 +47,11 @@ const authSlice = createSlice({
       loading: false,
       error: null,
     }),
+    [loginGoogle.fulfilled]: (state, { payload }) => {
+      state.token = payload.accessToken;
+      state.refreshToken = payload.refreshToken;
+      state.sid = payload.sid;
+    },
     //logout
     [logoutUser.fulfilled]: () => ({
       ...initialState,

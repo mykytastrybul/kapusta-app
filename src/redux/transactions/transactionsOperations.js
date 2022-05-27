@@ -13,7 +13,7 @@ export const setBalance = createAsyncThunk(
   'transactions/setBalance',
   async (newBalance, { rejectWithValue }) => {
     try {
-      const  data  = await fetchSetBalance(newBalance);
+      const data = await fetchSetBalance(newBalance);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -25,7 +25,7 @@ export const incomeTransaction = createAsyncThunk(
   'transactions/incomeTransaction',
   async (transactionObject, { rejectWithValue }) => {
     try {
-      const  data  = await fetchIncomeTransaction(transactionObject);
+      const data = await fetchIncomeTransaction(transactionObject);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -37,7 +37,7 @@ export const expenseTransaction = createAsyncThunk(
   'transactions/expenseTransaction',
   async (transactionObject, { rejectWithValue }) => {
     try {
-      const  data  = await fetchExpenseTransaction(transactionObject);
+      const data = await fetchExpenseTransaction(transactionObject);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -49,7 +49,7 @@ export const deleteTransaction = createAsyncThunk(
   'transactions/deleteTransaction',
   async (id, { rejectWithValue }) => {
     try {
-      const  data = await fetchDeleteTransaction(id);
+      const data = await fetchDeleteTransaction(id);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -59,9 +59,9 @@ export const deleteTransaction = createAsyncThunk(
 
 export const allUserInfo = createAsyncThunk(
   'transactions/allUserInfo',
-  async (_, { rejectWithValue }) => {
+  async (token, { rejectWithValue }) => {
     try {
-      const  data  = await fetchAllUserInfo();
+      const data = await fetchAllUserInfo(token);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -73,7 +73,7 @@ export const getIncomeStats = createAsyncThunk(
   'transactions/getIncomeStats',
   async (_, { rejectWithValue }) => {
     try {
-      const  data  = await fetchIncomeStats();
+      const data = await fetchIncomeStats();
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -85,7 +85,7 @@ export const getExpenseStats = createAsyncThunk(
   'transactions/getExpenseStats',
   async (_, { rejectWithValue }) => {
     try {
-      const  data  = await fetchExpenseStats();
+      const data = await fetchExpenseStats();
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

@@ -62,8 +62,10 @@ export const fetchDeleteTransaction = async id => {
 };
 
 //TRANSACTION STATS
-export const fetchAllUserInfo = async () => {
+export const fetchAllUserInfo = async token => {
+  setToken('Bearer ' + token);
   const resp = await axios.get('/user');
+
   return resp.data;
 };
 export const fetchIncomeStats = async () => {

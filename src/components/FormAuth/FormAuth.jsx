@@ -22,23 +22,20 @@ const FormAuth = () => {
   const dispatch = useDispatch();
   const [type, setType] = useState('login');
 
-  const onClickGoogleButton = () => {
-    return console.log('login google');
-  };
   return (
     <div className={s.wrapper}>
       <p className={s.text}>
         Вы можете авторизоваться с помощью Google Account:
       </p>
-      <button
+      <a
         className={`${s.button} ${s.google}`}
-        onClick={onClickGoogleButton}
+        href="https://kapusta-backend.goit.global/auth/google"
       >
         <svg className={s.icon}>
           <use href={`${sprite + '#icon-google'}`}></use>
         </svg>
         Google
-      </button>
+      </a>
       <p className={s.text}>
         Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:
       </p>
