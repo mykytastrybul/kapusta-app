@@ -33,10 +33,13 @@ export const fetchLogoutUser = async () => {
   return resp.data;
 };
 
-export const fetchRefreshUser = async sidObject => {
-  const resp = await axios.post('/auth/refresh', sidObject);
-  setToken('Bearer ' + resp.data.newAccessToken);
-  return resp.data;
+export const fetchRefreshUser = async (sid, refreshToken) => {
+  setToken('Bearer ' + refreshToken);
+  const data = await axios.post('/auth/refresh', { sid }).then(({ data }) => {
+    setToken('Bearer ' + data.newAccessToken);
+    return data;
+  });
+  return data;
 };
 
 // export const fetchLoginGoogle  - still in process
@@ -62,8 +65,10 @@ export const fetchDeleteTransaction = async id => {
 };
 
 //TRANSACTION STATS
-export const fetchAllUserInfo = async () => {
+export const fetchAllUserInfo = async token => {
+  setToken('Bearer ' + token);
   const resp = await axios.get('/user');
+
   return resp.data;
 };
 export const fetchIncomeStats = async () => {

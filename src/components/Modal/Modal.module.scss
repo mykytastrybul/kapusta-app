@@ -1,0 +1,67 @@
+@import '../../assets/sass/rootColors';
+@import '../../assets/sass/mixins';
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1200;
+}
+
+.modal {
+  position: relative;
+  width: 380px;
+  height: 194px;
+  background-color: var(--highlight-white-color);
+  box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.close {
+  top: 20px;
+  right: 20px;
+  position: absolute;
+  background-color: transparent;
+  border: none;
+}
+
+.icon {
+  height: 12px;
+  width: 12px;
+}
+
+.text {
+  margin: 0 0 20px 0;
+  @include font-style(14px, 500, 1.14, 0.02em, var(--primary-text-color));
+}
+
+.options {
+  display: flex;
+  margin-right: -15px;
+}
+
+.button {
+  border: 2px solid var(--background-grey);
+  border-radius: 16px;
+  padding: 12px 0;
+  width: 125px;
+  background-color: transparent;
+  transition: 250ms ease-out;
+  @include font-style(12px, 500, 1.17, 0.02em, var(--primary-text-color));
+  margin-right: 15px;
+  &:hover,
+  &:focus {
+    background-color: var(--background-orange);
+    color: var(--highlight-white-color);
+  }
+}

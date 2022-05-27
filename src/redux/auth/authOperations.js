@@ -43,8 +43,22 @@ export const refreshUser = createAsyncThunk(
   'auth/refreshUser',
   async (_, thunkApi) => {
     const sid = thunkApi.getState().auth.sid;
+    const token = thunkApi.getState().auth.token;
+    const refreshToken = thunkApi.getState().auth.refreshToken;
     try {
-      return await fetchRefreshUser(sid);
+      if (token) {
+        return await fetchRefreshUser(sid, refreshToken);
+      }
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+export const loginGoogle = createAsyncThunk(
+  'auth/loginGoogle',
+  async ({ accessToken, refreshToken, sid }, thunkApi) => {
+    try {
+      return { accessToken, refreshToken, sid };
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }

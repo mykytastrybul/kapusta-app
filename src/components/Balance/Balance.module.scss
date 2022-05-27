@@ -102,6 +102,7 @@
   border-top-right-radius: 22px;
   border-bottom-right-radius: 22px;
   outline: none;
+  transition: 250ms ease-out;
   @include mq(tablet) {
     border: 2px solid var(--highlight-white-color);
     border-radius: 16px;

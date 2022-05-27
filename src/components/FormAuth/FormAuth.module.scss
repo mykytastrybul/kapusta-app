@@ -75,6 +75,8 @@
 .button.google {
   margin-bottom: 32px;
   font-size: 14px;
+  color: var(--highlight-black-color);
+  text-decoration: none;
   filter: drop-shadow(1px 2px 3px rgba(170, 178, 197, 0.2));
 }
 
