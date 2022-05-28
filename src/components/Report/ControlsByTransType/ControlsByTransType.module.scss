@@ -1,3 +1,5 @@
+@import '../../../assets/sass/mixins';
+
 .control {
   display: flex;
   justify-content: center;
@@ -6,13 +8,9 @@
 }
 
 .title {
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 16px;
+  @include font-style(14px, 700, 1.6, 0.02em, var(--secondary-text-color));
   text-align: center;
-  letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: #000000;
 
   margin-left: 16px;
   margin-right: 16px;
