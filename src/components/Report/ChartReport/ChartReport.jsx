@@ -5,26 +5,20 @@ import { useMediaQuery } from 'react-responsive';
 import s from './ChartReport.module.scss';
 import { optionsDesc, optionsMob } from './ChartOptions';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { getPeriodData } from '../../../redux/periodData/periodDataSelectors';
-
-const data = [
-  ['category 1', ['1']],
-  ['category 2', ['4']],
-  ['category 3', ['2']],
-  ['category 4', ['4']],
-  ['category 5', ['5']],
-  ['category 6', ['3']],
-  ['category 7', ['2']],
-  ['category 8', ['8']],
-];
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  getExpensesData,
+  getIncomesData,
+} from '../../../redux/periodData/periodDataSelectors';
 
 const ChartReport = () => {
+  const dispatch = useDispatch();
   const isDesktop = useMediaQuery({ minWidth: 320.1 });
   const isMobile = useMediaQuery({ maxWidth: 320 });
-  const periodData = useSelector(getPeriodData);
-  const page = 'incomes';
-  const [userData, setUserData] = useState(data);
+  const incomesData = useSelector(getIncomesData);
+  const expensesData = useSelector(getExpensesData);
+  const page = 'expenses';
+  const [userData, setUserData] = useState([]);
 
   const userDataDesc = {
     labels: userData.map(data => data[0]),
@@ -60,20 +54,28 @@ const ChartReport = () => {
   };
 
   useEffect(() => {
-    page === 'incomes' &&
-      periodData.length > 0 &&
-      setUserData(Object.entries(periodData.incomes));
-    page === 'expenses' &&
-      periodData.length > 0 &&
-      setUserData(Object.entries(periodData.expenses));
-  }, [periodData]);
-
-  return (
-    <div className={s.chart}>
-      {isDesktop && <Bar data={userDataDesc} options={optionsDesc} />}
-      {isMobile && <Bar data={userDataMob} options={optionsMob} />}
-    </div>
-  );
+    if (incomesData.length === 0 && expensesData.length === 0) return;
+    setTimeout(() => {
+      if (Object.entries(incomesData) && page === 'incomes') {
+        setUserData(Object.entries(Object.values(incomesData)[0]).splice(1));
+      } else {
+        setUserData([]);
+      }
+      if (Object.entries(expensesData) && page === 'expenses') {
+        setUserData(Object.entries(Object.values(expensesData)[0]).splice(1));
+      } else {
+        setUserData([]);
+      }
+    }, 0);
+  }, [incomesData, expensesData, dispatch]);
+  if (Object.entries(incomesData) || Object.entries(expensesData)) {
+    return (
+      <div className={s.chart}>
+        {isDesktop && <Bar data={userDataDesc} options={optionsDesc} />}
+        {isMobile && <Bar data={userDataMob} options={optionsMob} />}
+      </div>
+    );
+  }
 };
 
 export default ChartReport;

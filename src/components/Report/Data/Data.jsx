@@ -31,6 +31,7 @@ const Data = () => {
         `${year}-${String(months.indexOf(month) + 1).padStart(2, '0')}`
       )
     );
+
   }, [dispatch, month, year]);
 
   return (

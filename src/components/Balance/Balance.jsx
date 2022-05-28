@@ -2,17 +2,31 @@ import { NavLink } from 'react-router-dom';
 import s from './Balance.module.scss';
 import IconSvg from '../../assets/images/symbol-defs.svg';
 import BalanceModal from './BalanceModal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import authSelectors from '../../redux/auth/authSelectors';
+import { setBalance } from '../../redux/transactions/transactionsOperations';
 
 export default function Balance() {
-  const [balance, setBalance] = useState('');
+  const dispatch = useDispatch();
+  const storeBalance = useSelector(authSelectors.getBalance);
+  const [balanceState, setBalanceState] = useState('');
+
   const handleChange = e => {
     const value = e.target.value;
-    setBalance(value);
+    setBalanceState(value);
   };
+
   const handleSubmit = e => {
     e.preventDefault();
+    dispatch(setBalance(balanceState));
   };
+
+  useEffect(() => {
+    setBalanceState(storeBalance);
+    //eslint-disable-next-line
+  }, []);
+
   return (
     <div className={s.page}>
       <div className={s.container}>
@@ -30,7 +44,7 @@ export default function Balance() {
             <input
               className={s.input}
               name="balance"
-              value={balance}
+              value={balanceState}
               onChange={handleChange}
               type="number"
               min="0.00"
@@ -41,7 +55,7 @@ export default function Balance() {
             <button className={s.button} type="submit">
               ПОДТВЕРДИТЬ
             </button>
-            {!balance && <BalanceModal />}
+            {!balanceState && <BalanceModal />}
           </form>
         </div>
       </div>
