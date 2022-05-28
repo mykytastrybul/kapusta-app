@@ -30,7 +30,9 @@ function App() {
   }, [accessToken, refreshToken]);
 
   useEffect(() => {
-    dispatch(refreshUser());
+    if (token) {
+      dispatch(refreshUser());
+    }
     //eslint-disable-next-line
   }, []);
 

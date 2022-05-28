@@ -51,6 +51,7 @@ const Data = () => {
         `${year}-${String(months.indexOf(month) + 1).padStart(2, '0')}`
       )
     );
+    //eslint-disable-next-line
   }, [month, year]);
 
   return (

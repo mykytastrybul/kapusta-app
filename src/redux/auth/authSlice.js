@@ -98,8 +98,8 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
-    [setBalance.fulfilled](state, action) {
-      state.balance = action.payload;
+    [setBalance.fulfilled](state, { payload }) {
+      state.user.balance = payload.newBalance;
     },
     [allUserInfo.fulfilled](state, action) {
       state.loading = false;

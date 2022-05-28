@@ -46,7 +46,7 @@ export const fetchRefreshUser = async (sid, refreshToken) => {
 //TRANSACTIONS
 export const fetchSetBalance = async newBalance => {
   //manually set user balance after register
-  const resp = await axios.patch('/user/balance', newBalance);
+  const resp = await axios.patch('/user/balance', { newBalance });
   return resp.data;
 };
 export const fetchIncomeTransaction = async transactionObject => {
