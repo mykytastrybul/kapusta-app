@@ -1,6 +1,14 @@
+import { useSelector } from 'react-redux';
+import {
+  getExpenseTotal,
+  getIncomeTotal,
+} from '../../../redux/periodData/periodDataSelectors';
 import s from './TotalAmount.module.scss';
 
-const TotalAmount = ({ totalCosts, totalIncomes }) => {
+const TotalAmount = () => {
+  const incomeTotal = useSelector(getIncomeTotal);
+  const expenseTotal = useSelector(getExpenseTotal);
+
   const makePrettyNumber = number => {
     if (number === 0) {
       return number;
@@ -16,13 +24,13 @@ const TotalAmount = ({ totalCosts, totalIncomes }) => {
         <div className={s.costsWrap}>
           <span className={s.text}>Витрати:</span>
           <span className={s.costsNumber}>
-            {makePrettyNumber(-totalCosts)}&nbsp;грн.
+            {makePrettyNumber(-expenseTotal)}&nbsp;грн.
           </span>
         </div>
         <div className={s.incomesWrap}>
           <span className={s.text}>Доходи:</span>
           <span className={s.incomesNumber}>
-            {makePrettyNumber(totalIncomes)}&nbsp;грн.
+            {makePrettyNumber(incomeTotal)}&nbsp;грн.
           </span>
         </div>
       </div>
