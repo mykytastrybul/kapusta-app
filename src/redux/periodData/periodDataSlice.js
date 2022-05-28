@@ -5,6 +5,14 @@ const periodDataSlice = createSlice({
   name: 'periodData',
   initialState: {
     data: {},
+    expenses: {
+      expenseTotal: 0,
+      expensesData: {},
+    },
+    incomes: {
+      incomeTotal: 0,
+      incomesData: {},
+    },
     loading: false,
     error: null,
   },
@@ -16,6 +24,12 @@ const periodDataSlice = createSlice({
     [getTransactionsPerPeriod.fulfilled](state, action) {
       state.loading = false;
       state.data = action.payload;
+      if (action.payload) {
+        state.expenses.expenseTotal = action.payload.expenses.expenseTotal;
+        state.expenses.expensesData = action.payload.expenses.expensesData;
+        state.incomes.incomeTotal = action.payload.incomes.incomeTotal;
+        state.incomes.incomesData = action.payload.incomes.incomesData;
+      }
     },
     [getTransactionsPerPeriod.rejected](state, action) {
       state.loading = false;
