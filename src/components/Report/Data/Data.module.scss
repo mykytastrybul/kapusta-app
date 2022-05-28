@@ -1,3 +1,5 @@
+@import '../../../assets/sass/mixins';
+
 p {
   margin: 0;
 }
@@ -11,11 +13,8 @@ p {
 }
 
 .descr {
-  font-size: 12px;
-  line-height: 14px;
+  @include font-style(12px, 400, 1.4, 0.04em, var(--secondary-text-color));
   text-align: center;
-  letter-spacing: 0.04em;
-  color: rgba(82, 85, 95, 0.7);
   margin-bottom: 5px;
 }
 
@@ -24,20 +23,16 @@ p {
 }
 
 .button {
-  color: #ff751d;
+  color: var(--background-orange);
   border: none;
   background-color: transparent;
   cursor: pointer;
 }
 
 .currentDate {
-  font-size: 14px;
-  line-height: 16px;
+  @include font-style(14px, 700, 1.6, 0.02em, var(--highlight-black-color));
   text-align: center;
-  letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: #000000;
-  font-weight: bold;
   width: 150px;
 }
 

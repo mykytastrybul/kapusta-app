@@ -24,7 +24,7 @@ const ChartReport = () => {
     labels: userData.map(data => data[0]),
     datasets: [
       {
-        label: 'Users transactions',
+        label: 'Category amount',
         data: userData.map(data => data[1]),
         maxBarThickness: 38,
         borderRadius: 20,
@@ -40,7 +40,7 @@ const ChartReport = () => {
     labels: userData.map(data => data[0]),
     datasets: [
       {
-        label: 'Users transactions',
+        label: 'Category amount',
         data: userData.map(data => data[1]),
         maxBarThickness: 15,
         borderRadius: 20,
@@ -54,28 +54,26 @@ const ChartReport = () => {
   };
 
   useEffect(() => {
-    if (incomesData.length === 0 && expensesData.length === 0) return;
     setTimeout(() => {
-      if (Object.entries(incomesData) && page === 'incomes') {
+      if (Object.entries(incomesData).length > 0 && page === 'incomes') {
         setUserData(Object.entries(Object.values(incomesData)[0]).splice(1));
       } else {
         setUserData([]);
       }
-      if (Object.entries(expensesData) && page === 'expenses') {
+      if (Object.entries(expensesData).length > 0 && page === 'expenses') {
         setUserData(Object.entries(Object.values(expensesData)[0]).splice(1));
       } else {
         setUserData([]);
       }
     }, 0);
   }, [incomesData, expensesData, dispatch]);
-  if (Object.entries(incomesData) || Object.entries(expensesData)) {
-    return (
-      <div className={s.chart}>
-        {isDesktop && <Bar data={userDataDesc} options={optionsDesc} />}
-        {isMobile && <Bar data={userDataMob} options={optionsMob} />}
-      </div>
-    );
-  }
+
+  return (
+    <div className={s.chart}>
+      {isDesktop && <Bar data={userDataDesc} options={optionsDesc} />}
+      {isMobile && <Bar data={userDataMob} options={optionsMob} />}
+    </div>
+  );
 };
 
 export default ChartReport;
