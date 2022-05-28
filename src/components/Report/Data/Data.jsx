@@ -2,28 +2,8 @@ import { useDispatch } from 'react-redux/es/exports';
 import { useState, useEffect } from 'react';
 import sprite from '../../../assets/images/symbol-defs.svg';
 import { getTransactionsPerPeriod } from '../../../redux/periodData/periodDataOperations';
+import { months, dateNow, getMonth } from './DataOptions';
 import s from './Data.module.scss';
-
-const months = [
-  'Январь',
-  'Февраль',
-  'Март',
-  'Апрель',
-  'Май',
-  'Июнь',
-  'Июль',
-  'Август',
-  'Сентябрь',
-  'Октябрь',
-  'Ноябрь',
-  'Декабрь',
-];
-
-const dateNow = new Date();
-
-function getMonth(number) {
-  return months[number];
-}
 
 const Data = () => {
   const dispatch = useDispatch();
@@ -51,8 +31,8 @@ const Data = () => {
         `${year}-${String(months.indexOf(month) + 1).padStart(2, '0')}`
       )
     );
-    //eslint-disable-next-line
-  }, [month, year]);
+
+  }, [dispatch, month, year]);
 
   return (
     <div className={s.wrapp}>

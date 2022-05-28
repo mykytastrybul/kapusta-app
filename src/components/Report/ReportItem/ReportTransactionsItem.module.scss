@@ -1,3 +1,5 @@
+@import '../../../assets/sass/mixins';
+
 a {
   text-decoration: none;
 }
@@ -19,20 +21,17 @@ a {
 
 .link:hover,
 .link:focus {
-  color: #ff751d;
+  color: var(--background-orange);
 }
 
 .activeLink {
   @extend .link;
-  color: #ff751d;
+  color: var(--background-orange);
 }
 
 .text {
-  font-size: 12px;
-  line-height: 1.667;
-  letter-spacing: 0.04em;
+  @include font-style(12px, 400, 1.67, 0.04em, var(--primary-text-color));
   text-transform: uppercase;
-  color: #52555f;
   margin: 0;
 }
 
@@ -62,7 +61,7 @@ a {
     height: 46px;
     left: 0;
     bottom: 0;
-    background: #f5f6fb;
+    background: var(--background-grey);
     border-radius: 20px;
     z-index: 1;
   }
