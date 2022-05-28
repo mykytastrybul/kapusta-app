@@ -1,12 +1,13 @@
 import React from 'react';
-import CostsAndIncomesBox from '../../components/CostsAndIncomesBox/CostsAndIncomesBox'
+import Balance from '../../components/Balance/Balance';
+import CostsAndIncomesBox from '../../components/CostsAndIncomesBox/CostsAndIncomesBox';
 
 const CostsAndIncomesPage = () => {
   return (
     <section className={'page'}>
-        <CostsAndIncomesBox />
+      <Balance />
+      <CostsAndIncomesBox />
     </section>
-
   );
 };
 

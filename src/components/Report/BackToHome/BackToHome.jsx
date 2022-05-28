@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import sprite from '../../assets/images/symbol-defs.svg';
+import sprite from '../../../assets/images/symbol-defs.svg';
 import s from './BackToHome.module.scss';
 const BackToHome = () => {
   return (

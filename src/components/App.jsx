@@ -13,7 +13,7 @@ const CostsAndIncomesPage = lazy(() =>
 );
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
 // const HomePage = lazy(() => import('../pages/CostsAndIncomesPage'));
-const ReportPage = lazy(() => import('../pages/ReportPage'));
+const ReportPage = lazy(() => import('../pages/ReportPage/ReportPage'));
 
 function App() {
   const { accessToken, refreshToken, sid } = queryString.parse(

@@ -6,7 +6,7 @@ import s from './ChartReport.module.scss';
 import { optionsDesc, optionsMob } from './ChartOptions';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getPeriodData } from '../../redux/periodData/periodDataSelectors';
+import { getPeriodData } from '../../../redux/periodData/periodDataSelectors';
 
 const data = [
   ['category 1', ['1']],

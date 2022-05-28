@@ -1,10 +1,12 @@
-import BackToHome from '../../BackToHome/BackToHome';
+import { useSelector } from 'react-redux/es/exports';
+import authSelectors from '../../../redux/auth/authSelectors';
+import BackToHome from '../BackToHome/BackToHome';
 import Data from '../Data/Data';
 import s from './ReportControlPanel.module.scss';
 
-const balance = 10000;
-
 const ReportControlPanel = () => {
+  const balance = useSelector(authSelectors.getBalance);
+
   return (
     <div className={s.wrapp}>
       <BackToHome />
