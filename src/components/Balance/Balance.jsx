@@ -17,7 +17,7 @@ export default function Balance() {
     <div className={s.page}>
       <div className={s.container}>
         <div className={s.container_link}>
-          <NavLink className={s.link} to="/">
+          <NavLink className={s.link} to="/report">
             Перейти к отчетам
             <svg className={s.icon}>
               <use xlinkHref={`${IconSvg}#icon-chart`}></use>

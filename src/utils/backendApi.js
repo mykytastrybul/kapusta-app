@@ -14,8 +14,8 @@ const setToken = token => {
 
 //AUTH
 export const fetchRegisterUser = async newUserObject => {
+  //eslint-disable-next-line
   const registerResp = await axios.post('/auth/register', newUserObject);
-  console.log('registered. response', registerResp.data);
   const loginResp = await fetchLoginUser(newUserObject);
   return loginResp.data;
 };
@@ -23,7 +23,6 @@ export const fetchRegisterUser = async newUserObject => {
 export const fetchLoginUser = async userDataObject => {
   const resp = await axios.post('/auth/login', userDataObject);
   setToken('Bearer ' + resp.data.accessToken);
-  console.log('logged in. response', resp.data);
 
   return resp.data;
 };

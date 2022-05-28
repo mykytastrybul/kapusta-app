@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useDispatch } from 'react-redux/es/exports';
+import { useState, useEffect } from 'react';
 import sprite from '../../../assets/images/symbol-defs.svg';
+import { getTransactionsPerPeriod } from '../../../redux/periodData/periodDataOperations';
 import s from './Data.module.scss';
 
 const months = [
@@ -24,6 +26,7 @@ function getMonth(number) {
 }
 
 const Data = () => {
+  const dispatch = useDispatch();
   const [month, setMonth] = useState(() => getMonth(dateNow.getMonth()));
   const [year, setYear] = useState(() => dateNow.getFullYear());
 
@@ -41,6 +44,14 @@ const Data = () => {
     }
     return setMonth(getMonth(dateNow.getMonth()));
   };
+
+  useEffect(() => {
+    dispatch(
+      getTransactionsPerPeriod(
+        `${year}-${String(months.indexOf(month) + 1).padStart(2, '0')}`
+      )
+    );
+  }, [month, year]);
 
   return (
     <div className={s.wrapp}>

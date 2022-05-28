@@ -66,7 +66,7 @@ const transactionsSlice = createSlice({
     },
     [allUserInfo.fulfilled](state, action) {
       state.loading = false;
-      console.log(action.payload);
+      // console.log(action.payload);
     },
     [allUserInfo.rejected](state, action) {
       state.loading = false;
