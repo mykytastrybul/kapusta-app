@@ -1,6 +1,32 @@
 @import '../../assets//sass/mixins';
 @import '../../assets/sass/rootColors';
 
+.section {
+  position: relative;
+  background: url('../../assets/images/bg-login.svg'),
+    url('../../assets/images/bg-single-cabbage.svg');
+  background-size: 232px cover;
+  background-repeat: repeat-x, no-repeat;
+  background-position: 10px 25px, 17% 100%;
+
+  @include mq(tablet) {
+    background: url('../../assets/images/bg-login.svg'),
+      url('../../assets/images/bg-login2.svg');
+    background-position: 10px 25px, 17% 95%;
+    background-size: 232px cover;
+    background-repeat: repeat-x, no-repeat;
+  }
+}
+
+.bg {
+  position: absolute;
+  height: 70%;
+  width: 100%;
+  background-color: var(--background-grey);
+  border-bottom-left-radius: 110px;
+  z-index: -1;
+}
+
 .container {
   min-height: calc(100vh - 56px);
   max-width: 466px;
@@ -20,7 +46,7 @@
     width: 1098px;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
   }
 }
@@ -39,6 +65,7 @@
 }
 
 .title {
+  width: 225px;
   position: relative;
   margin: 0;
   font-weight: 900;
@@ -46,55 +73,27 @@
   line-height: 1.17;
 
   @include mq(tablet) {
+    width: 330px;
     font-size: 88px;
   }
   @include mq(desktop) {
+    width: 380px;
     font-size: 102px;
   }
+}
 
-  &::after {
-    content: '';
-    display: block;
-    width: 4px;
-    height: 6px;
-    position: absolute;
-    top: 18px;
-    left: 150px;
+.square {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 10px;
+  position: absolute;
 
-    background-color: var(--highlight-black-color);
+  background-color: var(--highlight-black-color);
 
-    @include mq(tablet) {
-      width: 8px;
-      height: 13px;
-      top: 24px;
-      left: 220px;
-    }
-    @include mq(desktop) {
-      top: 28px;
-      left: 255px;
-    }
-  }
-  &::before {
-    content: '';
-    display: block;
-    width: 4px;
-    height: 6px;
-    position: absolute;
-    top: 55px;
-    left: 150px;
-
-    background-color: var(--highlight-black-color);
-
-    @include mq(tablet) {
-      width: 8px;
-      height: 13px;
-      top: 80px;
-      left: 220px;
-    }
-    @include mq(desktop) {
-      top: 96px;
-      left: 255px;
-    }
+  @include mq(tablet) {
+    width: 8px;
+    height: 13px;
   }
 }
 
