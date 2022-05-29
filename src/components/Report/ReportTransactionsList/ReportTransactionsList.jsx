@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import ReportTransactionsItem from '../ReportItem/ReportItem';
 import ControlsByTransType from '../ControlsByTransType/ControlsByTransType';
 import s from './ReportTransactionsList.module.scss';
+
 import {
   getExpensesData,
   getIncomesData,
@@ -21,10 +22,9 @@ const ReportTransactionsList = () => {
   const expensesData = useSelector(getExpensesData);
   const incomesData = useSelector(getIncomesData);
 
-  const typeToggler = () => {
-    setType(prev => {
-      return prev === 'PACХОДЫ' ? 'ДОХОДЫ' : 'PACХОДЫ';
-    });
+  const toggleType = () => {
+    if (type === 'PACХОДЫ') setType('ДОХОДЫ');
+    if (type === 'ДОХОДЫ') setType('PACХОДЫ');
   };
 
   useEffect(() => {
@@ -125,7 +125,8 @@ const ReportTransactionsList = () => {
 
   return (
     <div className={s.wrapper}>
-      <ControlsByTransType type={type} typeToggler={typeToggler} />
+      <ControlsByTransType type={type} toggleType={toggleType} />
+
 
       {transactionsList.length > 0 ? (
         <ul className={s.list}>
