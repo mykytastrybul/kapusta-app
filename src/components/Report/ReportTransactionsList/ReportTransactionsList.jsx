@@ -1,6 +1,12 @@
 import ReportTransactionsItem from '../ReportItem/ReportItem';
 import ControlsByTransType from '../ControlsByTransType/ControlsByTransType';
 import s from './ReportTransactionsList.module.scss';
+// import { useSelector } from 'react-redux';
+// import {
+//   getExpensesData,
+//   getIncomesData,
+// } from '../../../redux/periodData/periodDataSelectors';
+import { useState } from 'react';
 
 const transactionsList = [
   {
@@ -29,12 +35,21 @@ const transactionsList = [
     name: 'транспорт',
   },
 ];
-const type = 'PACХОДЫ';
 
 const ReportTransactionsList = () => {
+  // const expensesData = useSelector(getExpensesData);
+  // const incomesData = useSelector(getIncomesData);
+
+  const [type, setType] = useState('PACХОДЫ');
+
+  const toggleType = () => {
+    if (type === 'PACХОДЫ') setType('ДОХОДЫ');
+    if (type === 'ДОХОДЫ') setType('PACХОДЫ');
+  };
+
   return (
     <div className={s.wrapper}>
-      <ControlsByTransType type={type} />
+      <ControlsByTransType type={type} toggleType={toggleType} />
 
       {transactionsList.length > 0 ? (
         <ul className={s.list}>
