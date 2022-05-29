@@ -1,0 +1,23 @@
+@import '../../../assets/sass/mixins';
+
+.control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  @include font-style(14px, 700, 1.6, 0.02em, var(--secondary-text-color));
+  text-align: center;
+  text-transform: uppercase;
+
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

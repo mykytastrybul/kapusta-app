@@ -1,0 +1,38 @@
+@import '../../../assets/sass/mixins';
+
+.wrapp {
+  padding: 32px;
+
+  @include mq(tablet) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 704px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include mq(desktop) {
+    width: 1034px;
+  }
+}
+
+.balance {
+  @include mq(mobile-only) {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+}
+
+.text {
+  @include font-style(12px, 400, 1.4, 0.04em, var(--secondary-text-color));
+}
+
+.sum {
+  @include font-style(12px, 700, 1.4, 0.02em, var(--highlight-black-color));
+  text-transform: uppercase;
+
+  @include mq(mobile-only) {
+    display: block;
+  }
+}

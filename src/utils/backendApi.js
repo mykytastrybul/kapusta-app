@@ -14,13 +14,16 @@ const setToken = token => {
 
 //AUTH
 export const fetchRegisterUser = async newUserObject => {
-  const resp = await axios.post('/auth/register', newUserObject);
-  return resp.data;
+  //eslint-disable-next-line
+  const registerResp = await axios.post('/auth/register', newUserObject);
+  const loginResp = await fetchLoginUser(newUserObject);
+  return loginResp.data;
 };
 
 export const fetchLoginUser = async userDataObject => {
   const resp = await axios.post('/auth/login', userDataObject);
   setToken('Bearer ' + resp.data.accessToken);
+
   return resp.data;
 };
 
@@ -29,10 +32,13 @@ export const fetchLogoutUser = async () => {
   return resp.data;
 };
 
-export const fetchRefreshUser = async sidObject => {
-  const resp = await axios.post('/auth/refresh', sidObject);
-  setToken('Bearer ' + resp.data.newAccessToken);
-  return resp.data;
+export const fetchRefreshUser = async (sid, refreshToken) => {
+  setToken('Bearer ' + refreshToken);
+  const data = await axios.post('/auth/refresh', { sid }).then(({ data }) => {
+    setToken('Bearer ' + data.newAccessToken);
+    return data;
+  });
+  return data;
 };
 
 // export const fetchLoginGoogle  - still in process
@@ -40,7 +46,7 @@ export const fetchRefreshUser = async sidObject => {
 //TRANSACTIONS
 export const fetchSetBalance = async newBalance => {
   //manually set user balance after register
-  const resp = await axios.patch('/user/balance', newBalance);
+  const resp = await axios.patch('/user/balance', { newBalance });
   return resp.data;
 };
 export const fetchIncomeTransaction = async transactionObject => {
@@ -58,8 +64,10 @@ export const fetchDeleteTransaction = async id => {
 };
 
 //TRANSACTION STATS
-export const fetchAllUserInfo = async () => {
+export const fetchAllUserInfo = async token => {
+  if (token) setToken('Bearer ' + token);
   const resp = await axios.get('/user');
+
   return resp.data;
 };
 export const fetchIncomeStats = async () => {
@@ -80,6 +88,6 @@ export const fetchExpenseCats = async () => {
 };
 
 export const fetchTransactionsPerPeriod = async period => {
-  const resp = await axios.get('/transaction/' + period);
+  const resp = await axios.get('/transaction/period-data?date=' + period);
   return resp.data;
 };

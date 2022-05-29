@@ -1,41 +1,47 @@
 import React, { useState } from 'react';
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
+import { motion } from 'framer-motion';
 import sprite from '../../assets/images/symbol-defs.svg';
+import { useDispatch } from 'react-redux';
+import { loginUser, registerUser } from '../../redux/auth/authOperations';
 import s from './FormAuth.module.scss';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
     .email('невалидный email')
-    .min(3, 'Минимальное количество символов 3')
-    .max(254, 'Максимальное количество символов 254')
-    .required('Обязательное поле'),
+    .min(3, 'минимальное количество символов 3')
+    .max(254, 'максимальное количество символов 254')
+    .required('это обязательное поле'),
   password: Yup.string()
-    .min(8, 'Пароль должен иметь минимум  8 символов')
-    .max(100, 'Пароль должен иметь максимум 100 символов')
-    .required('Обязательное поле'),
+    .min(8, 'пароль должен иметь минимум  8 символов')
+    .max(100, 'пароль должен иметь максимум 100 символов')
+    .required('это обязательное поле'),
 });
 
 const FormAuth = () => {
+  const dispatch = useDispatch();
   const [type, setType] = useState('login');
 
-  const onClickGoogleButton = () => {
-    return console.log('login google');
-  };
   return (
-    <div className={s.wrapper}>
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+      className={s.wrapper}
+    >
       <p className={s.text}>
         Вы можете авторизоваться с помощью Google Account:
       </p>
-      <button
+      <a
         className={`${s.button} ${s.google}`}
-        onClick={onClickGoogleButton}
+        href="https://kapusta-backend.goit.global/auth/google"
       >
         <svg className={s.icon}>
           <use href={`${sprite + '#icon-google'}`}></use>
         </svg>
         Google
-      </button>
+      </a>
       <p className={s.text}>
         Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:
       </p>
@@ -47,12 +53,11 @@ const FormAuth = () => {
         validationSchema={validationSchema}
         onSubmit={async (values, { resetForm }) => {
           if (type === 'login') {
-            console.log('Login', values);
+            dispatch(loginUser(values));
             resetForm();
           }
           if (type === 'register') {
-            console.log('Registration', values);
-            console.log('Login', values);
+            dispatch(registerUser(values));
             resetForm();
           }
         }}
@@ -60,6 +65,9 @@ const FormAuth = () => {
         {formik => (
           <Form className={s.form}>
             <label className={s.field}>
+              {formik.touched.email && formik.errors.email && (
+                <span className={s.requiredStar}>*</span>
+              )}
               Электронная почта:
               <Field
                 className={s.input}
@@ -72,6 +80,9 @@ const FormAuth = () => {
             </label>
 
             <label className={s.field}>
+              {formik.touched.password && formik.errors.password && (
+                <span className={s.requiredStar}>*</span>
+              )}
               Пароль:
               <Field
                 className={`${s.input} ${s.password}`}
@@ -108,7 +119,7 @@ const FormAuth = () => {
           </Form>
         )}
       </Formik>
-    </div>
+    </motion.div>
   );
 };
 

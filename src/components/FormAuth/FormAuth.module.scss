@@ -58,6 +58,7 @@
   border-radius: 16px;
   border: none;
   cursor: pointer;
+  transition: background-color 250ms;
 }
 
 .button.primary {
@@ -66,16 +67,30 @@
   background-color: var(--background-orange);
   color: var(--highlight-white-color);
   filter: drop-shadow(1px 3px 5px rgba(255, 107, 8, 0.35));
+
+  &:hover {
+    background-color: #e15f0e;
+  }
 }
 .button.secondary {
   color: var(--primary-text-color);
   filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+
+  &:hover {
+    background-color: #e8e9f0;
+  }
 }
 
 .button.google {
   margin-bottom: 32px;
   font-size: 14px;
+  color: var(--highlight-black-color);
+  text-decoration: none;
   filter: drop-shadow(1px 2px 3px rgba(170, 178, 197, 0.2));
+
+  &:hover {
+    background-color: #e8e9f0;
+  }
 }
 
 .icon {
@@ -140,4 +155,10 @@
   @include mq(tablet) {
     bottom: -20px;
   }
+}
+
+.requiredStar {
+  position: absolute;
+  left: -6px;
+  color: #eb5757;
 }

@@ -1,0 +1,126 @@
+@import '../../assets/sass/rootColors';
+@import '../../assets/sass/mixins';
+
+.page {
+  padding: 0 20px;
+  @include mq(tablet) {
+    padding: 0 32px;
+  }
+  @include mq(desktop) {
+    padding: 0 91px;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @include mq(tablet) {
+    position: relative;
+    align-items: flex-start;
+  }
+  @include mq(desktop) {
+    align-items: center;
+  }
+  &_link {
+    padding: 3px;
+    margin-bottom: 40px;
+    @include mq(tablet) {
+      position: absolute;
+      right: calc(50% - 355px);
+      margin-bottom: 0px;
+    }
+    @include mq(desktop) {
+      right: calc(50% - 545px);
+    }
+  }
+}
+
+.balance {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include mq(tablet) {
+    flex-direction: row;
+    margin-left: calc(50% - 333px);
+  }
+  @include mq(desktop) {
+    margin-left: 0;
+  }
+
+  &_text {
+    margin: 0 0 8px 0;
+    @include font-style(12px, 500, 1.17, 0.02em, var(--secondary-text-color));
+    @include mq(tablet) {
+      margin: 0;
+    }
+  }
+}
+
+.form {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--highlight-white-color);
+  border-radius: 22px;
+  @include mq(tablet) {
+    border: none;
+  }
+}
+
+.input {
+  @include font-style(12px, 700, 1.17, 0.02em, var(--highlight-black-color));
+  background-color: transparent;
+  border: none;
+  border-right: 2px solid var(--highlight-white-color);
+  width: 125px;
+  padding: 12px 16px 12px 44px;
+  border-top-left-radius: 22px;
+  border-bottom-left-radius: 22px;
+  text-align: right;
+  @include mq(tablet) {
+    border: 2px solid var(--highlight-white-color);
+    border-radius: 16px;
+    margin-left: 21px;
+    padding: 12px 20px 12px 6px;
+  }
+  &::placeholder {
+    text-align: right;
+    color: var(--highlight-black-color);
+  }
+}
+
+.button {
+  @include font-style(12px, 400, 1.17, 0.02em, var(--secondary-text-color));
+  background-color: transparent;
+  border: none;
+  padding: 12px 22px 12px 18px;
+  border-top-right-radius: 22px;
+  border-bottom-right-radius: 22px;
+  outline: none;
+  transition: 250ms ease-out;
+  @include mq(tablet) {
+    border: 2px solid var(--highlight-white-color);
+    border-radius: 16px;
+    margin-left: 15px;
+    padding: 12px 6px;
+  }
+  &:hover,
+  &:focus {
+    color: var(--highlight-white-color);
+    background-color: var(--background-orange);
+  }
+}
+
+.link {
+  @include font-style(12px, 400, 1.17, 0.04em, var(--secondary-text-color));
+  text-decoration: none;
+}
+
+.icon {
+  margin-left: 20px;
+  width: 14px;
+  height: 14px;
+}
