@@ -12,7 +12,7 @@ const ReportTransactionsItem = ({ icon, sum, name, type }) => {
             type === 'ДОХОДЫ' ? 'incomes' : 'expenses'
           }&category=${icon}`,
         }}
-        className={({ isActive }) => (isActive ? s.activeLink : s.link)}
+        className={({ isActive }) => (!isActive ? s.activeLink : s.link)}
       >
         <p className={s.text}>{sum}</p>
         <div className={s.iconWrapp}>
