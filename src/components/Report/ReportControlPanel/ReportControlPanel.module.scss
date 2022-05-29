@@ -1,0 +1,27 @@
+@import '../../../assets/sass/mixins';
+
+.wrapp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px;
+
+  @include mq(tablet) {
+    width: 704px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include mq(desktop) {
+    width: 1034px;
+  }
+}
+
+.text {
+  @include font-style(12px, 400, 1.4, 0.04em, var(--secondary-text-color));
+}
+
+.sum {
+  @include font-style(12px, 700, 1.4, 0.02em, var(--highlight-black-color));
+  text-transform: uppercase;
+}

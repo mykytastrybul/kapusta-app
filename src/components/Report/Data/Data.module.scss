@@ -1,0 +1,41 @@
+@import '../../../assets/sass/mixins';
+
+p {
+  margin: 0;
+}
+
+.wrapp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 175px;
+}
+
+.descr {
+  @include font-style(12px, 400, 1.4, 0.04em, var(--secondary-text-color));
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.date {
+  display: flex;
+}
+
+.button {
+  color: var(--background-orange);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.currentDate {
+  @include font-style(14px, 700, 1.6, 0.02em, var(--highlight-black-color));
+  text-align: center;
+  text-transform: uppercase;
+  width: 150px;
+}
+
+.month {
+  margin-right: 10px;
+}
