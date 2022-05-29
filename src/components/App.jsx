@@ -7,6 +7,7 @@ import { loginGoogle, refreshUser } from '../redux/auth/authOperations';
 import queryString from 'query-string';
 import { useDispatch, useSelector } from 'react-redux';
 import authSelectors from '../redux/auth/authSelectors';
+import Loader from './Loader';
 
 const CostsAndIncomesPage = lazy(() =>
   import('../pages/CostsAndIncomesPage/CostsAndIncomesPage')
@@ -44,7 +45,7 @@ function App() {
 
   return (
     <>
-      <Suspense fallback={null}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route
             path="/"
