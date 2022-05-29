@@ -1,0 +1,78 @@
+.container_nav {
+  display: flex;
+  margin: 0 auto;
+  max-width: 426px;
+  height: 56px;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+
+  @include mq(tablet) {
+    max-width: unset;
+    width: 768px;
+    height: 56px;
+  }
+  @include mq(desktop) {
+    width: 1280px;
+    height: 56px;
+  }
+}
+.login_part {
+  display: flex;
+  align-items: center;
+}
+
+.circle_name {
+  display: flex;
+  margin-right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--background-grey);
+  text-transform: capitalize;
+  justify-content: center;
+  align-items: center;
+  @include mq(tablet) {
+    margin-right: 12px;
+  }
+}
+.login_part__user_name {
+  font-size: 14px;
+  margin-right: 20px;
+  color: #52555f;
+}
+.login_part_grey_line {
+  width: 1px;
+  height: 36px;
+  background-color: #e0e5eb;
+  margin-right: 20px;
+}
+.logoutButton {
+  font-size: 14px;
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  color: #52555f;
+  cursor: pointer;
+}
+.logout_img {
+  cursor: pointer;
+}
+// .logoutButton_wrapper {
+//   position: relative;
+// }
+// .logoutButton::after {
+//   content: '';
+//   position: absolute;
+//   border-bottom: solid 3px black;
+//   right: 0;
+//   left: 0;
+//   bottom: -5px;
+//   display: none;
+// }
+// .logoutButton:hover::after,
+// .logoutButton:focus::after {
+//   display: block;
+// }
