@@ -29,7 +29,7 @@ const ChartReport = () => {
         label: 'Category amount',
         data: userData.map(data => data[1]),
         maxBarThickness: 38,
-        borderRadius: 20,
+        borderRadius: 10,
         minBarLength: 2,
         backgroundColor: ['#FF751D', '#FFDAC0', '#FFDAC0'],
         borderColor: ['rgba(0, 0, 0, 0)'],
@@ -123,7 +123,9 @@ const ChartReport = () => {
             Object.values(incomesData)[
               Object.keys(incomesData).indexOf(category)
             ]
-          ).splice(1)
+          )
+            .splice(1)
+            .sort((a, b) => b[1] - a[1])
         );
       } else if (
         Object.entries(expensesData).length > 0 &&
@@ -135,7 +137,9 @@ const ChartReport = () => {
             Object.values(expensesData)[
               Object.keys(expensesData).indexOf(category)
             ]
-          ).splice(1)
+          )
+            .splice(1)
+            .sort((a, b) => b[1] - a[1])
         );
       } else setUserData([]);
     }, 0);
