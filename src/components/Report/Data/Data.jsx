@@ -4,9 +4,11 @@ import sprite from '../../../assets/images/symbol-defs.svg';
 import { getTransactionsPerPeriod } from '../../../redux/periodData/periodDataOperations';
 import { months, dateNow, getMonth } from './DataOptions';
 import s from './Data.module.scss';
+import { useNavigate } from 'react-router-dom';
 
 const Data = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [month, setMonth] = useState(() => getMonth(dateNow.getMonth()));
   const [year, setYear] = useState(() => dateNow.getFullYear());
 
@@ -31,7 +33,10 @@ const Data = () => {
         `${year}-${String(months.indexOf(month) + 1).padStart(2, '0')}`
       )
     );
-
+    navigate({
+      search: 'type=&category=',
+    });
+    //eslint-disable-next-line
   }, [dispatch, month, year]);
 
   return (
