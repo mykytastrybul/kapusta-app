@@ -1,11 +1,15 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import logo from '../../assets/images/nav/logo.svg';
 import logout_header from '../../assets/images/nav/logout_header.svg';
+import { logoutUser } from '../../redux/auth/authOperations';
 function HeaderNav() {
+  const username = useSelector(state => state.auth.user.email);
+  const dispatch = useDispatch();
   const logoutButtonHandler = () => {
-    console.log('exit pushed');
+    dispatch(logoutUser());
   };
-  const isAuth = true;
+  const isAuth = useSelector(state => Boolean(state.auth.token));
   const isFullView = useMediaQuery({ query: '(min-width:768px' });
   return (
     <>
@@ -15,10 +19,10 @@ function HeaderNav() {
         {isAuth ? (
           <>
             <div className="login_part">
-              <div className="circle_name">U</div>
+              <div className="circle_name">{username.charAt(0)}</div>
               {isFullView ? (
                 <>
-                  <span className="login_part__user_name">User name</span>
+                  <span className="login_part__user_name">{username}</span>
                   <span className="login_part_grey_line"></span>
                 </>
               ) : null}

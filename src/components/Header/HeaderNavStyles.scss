@@ -1,23 +1,21 @@
 .container_nav {
   display: flex;
   margin: 0 auto;
-  width: 318px;
+  max-width: 426px;
   height: 56px;
   align-content: center;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid blue;
   padding: 0 20px;
 
   @include mq(tablet) {
-    width: 766px;
+    max-width: unset;
+    width: 768px;
     height: 56px;
-    border: 1px solid red;
   }
   @include mq(desktop) {
-    width: 1278px;
+    width: 1280px;
     height: 56px;
-    border: 1px solid black;
   }
 }
 .login_part {
@@ -32,6 +30,7 @@
   height: 32px;
   border-radius: 50%;
   background-color: var(--background-grey);
+  text-transform: capitalize;
   justify-content: center;
   align-items: center;
   @include mq(tablet) {
