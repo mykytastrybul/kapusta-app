@@ -2,11 +2,16 @@ import { NavLink } from 'react-router-dom';
 import sprite from '../../../assets/images/symbol-defs.svg';
 import s from './ReportTransactionsItem.module.scss';
 
-const ReportTransactionsItem = ({ icon, sum, name }) => {
+const ReportTransactionsItem = ({ icon, sum, name, type }) => {
   return (
     <li className={s.item}>
       <NavLink
-        to={`/report/${icon}`}
+        to={{
+          pathname: '/report',
+          search: `type=${
+            type === 'ДОХОДЫ' ? 'incomes' : 'expenses'
+          }&category=${icon}`,
+        }}
         className={({ isActive }) => (isActive ? s.activeLink : s.link)}
       >
         <p className={s.text}>{sum}</p>
