@@ -54,7 +54,7 @@ function HeaderNav() {
         {modalOpen && (
           <Modal
             text={'Вы действительно хотите выйти?'}
-            logOut={() => dispatch(logoutUser())}
+            onSubmit={() => dispatch(logoutUser())}
             close={logoutButtonHandler}
           />
         )}
