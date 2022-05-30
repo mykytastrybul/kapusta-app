@@ -13,6 +13,23 @@ export default function Summary() {
   const [data, setData] = useState([]);
   const location = useLocation();
 
+  const currentMonth = new Intl.DateTimeFormat('ru-Ru', {
+    month: 'long',
+  }).format(new Date());
+
+  let firstPart = [];
+  let index = 0;
+
+  Object.entries(data).map((item, idx) => {
+    firstPart.push(item);
+    if (item[0].toLowerCase() === currentMonth) {
+      index = idx;
+    }
+  });
+  const secondPart = firstPart.splice(index + 1);
+
+  const months = firstPart.reverse().concat(secondPart.reverse());
+
   useEffect(() => {
     switch (location.pathname) {
       case '/expenses':
@@ -30,10 +47,10 @@ export default function Summary() {
     <div className={s.summary}>
       <h2 className={s.title}>сводка</h2>
       <ul className={s.list}>
-        {Object.entries(data).map((item, idx) => (
+        {months.map((month, idx) => (
           <li key={idx} className={s.item}>
-            <p>{item[0]}</p>
-            <p>{item[1]}</p>
+            <p>{month[0]}</p>
+            <p>{month[1]}</p>
           </li>
         ))}
       </ul>
