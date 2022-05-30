@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 const modal = document.getElementById('modal');
 
-export default function Modal({ text, close, logOut }) {
+export default function Modal({ text, close, onSubmit }) {
   const handleEsc = ({ code }) => {
     if (code === 'Escape') {
       close();
@@ -29,11 +29,11 @@ export default function Modal({ text, close, logOut }) {
         </button>
         <p className={s.text}>{text}</p>
         <div className={s.options}>
-          <button className={s.button} onClick={logOut}>
-            ДА
+          <button className={s.button} onClick={onSubmit}>
+            ТАК
           </button>
           <button className={s.button} onClick={close}>
-            НЕТ
+            НІТ
           </button>
         </div>
       </div>
