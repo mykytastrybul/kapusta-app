@@ -31,6 +31,7 @@
   min-height: calc(100vh - 56px);
   max-width: 466px;
   padding-top: 86px;
+  padding-bottom: 15px;
   margin: 0 auto;
 
   @include mq(tablet) {
