@@ -22,6 +22,8 @@
   background-color: var(--background-grey);
 }
 .list {
+  display: flex;
+  flex-direction: column-reverse;
   text-transform: uppercase;
   margin: 0;
   padding: 0;
@@ -36,7 +38,7 @@
     padding-left: 20px;
     @include font-style(12px, null, 1.17, null, var(--primary-text-color));
     background-color: var(--background-grey);
-    &:last-child {
+    &:first-child {
       border-bottom-right-radius: 20px;
     }
   }
