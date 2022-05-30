@@ -3,12 +3,16 @@ import { useMediaQuery } from 'react-responsive';
 import logo from '../../assets/images/nav/logo.svg';
 import logout_header from '../../assets/images/nav/logout_header.svg';
 import { logoutUser } from '../../redux/auth/authOperations';
+import { useState } from 'react';
+import Modal from '../Modal';
 function HeaderNav() {
   const username = useSelector(state => state.auth.user.email);
   const dispatch = useDispatch();
+  const [modalOpen, setModalOpen] = useState(false);
   const logoutButtonHandler = () => {
-    dispatch(logoutUser());
+    setModalOpen(!modalOpen);
   };
+
   const isAuth = useSelector(state => Boolean(state.auth.token));
   const isFullView = useMediaQuery({ query: '(min-width:768px' });
   return (
@@ -47,6 +51,13 @@ function HeaderNav() {
             </div>
           </>
         ) : null}
+        {modalOpen && (
+          <Modal
+            text={'Вы действительно хотите выйти?'}
+            logOut={() => dispatch(logoutUser())}
+            close={logoutButtonHandler}
+          />
+        )}
       </div>
     </>
   );
