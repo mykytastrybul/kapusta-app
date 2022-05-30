@@ -11,6 +11,7 @@ import { loginGoogle, refreshUser } from '../redux/auth/authOperations';
 import { useDispatch, useSelector } from 'react-redux';
 import authSelectors from '../redux/auth/authSelectors';
 import Loader from './Loader';
+import HeaderNav from './Header/HeaderNav';
 
 const CostsAndIncomesPage = lazy(() =>
   import('../pages/CostsAndIncomesPage/CostsAndIncomesPage')
@@ -66,6 +67,7 @@ function App() {
             path="/expenses"
             element={
               <PrivateRoute redirectTo={'/login'}>
+                <HeaderNav />
                 <CostsAndIncomesPage />
               </PrivateRoute>
             }
@@ -74,6 +76,7 @@ function App() {
             path="/incomes"
             element={
               <PrivateRoute redirectTo={'/login'}>
+                <HeaderNav />
                 <CostsAndIncomesPage />
               </PrivateRoute>
             }
@@ -82,6 +85,7 @@ function App() {
             path="report"
             element={
               <PrivateRoute redirectTo={'/login'}>
+                <HeaderNav />
                 <ReportPage />
               </PrivateRoute>
             }
@@ -90,6 +94,7 @@ function App() {
             path="login"
             element={
               <PublicRoute restricted>
+                <HeaderNav />
                 <LoginPage />
               </PublicRoute>
             }
