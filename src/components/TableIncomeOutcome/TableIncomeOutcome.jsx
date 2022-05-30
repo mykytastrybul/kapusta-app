@@ -10,8 +10,7 @@ export default function TableIncomeOutcome() {
   const expensesStats = useSelector(state => state.transactions.data.expenses);
   const incomesStats = useSelector(state => state.transactions.data.incomes);
   const location = useLocation();
-  // const path = location.pathname;
-  // console.log(path);
+
   useEffect(() => {
     switch (location.pathname) {
       case '/expenses':
@@ -23,7 +22,7 @@ export default function TableIncomeOutcome() {
       default:
         break;
     }
-    console.log('statsToDraw', statsToDraw);
+    // console.log('statsToDraw', statsToDraw);
   }, [expensesStats, incomesStats, location.pathname]);
 
   return (
@@ -57,24 +56,7 @@ export default function TableIncomeOutcome() {
                 </td>
               </tr>
             ))}
-          {/* <tr className={s.line}>
-            <td className={s.date}>05.09.2019</td>
-            <td className={`${s['cell-desc']} ${s.description}`}>
-              <span>
-                Метро (Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Aperiam, nesciunt)
-              </span>
-            </td>
-            <td className={s.category}>Транспорт</td>
-            <td className={s.summa}>-3000.00 грн.</td>
-            <td className={s.delete}>
-              <button type="button" className={s['delete-btn']}>
-                <svg className={s.icon} width="18" height="18">
-                  <use href={`${sprite + '#icon-trashcan'}`}></use>
-                </svg>
-              </button>
-            </td>
-          </tr> */}
+
           <tr className={s.line}>
             <td className={s.date}></td>
             <td className={`${s['cell-desc']} ${s.description}`}>
