@@ -26,11 +26,11 @@
     transform: rotate(-45deg);
   }
   @include mq(tablet) {
-    top: 50px;
+    top: 110px;
     left: calc(50% - 260px);
   }
   @include mq(desktop) {
-    top: 50px;
+    top: 110px;
     left: calc(50% - 80px);
   }
 }
