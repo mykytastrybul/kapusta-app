@@ -59,7 +59,7 @@ export const fetchExpenseTransaction = async transactionObject => {
   return resp.data;
 };
 export const fetchDeleteTransaction = async id => {
-  const resp = await axios.post('/transaction/expense', id);
+  const resp = await axios.delete('/transaction/' + id);
   return resp.data;
 };
 

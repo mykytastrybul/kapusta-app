@@ -1,9 +1,10 @@
 import s from '../../components/TableIncomeOutcome/TableIncomeOutcome.module.scss';
 
-import sprite from '../../assets/images/symbol-defs.svg';
+// import sprite from '../../assets/images/symbol-defs.svg';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import DeleteButton from '../DeleteButton/DeleteButton';
 
 export default function TableIncomeOutcome() {
   const [statsToDraw, setStatsToDraw] = useState([]);
@@ -23,7 +24,7 @@ export default function TableIncomeOutcome() {
         break;
     }
     // console.log('statsToDraw', statsToDraw);
-  }, [expensesStats, incomesStats, location.pathname]);
+  }, [expensesStats, incomesStats, statsToDraw, location.pathname]);
 
   return (
     <div className={s.wrap}>
@@ -48,11 +49,7 @@ export default function TableIncomeOutcome() {
                 <td className={s.category}>{el.category}</td>
                 <td className={s.summa}>{el.amount}</td>
                 <td className={s.delete}>
-                  <button type="button" className={s['delete-btn']}>
-                    <svg className={s.icon} width="18" height="18">
-                      <use href={`${sprite + '#icon-trashcan'}`}></use>
-                    </svg>
-                  </button>
+                  <DeleteButton id={el._id} />
                 </td>
               </tr>
             ))}
