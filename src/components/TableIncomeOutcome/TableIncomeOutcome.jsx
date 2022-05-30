@@ -53,16 +53,6 @@ export default function TableIncomeOutcome() {
                 </td>
               </tr>
             ))}
-
-          <tr className={s.line}>
-            <td className={s.date}></td>
-            <td className={`${s['cell-desc']} ${s.description}`}>
-              <span></span>
-            </td>
-            <td className={s.category}></td>
-            <td className={s.summa}></td>
-            <td className={`${s['cell-delete']} ${s.delete}`}></td>
-          </tr>
         </tbody>
       </table>
     </div>
