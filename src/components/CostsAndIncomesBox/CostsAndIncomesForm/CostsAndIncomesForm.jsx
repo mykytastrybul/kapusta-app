@@ -3,28 +3,83 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import iconSprite from '../../../assets/images/symbol-defs.svg';
+import { useDispatch } from 'react-redux';
 
 import Select from 'react-select';
+import {
+  expenseTransaction,
+  incomeTransaction,
+} from '../../../redux/transactions/transactionsOperations';
+import { useLocation } from 'react-router-dom';
 const options = [
-  { value: "Продукты", label: "Продукты" },
-  { value:  "Алкоголь", label:  "Алкоголь" },
-  { value:  "Развлечения", label:  "Развлечения" },
-  { value: "Здоровье", label: "Здоровье" },
-  { value:  "Транспорт", label:  "Транспорт" },
-  { value: "Всё для дома", label: "Всё для дома" },
-  { value: "Техника", label: "Техника" },
-  { value: "Коммуналка и связь", label: "Коммуналка и связь" },
-  { value: "Спорт и хобби", label: "Спорт и хобби" },
-  { value: "Образование", label: "Образование" },
-  { value: "Прочее", label:  "Прочее" },
+  { value: 'Продукты', label: 'Продукты' },
+  { value: 'Алкоголь', label: 'Алкоголь' },
+  { value: 'Развлечения', label: 'Развлечения' },
+  { value: 'Здоровье', label: 'Здоровье' },
+  { value: 'Транспорт', label: 'Транспорт' },
+  { value: 'Всё для дома', label: 'Всё для дома' },
+  { value: 'Техника', label: 'Техника' },
+  { value: 'Коммуналка и связь', label: 'Коммуналка и связь' },
+  { value: 'Спорт и хобби', label: 'Спорт и хобби' },
+  { value: 'Образование', label: 'Образование' },
+  { value: 'Прочее', label: 'Прочее' },
 ];
 
 const CostsAndIncomesForm = () => {
+  const location = useLocation();
+  const dispatch = useDispatch();
   // console.log(iconCalendar)
   const [startDate, setStartDate] = useState(new Date());
+  // console.log('startDate: ', startDate);
+  const refDate = startDate.toISOString().substring(0, 10);
+  // console.log('refDate: ', refDate);
+
+  const [descr, setDescr] = useState('');
+
+  const [category, setCategory] = useState(null);
+
+  const [cost, setCost] = useState('');
+
+  const handleDescrChange = e => setDescr(e.currentTarget.value);
+  const handleCategoryChange = option => setCategory(option);
+  const handleCostChange = e => setCost(e.currentTarget.value);
+  // console.log('descr: ', descr);
+  // console.log('category: ', category);
+  // console.log('cost: ', cost);
+  const submitHandler = e => {
+    e.preventDefault();
+    switch (location.pathname) {
+      case '/expenses':
+        dispatch(
+          expenseTransaction({
+            description: descr,
+            amount: cost,
+            date: refDate,
+            category: category.value,
+          })
+        );
+        break;
+      case '/incomes':
+        dispatch(
+          incomeTransaction({
+            description: descr,
+            amount: cost,
+            date: refDate,
+            category: category.value,
+          })
+        );
+        break;
+      default:
+        break;
+    }
+
+    setDescr('');
+    setCost('');
+    setCategory(null);
+  };
 
   return (
-    <form action="submit" className={styles.form}>
+    <form action="submit" className={styles.form} onSubmit={submitHandler}>
       <label className={styles['label-date']} htmlFor="date">
         <DatePicker
           dateFormat="dd.MM.yyyy"
@@ -48,18 +103,18 @@ const CostsAndIncomesForm = () => {
         type="text"
         name="item"
         placeholder="Описание товара"
-        //   value={number}
-        //   onChange={handleChange}
+        value={descr}
+        onChange={handleDescrChange}
       />
       <label htmlFor="category"></label>
       <Select
         className={styles['input-category']}
         options={options}
         // type="text"
-        // name="category"
-        placeholder="Категория товара"
-        //   value={number}
-        //   onChange={handleChange}
+        name="category"
+        placeholder="Выберите категорию"
+        value={category}
+        onChange={handleCategoryChange}
       />
 
       <label className={styles['label-cost']} htmlFor="cost">
@@ -68,8 +123,8 @@ const CostsAndIncomesForm = () => {
           type="number"
           name="cost"
           placeholder="00.00"
-          //   value={number}
-          //   onChange={handleChange}
+          value={cost}
+          onChange={handleCostChange}
         />
         <svg
           className={styles['icon-cost']}
