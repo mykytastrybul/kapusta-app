@@ -17,8 +17,8 @@ const transactionsSlice = createSlice({
       expenses: [],
     },
     monthStats: {
-      incomes: [],
-      expenses: [],
+      incomes: {},
+      expenses: {},
     },
     loading: false,
     error: null,
@@ -78,7 +78,7 @@ const transactionsSlice = createSlice({
     [getIncomeStats.fulfilled](state, action) {
       state.loading = false;
       state.data.incomes = action.payload.incomes;
-      state.monthStats.incomes = action.payload.monthStats;
+      state.monthStats.incomes = action.payload.monthsStats;
     },
     [getIncomeStats.rejected](state, action) {
       state.loading = false;
@@ -90,7 +90,7 @@ const transactionsSlice = createSlice({
     [getExpenseStats.fulfilled](state, action) {
       state.loading = false;
       state.data.expenses = action.payload.expenses;
-      state.monthStats.expenses = action.payload.monthStats;
+      state.monthStats.expenses = action.payload.monthsStats;
     },
     [getExpenseStats.rejected](state, action) {
       state.loading = false;
