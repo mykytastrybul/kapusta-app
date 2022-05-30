@@ -50,8 +50,7 @@ export const deleteTransaction = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const data = await fetchDeleteTransaction(id);
-      console.log('deleted with resp ', data);
-      return id;
+      return { id, data };
     } catch (error) {
       return rejectWithValue(error.message);
     }

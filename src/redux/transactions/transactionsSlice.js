@@ -65,9 +65,11 @@ const transactionsSlice = createSlice({
     [deleteTransaction.fulfilled](state, { payload }) {
       state.loading = false;
       state.error = null;
-      state.data.incomes = state.data.incomes.filter(el => el._id !== payload);
+      state.data.incomes = state.data.incomes.filter(
+        el => el._id !== payload.id
+      );
       state.data.expenses = state.data.expenses.filter(
-        el => el._id !== payload
+        el => el._id !== payload.id
       );
     },
     [allUserInfo.pending](state) {

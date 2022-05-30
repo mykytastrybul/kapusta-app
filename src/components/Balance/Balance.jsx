@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import authSelectors from '../../redux/auth/authSelectors';
 import { setBalance } from '../../redux/transactions/transactionsOperations';
 
-export default function Balance() {
+const Balance = () => {
   const dispatch = useDispatch();
   const storeBalance = useSelector(authSelectors.getBalance);
   const [balanceState, setBalanceState] = useState('');
@@ -24,8 +24,7 @@ export default function Balance() {
 
   useEffect(() => {
     setBalanceState(storeBalance);
-    //eslint-disable-next-line
-  }, []);
+  }, [storeBalance]);
 
   return (
     <div className={s.page}>
@@ -44,11 +43,10 @@ export default function Balance() {
             <input
               className={s.input}
               name="balance"
-              value={balanceState}
+              value={balanceState || ''}
               onChange={handleChange}
               type="number"
               min="0.00"
-              max="10000.00"
               step="0.01"
               placeholder="00.00 UAH"
             />
@@ -61,4 +59,5 @@ export default function Balance() {
       </div>
     </div>
   );
-}
+};
+export default Balance;

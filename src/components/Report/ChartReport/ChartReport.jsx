@@ -26,7 +26,7 @@ const ChartReport = () => {
     labels: userData.map(data => data[0]),
     datasets: [
       {
-        label: 'Category amount',
+        label: 'Размер транзакции',
         data: userData.map(data => data[1]),
         maxBarThickness: 38,
         borderRadius: 10,
@@ -42,7 +42,7 @@ const ChartReport = () => {
     labels: userData.map(data => data[0]),
     datasets: [
       {
-        label: 'Category amount',
+        label: 'Размер транзакции',
         data: userData.map(data => data[1]),
         maxBarThickness: 15,
         borderRadius: 20,

@@ -8,6 +8,9 @@ import {
 } from './authOperations';
 import {
   allUserInfo,
+  deleteTransaction,
+  expenseTransaction,
+  incomeTransaction,
   setBalance,
 } from '../transactions/transactionsOperations';
 
@@ -99,6 +102,15 @@ const authSlice = createSlice({
       state.error = payload;
     },
     [setBalance.fulfilled](state, { payload }) {
+      state.user.balance = payload.newBalance;
+    },
+    [deleteTransaction.fulfilled](state, { payload }) {
+      state.user.balance = payload.data.newBalance;
+    },
+    [incomeTransaction.fulfilled](state, { payload }) {
+      state.user.balance = payload.newBalance;
+    },
+    [expenseTransaction.fulfilled](state, { payload }) {
       state.user.balance = payload.newBalance;
     },
     [allUserInfo.fulfilled](state, action) {
