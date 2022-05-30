@@ -3,6 +3,22 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import iconSprite from '../../../assets/images/symbol-defs.svg';
+
+import Select from 'react-select';
+const options = [
+  { value: "Продукты", label: "Продукты" },
+  { value:  "Алкоголь", label:  "Алкоголь" },
+  { value:  "Развлечения", label:  "Развлечения" },
+  { value: "Здоровье", label: "Здоровье" },
+  { value:  "Транспорт", label:  "Транспорт" },
+  { value: "Всё для дома", label: "Всё для дома" },
+  { value: "Техника", label: "Техника" },
+  { value: "Коммуналка и связь", label: "Коммуналка и связь" },
+  { value: "Спорт и хобби", label: "Спорт и хобби" },
+  { value: "Образование", label: "Образование" },
+  { value: "Прочее", label:  "Прочее" },
+];
+
 const CostsAndIncomesForm = () => {
   // console.log(iconCalendar)
   const [startDate, setStartDate] = useState(new Date());
@@ -36,10 +52,11 @@ const CostsAndIncomesForm = () => {
         //   onChange={handleChange}
       />
       <label htmlFor="category"></label>
-      <input
+      <Select
         className={styles['input-category']}
-        type="text"
-        name="category"
+        options={options}
+        // type="text"
+        // name="category"
         placeholder="Категория товара"
         //   value={number}
         //   onChange={handleChange}
