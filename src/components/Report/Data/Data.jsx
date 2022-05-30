@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux/es/exports';
 import { useState, useEffect } from 'react';
 import sprite from '../../../assets/images/symbol-defs.svg';
-import { getTransactionsPerPeriod } from '../../../redux/periodData/periodDataOperations';
+import { getTransactionsPerPeriod } from '../../../redux/reports/reportsOperations';
 import { months, dateNow, getMonth } from './DataOptions';
 import s from './Data.module.scss';
 import { useNavigate } from 'react-router-dom';

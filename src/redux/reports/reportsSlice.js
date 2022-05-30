@@ -1,10 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getTransactionsPerPeriod } from './periodDataOperations';
+import { getTransactionsPerPeriod } from './reportsOperations';
 
-const periodDataSlice = createSlice({
-  name: 'periodData',
+const reportsSlice = createSlice({
+  name: 'reports',
   initialState: {
-    data: {},
     expenses: {
       expenseTotal: 0,
       expensesData: {},
@@ -23,13 +22,12 @@ const periodDataSlice = createSlice({
     },
     [getTransactionsPerPeriod.fulfilled](state, action) {
       state.loading = false;
-      state.data = action.payload;
-      if (action.payload) {
-        state.expenses.expenseTotal = action.payload.expenses.expenseTotal;
-        state.expenses.expensesData = action.payload.expenses.expensesData;
-        state.incomes.incomeTotal = action.payload.incomes.incomeTotal;
-        state.incomes.incomesData = action.payload.incomes.incomesData;
-      }
+      // if (action.payload) {
+      state.expenses.expenseTotal = action.payload.expenses.expenseTotal;
+      state.expenses.expensesData = action.payload.expenses.expensesData;
+      state.incomes.incomeTotal = action.payload.incomes.incomeTotal;
+      state.incomes.incomesData = action.payload.incomes.incomesData;
+      // }
     },
     [getTransactionsPerPeriod.rejected](state, action) {
       state.loading = false;
@@ -38,4 +36,4 @@ const periodDataSlice = createSlice({
   },
 });
 
-export default periodDataSlice.reducer;
+export default reportsSlice.reducer;

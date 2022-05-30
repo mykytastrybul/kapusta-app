@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import {
   getExpenseTotal,
   getIncomeTotal,
-} from '../../../redux/periodData/periodDataSelectors';
+} from '../../../redux/reports/reportsSelectors';
 import s from './TotalAmount.module.scss';
 
 const TotalAmount = () => {
