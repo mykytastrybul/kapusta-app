@@ -19,22 +19,20 @@ const TotalAmount = () => {
     }
   };
   return (
-    <section>
-      <div className={s.wrapper}>
-        <div className={s.costsWrap}>
-          <span className={s.text}>Витрати:</span>
-          <span className={s.costsNumber}>
-            {makePrettyNumber(-expenseTotal)}&nbsp;грн.
-          </span>
-        </div>
-        <div className={s.incomesWrap}>
-          <span className={s.text}>Доходи:</span>
-          <span className={s.incomesNumber}>
-            {makePrettyNumber(incomeTotal)}&nbsp;грн.
-          </span>
-        </div>
+    <div className={s.wrapper}>
+      <div className={s.costsWrap}>
+        <span className={s.text}>Витрати:</span>
+        <span className={s.costsNumber}>
+          {makePrettyNumber(-expenseTotal)}&nbsp;грн.
+        </span>
       </div>
-    </section>
+      <div className={s.incomesWrap}>
+        <span className={s.text}>Доходи:</span>
+        <span className={s.incomesNumber}>
+          {makePrettyNumber(incomeTotal)}&nbsp;грн.
+        </span>
+      </div>
+    </div>
   );
 };
 
