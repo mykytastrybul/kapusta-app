@@ -2,7 +2,11 @@ import React, { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import PrivateRoute from '../utils/PrivateRoute';
 import PublicRoute from '../utils/PublicRoute';
-import { allUserInfo } from '../redux/transactions/transactionsOperations';
+import {
+  allUserInfo,
+  getExpenseStats,
+  getIncomeStats,
+} from '../redux/transactions/transactionsOperations';
 import { loginGoogle, refreshUser } from '../redux/auth/authOperations';
 import queryString from 'query-string';
 import { useDispatch, useSelector } from 'react-redux';
@@ -40,6 +44,8 @@ function App() {
   useEffect(() => {
     if (token) {
       dispatch(allUserInfo(token));
+      dispatch(getExpenseStats());
+      dispatch(getIncomeStats());
     }
   }, [token, dispatch]);
 
