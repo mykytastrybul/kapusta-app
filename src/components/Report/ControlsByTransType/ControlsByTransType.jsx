@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom';
 import sprite from '../../../assets/images/symbol-defs.svg';
 import s from './ControlsByTransType.module.scss';
 
-
 const ControlsByTransType = ({ type, toggleType }) => {
   const navigate = useNavigate();
 
@@ -14,7 +13,9 @@ const ControlsByTransType = ({ type, toggleType }) => {
           toggleType();
           navigate({
             pathname: '/report',
-            search: `type=${type !== 'ДОХОДЫ' ? 'incomes' : 'expenses'}`,
+            search: `type=${
+              type !== 'ДОХОДЫ' ? 'incomes' : 'expenses'
+            }&category=`,
           });
         }}
       >
@@ -29,7 +30,9 @@ const ControlsByTransType = ({ type, toggleType }) => {
           toggleType();
           navigate({
             pathname: '/report',
-            search: `type=${type !== 'ДОХОДЫ' ? 'incomes' : 'expenses'}`,
+            search: `type=${
+              type !== 'ДОХОДЫ' ? 'incomes' : 'expenses'
+            }&category=`,
           });
         }}
       >
