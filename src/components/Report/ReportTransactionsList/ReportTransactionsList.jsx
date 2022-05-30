@@ -6,7 +6,7 @@ import s from './ReportTransactionsList.module.scss';
 import {
   getExpensesData,
   getIncomesData,
-} from '../../../redux/periodData/periodDataSelectors';
+} from '../../../redux/reports/reportsSelectors';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 

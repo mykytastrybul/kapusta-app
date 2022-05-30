@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 import {
   getExpensesData,
   getIncomesData,
-} from '../../../redux/periodData/periodDataSelectors';
+} from '../../../redux/reports/reportsSelectors';
 import { useLocation } from 'react-router-dom';
 
 const ChartReport = () => {
