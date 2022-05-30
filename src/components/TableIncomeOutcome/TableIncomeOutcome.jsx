@@ -1,8 +1,15 @@
 import s from '../../components/TableIncomeOutcome/TableIncomeOutcome.module.scss';
 
 import sprite from '../../assets/images/symbol-defs.svg';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export default function TableIncomeOutcome() {
+  const location = useLocation();
+  const path = location.pathname;
+  console.log(path);
+  useEffect(() => {});
+
   return (
     <div className={s.wrap}>
       <table className={s.table}>
