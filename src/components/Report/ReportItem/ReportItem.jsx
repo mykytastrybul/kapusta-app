@@ -1,8 +1,26 @@
-import { NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import sprite from '../../../assets/images/symbol-defs.svg';
 import s from './ReportTransactionsItem.module.scss';
 
 const ReportTransactionsItem = ({ icon, sum, name, type }) => {
+  const location = useLocation();
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    if (
+      location.search.split('&')[1].slice(9) &&
+      location.search.split('&')[0].slice(6)
+    ) {
+      if (location.search.split('&')[1].slice(9) === icon) {
+        setIsActive(true);
+      } else {
+        setIsActive(false);
+      }
+    }
+    //eslint-disable-next-line
+  }, [location]);
+
   return (
     <li className={s.item}>
       <NavLink
@@ -12,7 +30,7 @@ const ReportTransactionsItem = ({ icon, sum, name, type }) => {
             type === 'ДОХОДЫ' ? 'incomes' : 'expenses'
           }&category=${icon}`,
         }}
-        className={({ isActive }) => (!isActive ? s.activeLink : s.link)}
+        className={() => (isActive ? s.activeLink : s.link)}
       >
         <p className={s.text}>{sum}</p>
         <div className={s.iconWrapp}>

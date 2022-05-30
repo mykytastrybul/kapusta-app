@@ -1,9 +1,13 @@
 .page {
+  padding-top: 20px;
+  padding-bottom: 20px;
   //   height: 1200px;
   background: 36px bottom no-repeat url('./../images/bg-single-cabbage.svg'),
     100% 100px no-repeat url('./../images/bg-single-cabbage-rotated.svg'),
     0 0 / 200% no-repeat url('./../images/bg-rectangle.svg');
   @include mq(tablet) {
+    padding-top: 40px;
+    padding-bottom: 40px;
     background: 103px bottom no-repeat url('./../images/bg-2-cabbages.svg'),
       -250px 20% no-repeat url('./../images/bg-group-cabbages.svg'),
       0 0 / 150% no-repeat url('./../images/bg-rectangle.svg');

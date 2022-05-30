@@ -1,19 +1,12 @@
 @import '../../../assets/sass/mixins';
 
 .wrapp {
-  padding: 32px;
+  margin-bottom: 32px;
 
   @include mq(tablet) {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 704px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  @include mq(desktop) {
-    width: 1034px;
   }
 }
 
