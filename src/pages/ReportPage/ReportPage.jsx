@@ -1,3 +1,4 @@
+import Container from '../../components/Container/Container';
 import HeaderNav from '../../components/Header/HeaderNav';
 import ChartReport from '../../components/Report/ChartReport/ChartReport';
 import ReportControlPanel from '../../components/Report/ReportControlPanel/ReportControlPanel';
@@ -8,10 +9,12 @@ const ReportPage = () => {
     <>
       <HeaderNav />
       <section className={'page'}>
-        <ReportControlPanel />
-        <TotalAmount />
-        <ReportTransactionsList />
-        <ChartReport />
+        <Container>
+          <ReportControlPanel />
+          <TotalAmount />
+          <ReportTransactionsList />
+          <ChartReport />
+        </Container>
       </section>
     </>
   );

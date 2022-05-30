@@ -1,0 +1,17 @@
+@import '../../assets/sass/mixins';
+
+.container {
+  max-width: 767px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @include mq(tablet) {
+    width: 744px;
+  }
+
+  @include mq(desktop) {
+    width: 1074px;
+  }
+}
