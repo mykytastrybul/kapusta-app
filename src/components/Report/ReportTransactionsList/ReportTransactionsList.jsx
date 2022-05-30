@@ -8,23 +8,73 @@ import {
   getIncomesData,
 } from '../../../redux/periodData/periodDataSelectors';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ReportTransactionsList = () => {
+  const navigate = useNavigate();
   const [type, setType] = useState('PACХОДЫ');
-  const [transactionsList, setTransactionsList] = useState([
-    {
-      sum: '',
-      icon: '',
-      name: '',
-      key: '',
-    },
-  ]);
+  const [transactionsList, setTransactionsList] = useState({
+    icon: '',
+    key: '',
+    name: '',
+    sum: '',
+  });
   const expensesData = useSelector(getExpensesData);
   const incomesData = useSelector(getIncomesData);
 
   const toggleType = () => {
     if (type === 'PACХОДЫ') setType('ДОХОДЫ');
     if (type === 'ДОХОДЫ') setType('PACХОДЫ');
+  };
+
+  const setCategory = () => {
+    if (transactionsList.name !== '') {
+      let category = '';
+      switch (transactionsList[0].name) {
+        case 'Продукты':
+          category = 'products';
+          break;
+        case 'Алкоголь':
+          category = 'alcohol';
+          break;
+        case 'Развлечения':
+          category = 'fun';
+          break;
+        case 'Здоровье':
+          category = 'health';
+          break;
+        case 'Транспорт':
+          category = 'transport';
+          break;
+        case 'Всё для дома':
+          category = 'home-depot';
+          break;
+        case 'Техника':
+          category = 'equipment';
+          break;
+        case 'Коммуналка и связь':
+          category = 'utilities';
+          break;
+        case 'Спорт и хобби':
+          category = 'hobby';
+          break;
+        case 'Образование':
+          category = 'education';
+          break;
+        case 'Прочее':
+          category = 'stuff';
+          break;
+        case 'З/П':
+          category = 'salary';
+          break;
+        case 'Доп. доход':
+          category = 'extra-income';
+          break;
+        default:
+          category = '';
+      }
+      return category;
+    }
   };
 
   useEffect(() => {
@@ -123,10 +173,18 @@ const ReportTransactionsList = () => {
     }
   }, [expensesData, incomesData, type]);
 
+  useEffect(() => {
+    navigate({
+      search: `type=${type === 'ДОХОДЫ' ? 'incomes' : 'expenses'}&category=${
+        setCategory() || ''
+      }`,
+    });
+    //eslint-disable-next-line
+  }, [type, transactionsList]);
+
   return (
     <div className={s.wrapper}>
       <ControlsByTransType type={type} toggleType={toggleType} />
-
 
       {transactionsList.length > 0 ? (
         <ul className={s.list}>
