@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useEffect } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import PrivateRoute from '../utils/PrivateRoute';
 import PublicRoute from '../utils/PublicRoute';
 import {
@@ -8,7 +8,6 @@ import {
   getIncomeStats,
 } from '../redux/transactions/transactionsOperations';
 import { loginGoogle, refreshUser } from '../redux/auth/authOperations';
-import queryString from 'query-string';
 import { useDispatch, useSelector } from 'react-redux';
 import authSelectors from '../redux/auth/authSelectors';
 import Loader from './Loader';
@@ -21,9 +20,11 @@ const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
 const ReportPage = lazy(() => import('../pages/ReportPage/ReportPage'));
 
 function App() {
-  const { accessToken, refreshToken, sid } = queryString.parse(
-    window.location.search
-  );
+  const location = useLocation();
+  const accessToken = new URLSearchParams(location.search).get('accessToken');
+  const refreshToken = new URLSearchParams(location.search).get('refreshToken');
+  const sid = new URLSearchParams(location.search).get('sid');
+
   const dispatch = useDispatch();
   const token = useSelector(authSelectors.getToken);
 
@@ -32,7 +33,7 @@ function App() {
       dispatch(loginGoogle({ accessToken, refreshToken, sid }));
       dispatch(allUserInfo(accessToken));
     } // eslint-disable-next-line
-  }, [accessToken, refreshToken]);
+  }, [accessToken, refreshToken, sid]);
 
   useEffect(() => {
     if (token) {
