@@ -3,6 +3,7 @@ import s from './_CostsAndIncomesBox.module.scss';
 import CostsAndIncomesButtons from './CostsAndIncomesButtons/CostsAndIncomesButtons';
 import CostsAndIncomesForm from './CostsAndIncomesForm/CostsAndIncomesForm';
 import Summary from '../Summary/Summary';
+import TableIncomeOutcome from '../TableIncomeOutcome/TableIncomeOutcome';
 
 const CostsAndIncomesBox = () => {
   return (
@@ -11,7 +12,7 @@ const CostsAndIncomesBox = () => {
         <CostsAndIncomesButtons />
         <div className={s['content-box']}>
           <CostsAndIncomesForm />
-          {/* Место для компонента табилы */}
+          <TableIncomeOutcome />
           <Summary />
         </div>
       </div>
