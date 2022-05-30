@@ -6,7 +6,11 @@ import iconSprite from '../../../assets/images/symbol-defs.svg';
 import { useDispatch } from 'react-redux';
 
 import Select from 'react-select';
-import { expenseTransaction } from '../../../redux/transactions/transactionsOperations';
+import {
+  expenseTransaction,
+  incomeTransaction,
+} from '../../../redux/transactions/transactionsOperations';
+import { useLocation } from 'react-router-dom';
 const options = [
   { value: 'Продукты', label: 'Продукты' },
   { value: 'Алкоголь', label: 'Алкоголь' },
@@ -22,6 +26,7 @@ const options = [
 ];
 
 const CostsAndIncomesForm = () => {
+  const location = useLocation();
   const dispatch = useDispatch();
   // console.log(iconCalendar)
   const [startDate, setStartDate] = useState(new Date());
@@ -43,14 +48,34 @@ const CostsAndIncomesForm = () => {
   // console.log('cost: ', cost);
   const submitHandler = e => {
     e.preventDefault();
-    dispatch(
-      expenseTransaction({
-        description: descr,
-        amount: cost,
-        date: refDate,
-        category: category.value,
-      })
-    );
+    switch (location.pathname) {
+      case '/expenses':
+        dispatch(
+          expenseTransaction({
+            description: descr,
+            amount: cost,
+            date: refDate,
+            category: category.value,
+          })
+        );
+        break;
+      case '/incomes':
+        dispatch(
+          incomeTransaction({
+            description: descr,
+            amount: cost,
+            date: refDate,
+            category: category.value,
+          })
+        );
+        break;
+      default:
+        break;
+    }
+
+    setDescr('');
+    setCost('');
+    setCategory(null);
   };
 
   return (
