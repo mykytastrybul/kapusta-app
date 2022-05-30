@@ -1,0 +1,230 @@
+@import '../../assets/sass/mixins';
+@import '../../assets/sass/rootColors';
+
+.wrap {
+  padding: 5px 20px;
+  margin-bottom: 12px;
+  @include mq(tablet) {
+    width: 624px;
+    height: 424px;
+  }
+  @include mq(desktop) {
+    width: 746px;
+    height: 382px;
+  }
+}
+.table {
+  white-space: nowrap;
+  width: 100%;
+  margin: 0 auto;
+
+  @include mq(tablet) {
+    @include font-style(12px, null, 1.17, null, var(--primary-text-color));
+    table-layout: fixed;
+    ::-webkit-scrollbar {
+      width: 5px;
+      background-color: var(--background-grey);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--background-orange);
+      border-radius: 2px;
+    }
+  }
+  @include mq(desktop) {
+    display: flex;
+    flex-direction: column;
+    border-collapse: collapse;
+  }
+}
+
+.title {
+  @include mq(tablet) {
+    border-radius: 20px 20px 0 0;
+    background-color: var(--background-grey);
+    outline: 2px solid var(--background-grey);
+    text-transform: uppercase;
+    color: var(--highlight-black-color);
+  }
+  @include mq(desktop) {
+  }
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  height: 40px;
+  @include mq(tablet) {
+  }
+  @include mq(desktop) {
+  }
+}
+
+.thead {
+  display: none;
+  @include mq(tablet) {
+    display: block;
+    .date {
+      border-top-left-radius: 20px;
+    }
+    .delete {
+      border-top-right-radius: 20px;
+    }
+  }
+  @include mq(desktop) {
+  }
+}
+
+.date {
+  display: flex;
+  align-self: flex-end;
+
+  flex-basis: 44px;
+  font-size: 8px;
+  margin-right: 20px;
+  @include mq(tablet) {
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    flex-basis: 105px;
+    align-self: center;
+    justify-content: center;
+  }
+  @include mq(desktop) {
+  }
+}
+
+.description {
+  @include mq(tablet) {
+    flex-basis: 193px;
+  }
+  @include mq(desktop) {
+    flex-basis: 244px;
+  }
+}
+
+.category {
+  display: flex;
+  flex-basis: 82px;
+  margin-right: 20px;
+  align-self: flex-end;
+  font-size: 8px;
+
+  @include mq(tablet) {
+    font-size: 12px;
+    flex-basis: 132px;
+    align-self: center;
+    justify-content: center;
+  }
+  @include mq(desktop) {
+    flex-basis: 150px;
+  }
+}
+
+.summa {
+  flex-basis: 84px;
+  font-size: 12px;
+  text-align: end;
+
+  @include mq(tablet) {
+    text-align: center;
+    flex-basis: 132px;
+  }
+  @include mq(desktop) {
+    flex-basis: 140px;
+  }
+}
+
+.delete {
+  @include mq(tablet) {
+    flex-basis: 64px;
+  }
+  @include mq(desktop) {
+    flex-basis: 105px;
+  }
+}
+
+.tbody {
+  @include mq(tablet) {
+    height: 384px;
+    display: block;
+    overflow-y: scroll;
+    outline: 2px solid var(--background-grey);
+    .line:not(:last-child) {
+      border-bottom: 2px solid var(--background-grey);
+    }
+  }
+  @include mq(desktop) {
+    height: 342px;
+  }
+  .line {
+    display: flex;
+    position: relative;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--background-grey);
+    @include mq(tablet) {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+  }
+  td {
+    @include mq(tablet) {
+      justify-content: center;
+    }
+  }
+}
+
+.cell-desc {
+  position: absolute;
+  top: 0;
+  left: 0;
+  order: -1;
+
+  span {
+    display: block;
+    width: 160px;
+    padding-left: 0;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    @include mq(tablet) {
+      padding-left: 24px;
+    }
+    @include mq(desktop) {
+      width: 220px;
+    }
+  }
+  @include mq(tablet) {
+    position: relative;
+    order: 0;
+  }
+  @include mq(desktop) {
+  }
+}
+
+.delete-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  background: none;
+  border: none;
+  margin: 0 auto;
+  padding: 0;
+  @include mq(tablet) {
+    justify-content: center;
+
+    &:hover,
+    &:focus {
+      background-color: var(--background-grey);
+      border-radius: 50%;
+    }
+  }
+  @include mq(desktop) {
+  }
+}
