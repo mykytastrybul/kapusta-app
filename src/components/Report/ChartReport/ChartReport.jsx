@@ -14,8 +14,8 @@ import { useLocation } from 'react-router-dom';
 
 const ChartReport = () => {
   const location = useLocation();
-  const isDesktop = useMediaQuery({ minWidth: 320.1 });
-  const isMobile = useMediaQuery({ maxWidth: 320 });
+  const isDesktop = useMediaQuery({ minWidth: 768 });
+  const isMobile = useMediaQuery({ maxWidth: 767.99 });
   const incomesData = useSelector(getIncomesData);
   const expensesData = useSelector(getExpensesData);
   const [type, setType] = useState('');
