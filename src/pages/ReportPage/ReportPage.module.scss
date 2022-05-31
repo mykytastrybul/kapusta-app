@@ -1,0 +1,29 @@
+@import '../../assets//sass/mixins';
+@import '../../assets/sass/rootColors';
+
+.section {
+  height: 100vh;
+  position: relative;
+  background: url('../../assets/images/bg-login.svg'),
+    url('../../assets/images/bg-single-cabbage.svg');
+  background-size: 232px cover;
+  background-repeat: repeat-x, no-repeat;
+  background-position: 10px 25px, 17% 100%;
+
+  @include mq(tablet) {
+    background: url('../../assets/images/bg-login.svg'),
+      url('../../assets/images/bg-login2.svg');
+    background-position: 10px 25px, 17% 95%;
+    background-size: 232px cover;
+    background-repeat: repeat-x, no-repeat;
+  }
+}
+
+.bg {
+  position: absolute;
+  height: 70%;
+  width: 100%;
+  background-color: var(--background-grey);
+  border-bottom-left-radius: 110px;
+  z-index: -1;
+}

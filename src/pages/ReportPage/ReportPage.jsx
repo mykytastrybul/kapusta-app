@@ -3,9 +3,11 @@ import ChartReport from '../../components/Report/ChartReport/ChartReport';
 import ReportControlPanel from '../../components/Report/ReportControlPanel/ReportControlPanel';
 import ReportTransactionsList from '../../components/Report/ReportTransactionsList/ReportTransactionsList';
 import TotalAmount from '../../components/Report/TotalAmount/TotalAmount';
+import s from './ReportPage.module.scss';
 const ReportPage = () => {
   return (
-    <section className={'page'}>
+    <section className={s.section}>
+      <div className={s.bg}></div>
       <Container>
         <ReportControlPanel />
         <TotalAmount />
