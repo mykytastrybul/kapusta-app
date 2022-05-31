@@ -17,17 +17,16 @@ export default function Summary() {
     month: 'long',
   }).format(new Date());
 
-  let firstPart = [];
   let index = 0;
 
-  Object.entries(data).map((item, idx) => {
-    firstPart.push(item);
+  const firstPart = Object.entries(data).map((item, idx) => {
     if (item[0].toLowerCase() === currentMonth) {
       index = idx;
     }
+    return item;
   });
-  const secondPart = firstPart.splice(index + 1);
 
+  const secondPart = firstPart.splice(index + 1);
   const months = firstPart.reverse().concat(secondPart.reverse());
 
   useEffect(() => {
@@ -50,7 +49,11 @@ export default function Summary() {
         {months.map((month, idx) => (
           <li key={idx} className={s.item}>
             <p>{month[0]}</p>
-            <p>{month[1]}</p>
+            <p>
+              {month[1]
+                .toLocaleString('ua-UA', { minimumFractionDigits: 2 })
+                .replace(',', '.')}
+            </p>
           </li>
         ))}
       </ul>
