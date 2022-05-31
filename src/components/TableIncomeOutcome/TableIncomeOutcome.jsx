@@ -1,24 +1,38 @@
 import s from '../../components/TableIncomeOutcome/TableIncomeOutcome.module.scss';
-
-// import sprite from '../../assets/images/symbol-defs.svg';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import DeleteButton from '../DeleteButton/DeleteButton';
+import {
+  getExpenseStats,
+  getIncomeStats,
+} from '../../redux/transactions/transactionsOperations';
+import authSelectors from '../../redux/auth/authSelectors';
+import NumberFormat from 'react-number-format';
 
 export default function TableIncomeOutcome() {
+  const dispatch = useDispatch();
   const [statsToDraw, setStatsToDraw] = useState([]);
   const expensesStats = useSelector(state => state.transactions.data.expenses);
   const incomesStats = useSelector(state => state.transactions.data.incomes);
   const location = useLocation();
+  const token = useSelector(authSelectors.getToken);
+  const [numColor, setNumColor] = useState('#e53935');
+
+  useEffect(() => {
+    dispatch(getExpenseStats());
+    dispatch(getIncomeStats());
+  }, [token, dispatch]);
 
   useEffect(() => {
     switch (location.pathname) {
       case '/expenses':
         setStatsToDraw(expensesStats);
+        setNumColor('#e53935');
         break;
       case '/incomes':
         setStatsToDraw(incomesStats);
+        setNumColor('#407946');
         break;
       default:
         break;
@@ -47,7 +61,19 @@ export default function TableIncomeOutcome() {
                   <span>{el.description}</span>
                 </td>
                 <td className={s.category}>{el.category}</td>
-                <td className={s.summa}>{el.amount}</td>
+                <td style={{ color: numColor }} className={s.summa}>
+                  <NumberFormat
+                    value={el.amount}
+                    displayType={'text'}
+                    thousandSeparator={' '}
+                    suffix={' грн.'}
+                    prefix={numColor === '#e53935' && '- '}
+                    type="text"
+                    decimalSeparator="."
+                    decimalScale={2}
+                    fixedDecimalScale={true}
+                  />
+                </td>
                 <td className={s.delete}>
                   <DeleteButton id={el._id} />
                 </td>

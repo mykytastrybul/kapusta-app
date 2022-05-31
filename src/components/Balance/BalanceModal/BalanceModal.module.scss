@@ -3,7 +3,7 @@
 
 .modal {
   position: absolute;
-  top: 135px;
+  top: 202px;
   left: calc(50% - 135px);
   padding: 32px 25px;
   width: 280px;
@@ -26,11 +26,11 @@
     transform: rotate(-45deg);
   }
   @include mq(tablet) {
-    top: 110px;
+    top: 137px;
     left: calc(50% - 260px);
   }
   @include mq(desktop) {
-    top: 110px;
+    top: 135px;
     left: calc(50% - 80px);
   }
 }
