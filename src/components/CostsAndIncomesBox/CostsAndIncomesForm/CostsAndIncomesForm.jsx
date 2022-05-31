@@ -12,19 +12,8 @@ import {
 } from '../../../redux/transactions/transactionsOperations';
 import { useLocation } from 'react-router-dom';
 import NumberFormat from 'react-number-format';
-const options = [
-  { value: 'Продукты', label: 'Продукти' },
-  { value: 'Алкоголь', label: 'Алкоголь' },
-  { value: 'Развлечения', label: 'Розваги' },
-  { value: 'Здоровье', label: "Здоров'я" },
-  { value: 'Транспорт', label: 'Транспорт' },
-  { value: 'Всё для дома', label: 'Все для дому' },
-  { value: 'Техника', label: 'Техніка' },
-  { value: 'Коммуналка и связь', label: "Коммуналка и зв'язок" },
-  { value: 'Спорт и хобби', label: 'Спорт і хобі' },
-  { value: 'Образование', label: 'Освіта' },
-  { value: 'Прочее', label: 'Інше' },
-];
+
+
 
 const CostsAndIncomesForm = () => {
   const location = useLocation();
@@ -47,6 +36,32 @@ const CostsAndIncomesForm = () => {
   // console.log('descr: ', descr);
   // console.log('category: ', category);
   // console.log('cost: ', cost);
+
+  const setOptions = () => {
+    switch(location.pathname) {
+      case '/expenses':
+        return [{ value: 'Продукты', label: 'Продукты' },
+        { value: 'Алкоголь', label: 'Алкоголь' },
+        { value: 'Развлечения', label: 'Развлечения' },
+        { value: 'Здоровье', label: 'Здоровье' },
+        { value: 'Транспорт', label: 'Транспорт' },
+        { value: 'Всё для дома', label: 'Всё для дома' },
+        { value: 'Техника', label: 'Техника' },
+        { value: 'Коммуналка и связь', label: 'Коммуналка и связь' },
+        { value: 'Спорт и хобби', label: 'Спорт и хобби' },
+        { value: 'Образование', label: 'Образование' },
+        { value: 'Прочее', label: 'Прочее' },];
+  
+        case '/incomes':
+          return [{ value: 'З/П', label: 'З/П' },
+          { value: 'Доп. доход', label: 'Доп. доход' },
+          ];
+
+          default:
+            return;
+    }
+  };
+
   const submitHandler = e => {
     e.preventDefault();
     switch (location.pathname) {
@@ -87,6 +102,7 @@ const CostsAndIncomesForm = () => {
 
   return (
     <form action="submit" className={styles.form} onSubmit={submitHandler}>
+      <div className={styles['inputs-wrapper']}>
       <label className={styles['label-date']} htmlFor="date">
         <DatePicker
           dateFormat="dd.MM.yyyy"
@@ -120,7 +136,7 @@ const CostsAndIncomesForm = () => {
       <label htmlFor="category"></label>
       <Select
         className={styles['input-category']}
-        options={options}
+        options={setOptions()}
         // type="text"
         name="category"
         placeholder="Виберіть категорию"
@@ -155,13 +171,15 @@ const CostsAndIncomesForm = () => {
           <use href={`${iconSprite}#icon-calculator`}></use>
         </svg>
       </label>
-
+      </div>
+      <div className={styles['buttons-wrapper']}>
       <button type="submit" className={styles['button-submit']}>
         Ввести
       </button>
       <button type="button" className={styles['button-clear']}>
         Очистити
       </button>
+      </div>
     </form>
   );
 };

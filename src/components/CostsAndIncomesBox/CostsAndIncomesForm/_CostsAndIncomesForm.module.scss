@@ -1,11 +1,36 @@
+@import '../../../assets/sass/mixins';
+
+
 .form {
+    @include mq(mobile-only) {
+        margin-top: 60px;
+        display: flex;
+        flex-direction: column;
+    }
     display: flex;
     align-items: center;
+@include mq (tablet-only){
+    display: flex;
+    flex-direction: column;
+}
+}
+
+.inputs-wrapper {
+    @include mq (mobile-only) {
+        display: flex;
+        flex-direction: column;
+    }
+    display: flex;
+    align-items: center;
+    position: relative;
 }
 
 //==============================================Date input styles
 
 .input-date {
+    @include mq(mobile-only){
+        display: none;
+    }
     cursor: pointer;
     width: 104px;
     height: 40px;
@@ -32,6 +57,9 @@ color: var(--primary-text-color);
 
 .label-date {
     position: relative;
+    @include mq(mobile-only){
+        display: none;
+    }
 }
 
 .icon-date {
@@ -46,8 +74,13 @@ color: var(--primary-text-color);
 //=============================================================================Item input styles
 
 .input-item {
+    @include mq(mobile-only){
+        width: 100%;
+        background-color: transparent;
+        border: 2px solid white;
+        border-radius: 20px 20px 0 0;
+    }
 margin: 0;
-width: 290px;
 height: 44px;
 padding: 0 0 0 20px;
 border: 2px solid #C7CCDC;
@@ -63,6 +96,14 @@ letter-spacing: 0.04em;
 
 
 color: var(--primary-text-color);
+
+@include mq (tablet-only) {
+    max-width: 290px;
+}
+
+@include mq (desktop) {
+    width: 290px;
+}
 }
 
 .input-item::placeholder {
@@ -85,13 +126,26 @@ color: #C7CCDC;
 //========================================================================= Category imput styles
 
 .input-category {
-    margin: 0;
-    width: 169px;
-    height: 44px;
-    padding: 0 0 0 20px;
-    border: 2px solid #C7CCDC;
-    border-left: none;
-    outline: none;
+
+    @include mq(mobile-only){
+        width: 100%;
+        background-color: transparent;
+        border: 2px solid white;
+        border-top: none;
+        border-radius: 0 0 20px 0;
+        margin-bottom: 32px;
+    }
+
+
+        margin: 0;
+        width: 169px;
+        height: 44px;
+        padding: 0 0 0 20px;
+        border: 2px solid #C7CCDC;
+        border-left: none;
+        outline: none;
+
+  
     
     font-family: 'Roboto';
     font-style: normal;
@@ -121,46 +175,52 @@ color: #C7CCDC;
         outline: none;
     }
 
-    .input-category {
-    margin: 0;
-    width: 169px;
-    height: 44px;
-    padding: 0 0 0 20px;
-    border: 2px solid #C7CCDC;
-    border-left: none;
-    outline: none;
+    // .input-category {
+    // margin: 0;
+    // width: 169px;
+    // height: 44px;
+    // padding: 0 0 0 20px;
+    // border: 2px solid #C7CCDC;
+    // border-left: none;
+    // outline: none;
     
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 12px;
-    line-height: 1.2;
-    letter-spacing: 0.04em;
+    // font-family: 'Roboto';
+    // font-style: normal;
+    // font-weight: 900;
+    // font-size: 12px;
+    // line-height: 1.2;
+    // letter-spacing: 0.04em;
     
     
-    color: var(--primary-text-color);
-    }
+    // color: var(--primary-text-color);
+    // }
     
-    .input-category::placeholder {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 1.2;
-    letter-spacing: 0.02em;
+    // .input-category::placeholder {
+    // font-family: 'Roboto';
+    // font-style: normal;
+    // font-weight: 400;
+    // font-size: 12px;
+    // line-height: 1.2;
+    // letter-spacing: 0.02em;
     
-    color: #C7CCDC;
+    // color: #C7CCDC;
     
-      }
+    //   }
     
-    .input-category:active {
-        // border: none;
-        outline: none;
-    }
+    // .input-category:active {
+    //     // border: none;
+    //     outline: none;
+    // }
 
     //=========================================================================Cost inputs styles
 
     .input-cost {
+        @include mq(mobile-only) {
+            width: 183px;
+            background-color: transparent;
+            border-radius: 16px 16px 16px 16px;
+            border: 2px solid white;
+        }
         margin: 0;
         width: 119px;
         height: 44px;
@@ -221,6 +281,28 @@ color: #C7CCDC;
 
 //================================================================================= Buttons styles
 
+.buttons-wrapper {
+    @include mq(mobile-only) {
+        display: flex;
+        flex-direction: row;
+        margin-top: 80px;
+    }
+@include mq(desktop){
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+
+@include mq(tablet-only){
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 32px;
+    align-items: center;
+}
+}
+
 .button-submit {
     cursor: pointer;
     width: 136px;
@@ -229,7 +311,7 @@ color: #C7CCDC;
     border-radius: 16px;
     text-align: center;
 
-    margin-left: auto;
+    
     margin-right: 16px;
 
     
@@ -246,6 +328,10 @@ text-transform: uppercase;
 
 color: var(--highlight-white-color);
 background-color: var(--background-orange);
+
+@include mq (tablet){
+    width: 125px;
+}
 }
 
 .button-clear {
@@ -269,4 +355,8 @@ text-transform: uppercase;
 
 color: var(--primary-text-color);
 background-color: var(--highlight-white-color);
+
+@include mq (tablet){
+    width: 125px;
+}
 }
