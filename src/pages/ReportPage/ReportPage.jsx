@@ -6,15 +6,17 @@ import TotalAmount from '../../components/Report/TotalAmount/TotalAmount';
 import s from './ReportPage.module.scss';
 const ReportPage = () => {
   return (
-    <section className={s.section}>
+    <>
       <div className={s.bg}></div>
-      <Container>
-        <ReportControlPanel />
-        <TotalAmount />
-        <ReportTransactionsList />
-        <ChartReport />
-      </Container>
-    </section>
+      <section className={s.section}>
+        <Container>
+          <ReportControlPanel />
+          <TotalAmount />
+          <ReportTransactionsList />
+          <ChartReport />
+        </Container>
+      </section>
+    </>
   );
 };
 
