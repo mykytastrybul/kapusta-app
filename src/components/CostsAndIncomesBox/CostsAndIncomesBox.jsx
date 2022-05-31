@@ -12,8 +12,10 @@ const CostsAndIncomesBox = () => {
         <CostsAndIncomesButtons />
         <div className={s['content-box']}>
           <CostsAndIncomesForm />
-          <TableIncomeOutcome />
+         <div className={s['tablets-box']}>
+         <TableIncomeOutcome />
           <Summary />
+         </div>
         </div>
       </div>
     </section>

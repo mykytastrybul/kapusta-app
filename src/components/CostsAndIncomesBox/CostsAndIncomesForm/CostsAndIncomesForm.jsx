@@ -80,6 +80,7 @@ const CostsAndIncomesForm = () => {
 
   return (
     <form action="submit" className={styles.form} onSubmit={submitHandler}>
+      <div className={styles['inputs-wrapper']}>
       <label className={styles['label-date']} htmlFor="date">
         <DatePicker
           dateFormat="dd.MM.yyyy"
@@ -135,13 +136,15 @@ const CostsAndIncomesForm = () => {
           <use href={`${iconSprite}#icon-calculator`}></use>
         </svg>
       </label>
-
+      </div>
+      <div className={styles['buttons-wrapper']}>
       <button type="submit" className={styles['button-submit']}>
         Ввести
       </button>
       <button type="button" className={styles['button-clear']}>
         Очистити
       </button>
+      </div>
     </form>
   );
 };

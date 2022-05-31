@@ -1,32 +1,93 @@
+@import '../../../assets/sass/mixins';
+
 
 .tracker {
-    max-width: 1098px;
-    margin-left: auto;
-    margin-right: auto;
+    @include mq(mobile-only) {
+        // min-width: 320px;
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        position: absolute;
+        left: auto;
+        right: auto;
+        bottom: 0;
+    }
+
+    @include mq (tablet) {
+        max-width: 704px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @include mq (desktop) {
+        max-width: 1098px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 
 .tracker-tab-active {
-    width: 138px;
+
+    width: 50%;
+    height: 43px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-orange);
+
+    @include mq(tablet){
+        width: 138px;
     height: 40px;
     display: inline-flex;
 align-items: center;
 justify-content: center;
 border-radius: 20px 20px 0 0;
     background-color: #FEFEFE;
+    }
+
+    @include mq(desktop){
+        width: 138px;
+        height: 40px;
+        display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px 20px 0 0;
+        background-color: #FEFEFE;
+    }
  
 }
 
 .tracker-tab {
-    width: 138px;
-    height: 40px;
-    display: inline-flex;
-align-items: center;
-justify-content: center;
-border-radius: 20px 20px 0 0;
-    background-color: #FAFBFD;
-    
 
+    width: 50%;
+    height: 43px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FAFBFD;
+
+
+    @include mq(tablet){
+        width: 138px;
+        height: 40px;
+        display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px 20px 0 0;
+        background-color: #FAFBFD;
+    }
+
+    @include mq (desktop) {
+       width: 138px;
+        height: 40px;
+        display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px 20px 0 0;
+        background-color: #FAFBFD;
+    }
 }
 
 
@@ -44,6 +105,10 @@ border-radius: 20px 20px 0 0;
     }
     
     .link-active {
+
+        @include mq (mobile-only) {
+            color: var(--highlight-white-color);
+        }
     
         font-family: 'Roboto';
         font-style: normal;

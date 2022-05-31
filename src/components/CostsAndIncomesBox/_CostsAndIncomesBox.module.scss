@@ -1,17 +1,55 @@
+@import '../../assets/sass/mixins';
+
+
 
 .content-box {
-    
     margin-left: auto;
     margin-right: auto;
-    max-width: 1098px;
+    position: relative;
+  
+@include mq(mobile-only) {
+    display: none;
+}
+
+ @include mq(tablet){
+    max-width: 704px;
+    padding: 24px 40px 42px 40px;
     background-color: white;
-    padding: 32px 32px 62px 32px;
     box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
-border-radius: 0px 30px 30px 30px;
+    border-radius: 0px 30px 30px 30px;
+}
+
+@include mq(desktop){
+    max-width: 1098px;
+    padding: 32px 32px 62px 32px;
+    background-color: white;
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    border-radius: 0px 30px 30px 30px;
+}
+}
+
+.tablets-box {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 60px;
 }
 
 .container {
+    max-width: 420px;
 padding-top: 132px;
+margin-left: auto;
+margin-right: auto;
+// position: relative;
+@include mq (tablet-only) {
+    max-width: 768px;
+    margin-left: auto;
+    margin-right: auto;
+}
+@include mq (desktop) {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
 }
 
 // .section {

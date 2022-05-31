@@ -2,16 +2,20 @@
 @import '../../assets/sass/mixins';
 
 .summary {
-  display: none;
-  @include mq(tablet) {
+  // display: none;
+  @include mq(tablet-only) {
+    position: absolute;
     display: block;
     width: 230px;
+    left: 0;
+    bottom: -85%;
   }
   @include mq(desktop) {
     width: 213px;
   }
 }
 .title {
+  margin-top: 0;
   margin-bottom: 4px;
   padding-top: 13px;
   padding-bottom: 13px;

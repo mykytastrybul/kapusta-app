@@ -1,6 +1,19 @@
+@import '../../../assets/sass/mixins';
+
+
 .form {
     display: flex;
     align-items: center;
+@include mq (tablet-only){
+    display: flex;
+    flex-direction: column;
+}
+}
+
+.inputs-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
 }
 
 //==============================================Date input styles
@@ -47,7 +60,6 @@ color: var(--primary-text-color);
 
 .input-item {
 margin: 0;
-width: 290px;
 height: 44px;
 padding: 0 0 0 20px;
 border: 2px solid #C7CCDC;
@@ -63,6 +75,14 @@ letter-spacing: 0.04em;
 
 
 color: var(--primary-text-color);
+
+@include mq (tablet-only) {
+    max-width: 290px;
+}
+
+@include mq (desktop) {
+    width: 290px;
+}
 }
 
 .input-item::placeholder {
@@ -221,6 +241,23 @@ color: #C7CCDC;
 
 //================================================================================= Buttons styles
 
+.buttons-wrapper {
+@include mq(desktop){
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+
+@include mq(tablet-only){
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 32px;
+    align-items: center;
+}
+}
+
 .button-submit {
     cursor: pointer;
     width: 136px;
@@ -229,7 +266,7 @@ color: #C7CCDC;
     border-radius: 16px;
     text-align: center;
 
-    margin-left: auto;
+    
     margin-right: 16px;
 
     
@@ -246,6 +283,10 @@ text-transform: uppercase;
 
 color: var(--highlight-white-color);
 background-color: var(--background-orange);
+
+@include mq (tablet){
+    width: 125px;
+}
 }
 
 .button-clear {
@@ -269,4 +310,8 @@ text-transform: uppercase;
 
 color: var(--primary-text-color);
 background-color: var(--highlight-white-color);
+
+@include mq (tablet){
+    width: 125px;
+}
 }
