@@ -39,7 +39,7 @@ const Balance = () => {
       <div className={s.container}>
         <div className={s.container_link}>
           <NavLink className={s.link} to="/report">
-            Перейти к отчетам
+            Перейти до звітів
             <svg className={s.icon}>
               <use xlinkHref={`${IconSvg}#icon-chart`}></use>
             </svg>
@@ -62,7 +62,7 @@ const Balance = () => {
               placeholder="00.00 UAH"
             />
             <button className={s.button} type="submit">
-              ПОДТВЕРДИТЬ
+              ПІДТВЕРДИТИ
             </button>
             {!balanceState && <BalanceModal />}
           </form>

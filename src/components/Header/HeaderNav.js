@@ -37,7 +37,7 @@ function HeaderNav() {
                     type="button"
                     className="logoutButton"
                   >
-                    Выйти
+                    Вийти
                   </button>
                 </div>
               ) : (
@@ -53,7 +53,7 @@ function HeaderNav() {
         ) : null}
         {modalOpen && (
           <Modal
-            text={'Вы действительно хотите выйти?'}
+            text={'Ви дійсно хочете вийти?'}
             onSubmit={() => dispatch(logoutUser())}
             close={logoutButtonHandler}
           />
