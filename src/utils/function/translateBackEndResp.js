@@ -66,6 +66,12 @@ export const makeUkrCatsNames = rusCat => {
     case 'Доп. доход':
       ukrCat = 'Дод. дохід';
       break;
+    case 'PACХОДЫ':
+      ukrCat = 'ВИТРАТИ';
+      break;
+    case 'ДОХОДЫ':
+      ukrCat = 'ДОХОДИ';
+      break;
 
     default:
       break;

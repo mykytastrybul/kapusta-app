@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import sprite from '../../../assets/images/symbol-defs.svg';
+import { makeUkrCatsNames } from '../../../utils/function/translateBackEndResp';
 import s from './ControlsByTransType.module.scss';
 
 const ControlsByTransType = ({ type, toggleType }) => {
@@ -23,7 +24,7 @@ const ControlsByTransType = ({ type, toggleType }) => {
           <use href={sprite + '#left'} />
         </svg>
       </button>
-      <div className={s.title}>{type}</div>
+      <div className={s.title}>{makeUkrCatsNames(type)}</div>
       <button
         className={s.button}
         onClick={() => {

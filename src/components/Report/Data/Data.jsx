@@ -55,7 +55,7 @@ const Data = () => {
 
   return (
     <div className={s.wrapp}>
-      <p className={s.descr}>Текущий период:</p>
+      <p className={s.descr}>Поточний період:</p>
       <div className={s.date}>
         <button
           className={s.button}

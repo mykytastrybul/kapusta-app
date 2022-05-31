@@ -199,7 +199,7 @@ const ReportTransactionsList = () => {
           ))}
         </ul>
       ) : (
-        <p className={s.text}>За данный период транзакций нет</p>
+        <p className={s.text}>За даний період транзакцій нема</p>
       )}
     </div>
   );
