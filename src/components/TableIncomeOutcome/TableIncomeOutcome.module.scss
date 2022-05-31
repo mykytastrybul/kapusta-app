@@ -124,9 +124,8 @@
 
 .summa {
   flex-basis: 84px;
-  font-size: 12px;
   text-align: end;
-
+  @include font-style(12px, 700, 1.15, 0);
   @include mq(tablet) {
     text-align: center;
     flex-basis: 132px;

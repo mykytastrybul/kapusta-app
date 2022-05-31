@@ -1,3 +1,4 @@
+import NumberFormat from 'react-number-format';
 import { useSelector } from 'react-redux';
 import {
   getExpenseTotal,
@@ -23,13 +24,31 @@ const TotalAmount = () => {
       <div className={s.costsWrap}>
         <span className={s.text}>Витрати:</span>
         <span className={s.costsNumber}>
-          {makePrettyNumber(-expenseTotal)}&nbsp;грн.
+          <NumberFormat
+            value={expenseTotal}
+            displayType={'text'}
+            thousandSeparator={' '}
+            suffix={' грн.'}
+            decimalSeparator="."
+            decimalScale={2}
+            fixedDecimalScale={true}
+            prefix={'- '}
+          />
         </span>
       </div>
       <div className={s.incomesWrap}>
         <span className={s.text}>Доходи:</span>
         <span className={s.incomesNumber}>
-          {makePrettyNumber(incomeTotal)}&nbsp;грн.
+          <NumberFormat
+            value={incomeTotal}
+            displayType={'text'}
+            thousandSeparator={' '}
+            suffix={' грн.'}
+            decimalSeparator="."
+            decimalScale={2}
+            fixedDecimalScale={true}
+            prefix={'+ '}
+          />
         </span>
       </div>
     </div>

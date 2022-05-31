@@ -8,6 +8,7 @@ import {
   getIncomeStats,
 } from '../../redux/transactions/transactionsOperations';
 import authSelectors from '../../redux/auth/authSelectors';
+import NumberFormat from 'react-number-format';
 
 export default function TableIncomeOutcome() {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ export default function TableIncomeOutcome() {
   const incomesStats = useSelector(state => state.transactions.data.incomes);
   const location = useLocation();
   const token = useSelector(authSelectors.getToken);
+  const [numColor, setNumColor] = useState('#e53935');
 
   useEffect(() => {
     dispatch(getExpenseStats());
@@ -26,9 +28,11 @@ export default function TableIncomeOutcome() {
     switch (location.pathname) {
       case '/expenses':
         setStatsToDraw(expensesStats);
+        setNumColor('#e53935');
         break;
       case '/incomes':
         setStatsToDraw(incomesStats);
+        setNumColor('#407946');
         break;
       default:
         break;
@@ -57,7 +61,19 @@ export default function TableIncomeOutcome() {
                   <span>{el.description}</span>
                 </td>
                 <td className={s.category}>{el.category}</td>
-                <td className={s.summa}>{el.amount}</td>
+                <td style={{ color: numColor }} className={s.summa}>
+                  <NumberFormat
+                    value={el.amount}
+                    displayType={'text'}
+                    thousandSeparator={' '}
+                    suffix={' грн.'}
+                    prefix={numColor === '#e53935' && '- '}
+                    type="text"
+                    decimalSeparator="."
+                    decimalScale={2}
+                    fixedDecimalScale={true}
+                  />
+                </td>
                 <td className={s.delete}>
                   <DeleteButton id={el._id} />
                 </td>
