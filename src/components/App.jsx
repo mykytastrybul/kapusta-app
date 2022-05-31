@@ -4,8 +4,8 @@ import PrivateRoute from '../utils/PrivateRoute';
 import PublicRoute from '../utils/PublicRoute';
 import {
   allUserInfo,
-  getExpenseStats,
-  getIncomeStats,
+  // getExpenseStats,
+  // getIncomeStats,
 } from '../redux/transactions/transactionsOperations';
 import { loginGoogle, refreshUser } from '../redux/auth/authOperations';
 import { useDispatch, useSelector } from 'react-redux';
@@ -46,8 +46,8 @@ function App() {
   useEffect(() => {
     if (token) {
       dispatch(allUserInfo(token));
-      dispatch(getExpenseStats());
-      dispatch(getIncomeStats());
+      // dispatch(getExpenseStats());
+      // dispatch(getIncomeStats());
     }
   }, [token, dispatch]);
 
