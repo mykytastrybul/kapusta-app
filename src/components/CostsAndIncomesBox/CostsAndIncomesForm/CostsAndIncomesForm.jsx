@@ -11,6 +11,7 @@ import {
   incomeTransaction,
 } from '../../../redux/transactions/transactionsOperations';
 import { useLocation } from 'react-router-dom';
+import NumberFormat from 'react-number-format';
 const options = [
   { value: 'Продукты', label: 'Продукты' },
   { value: 'Алкоголь', label: 'Алкоголь' },
@@ -53,7 +54,10 @@ const CostsAndIncomesForm = () => {
         dispatch(
           expenseTransaction({
             description: descr,
-            amount: cost,
+            amount: cost
+              .split(' ')
+              .slice(0, cost.split(' ').length - 1)
+              .join(''),
             date: refDate,
             category: category.value,
           })
@@ -63,7 +67,10 @@ const CostsAndIncomesForm = () => {
         dispatch(
           incomeTransaction({
             description: descr,
-            amount: cost,
+            amount: cost
+              .split(' ')
+              .slice(0, cost.split(' ').length - 1)
+              .join(''),
             date: refDate,
             category: category.value,
           })
@@ -118,11 +125,16 @@ const CostsAndIncomesForm = () => {
       />
 
       <label className={styles['label-cost']} htmlFor="cost">
-        <input
+        <NumberFormat
           className={styles['input-cost']}
-          type="number"
           name="cost"
-          placeholder="00.00"
+          thousandSeparator=" "
+          decimalSeparator="."
+          decimalScale={2}
+          fixedDecimalScale={true}
+          suffix=" UAH"
+          type="text"
+          placeholder="00.00 UAH"
           value={cost}
           onChange={handleCostChange}
         />
