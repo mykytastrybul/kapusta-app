@@ -60,6 +60,8 @@ const Balance = () => {
               suffix=" UAH"
               type="text"
               placeholder="00.00 UAH"
+              minLength={1}
+              maxLength={1000000000}
             />
             <button className={s.button} type="submit">
               ПІДТВЕРДИТИ
