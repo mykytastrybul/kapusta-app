@@ -8,7 +8,7 @@
     position: relative;
   
 @include mq(mobile-only) {
-    display: none;
+    // display: none;
 }
 
  @include mq(tablet){

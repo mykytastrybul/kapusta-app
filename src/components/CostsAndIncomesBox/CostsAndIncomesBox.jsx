@@ -4,18 +4,25 @@ import CostsAndIncomesButtons from './CostsAndIncomesButtons/CostsAndIncomesButt
 import CostsAndIncomesForm from './CostsAndIncomesForm/CostsAndIncomesForm';
 import Summary from '../Summary/Summary';
 import TableIncomeOutcome from '../TableIncomeOutcome/TableIncomeOutcome';
+import { useMediaQuery } from 'react-responsive';
 
 const CostsAndIncomesBox = () => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
   return (
     <section className={s[('page', 'section')]}>
       <div className={s.container}>
         <CostsAndIncomesButtons />
         <div className={s['content-box']}>
-          <CostsAndIncomesForm />
-         <div className={s['tablets-box']}>
-         <TableIncomeOutcome />
-          <Summary />
-         </div>
+          {!isMobile && <CostsAndIncomesForm />}
+          <div className={s['tablets-box']}>
+            {!isMobile && (
+              <>
+                <TableIncomeOutcome />
+                <Summary />
+              </>
+            )}
+          </div>
         </div>
       </div>
     </section>

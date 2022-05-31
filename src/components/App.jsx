@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import authSelectors from '../redux/auth/authSelectors';
 import Loader from './Loader';
 import HeaderNav from './Header/HeaderNav';
+import { useMediaQuery } from 'react-responsive';
 
 const CostsAndIncomesPage = lazy(() =>
   import('../pages/CostsAndIncomesPage/CostsAndIncomesPage')
@@ -21,6 +22,8 @@ const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
 const ReportPage = lazy(() => import('../pages/ReportPage/ReportPage'));
 
 function App() {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  // console.log(isMobile);
   const location = useLocation();
   const accessToken = new URLSearchParams(location.search).get('accessToken');
   const refreshToken = new URLSearchParams(location.search).get('refreshToken');
@@ -55,14 +58,18 @@ function App() {
     <>
       <Suspense fallback={<Loader />}>
         <Routes>
-          {/* <Route
-            path="/"
-            element={
-              <PrivateRoute redirectTo={'/login'}>
-                <CostsAndIncomesPage />
-              </PrivateRoute>
-            }
-          /> */}
+          {isMobile && (
+            <Route
+              path="/balance"
+              element={
+                <PrivateRoute redirectTo={'/login'}>
+                  <HeaderNav />
+                  <CostsAndIncomesPage />
+                </PrivateRoute>
+              }
+            />
+          )}
+
           <Route
             path="/expenses"
             element={
@@ -72,6 +79,7 @@ function App() {
               </PrivateRoute>
             }
           />
+
           <Route
             path="/incomes"
             element={
@@ -99,7 +107,9 @@ function App() {
               </PublicRoute>
             }
           />
-          <Route path="*" element={<Navigate to="/expenses" />} />
+
+          {!isMobile && <Route path="*" element={<Navigate to="/expenses" />} />}
+          {isMobile && <Route path="*" element={<Navigate to="/balance" />} />}
         </Routes>
       </Suspense>
     </>
