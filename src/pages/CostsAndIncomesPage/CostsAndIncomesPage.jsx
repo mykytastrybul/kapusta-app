@@ -1,11 +1,12 @@
 import React from 'react';
 import Balance from '../../components/Balance/Balance';
 import CostsAndIncomesBox from '../../components/CostsAndIncomesBox/CostsAndIncomesBox';
-import Modal from '../../components/Modal/Modal';
+import s from './CostsAndIncomesPage.module.scss';
 
 const CostsAndIncomesPage = () => {
   return (
-    <section className={'page'}>
+    <section className={s.section}>
+      <div className={s.bg}></div>
       <Balance />
       <CostsAndIncomesBox />
     </section>
