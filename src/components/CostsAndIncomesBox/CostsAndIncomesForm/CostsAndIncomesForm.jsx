@@ -13,17 +13,17 @@ import {
 import { useLocation } from 'react-router-dom';
 import NumberFormat from 'react-number-format';
 const options = [
-  { value: 'Продукты', label: 'Продукты' },
+  { value: 'Продукты', label: 'Продукти' },
   { value: 'Алкоголь', label: 'Алкоголь' },
-  { value: 'Развлечения', label: 'Развлечения' },
-  { value: 'Здоровье', label: 'Здоровье' },
+  { value: 'Развлечения', label: 'Розваги' },
+  { value: 'Здоровье', label: "Здоров'я" },
   { value: 'Транспорт', label: 'Транспорт' },
-  { value: 'Всё для дома', label: 'Всё для дома' },
-  { value: 'Техника', label: 'Техника' },
-  { value: 'Коммуналка и связь', label: 'Коммуналка и связь' },
-  { value: 'Спорт и хобби', label: 'Спорт и хобби' },
-  { value: 'Образование', label: 'Образование' },
-  { value: 'Прочее', label: 'Прочее' },
+  { value: 'Всё для дома', label: 'Все для дому' },
+  { value: 'Техника', label: 'Техніка' },
+  { value: 'Коммуналка и связь', label: "Коммуналка и зв'язок" },
+  { value: 'Спорт и хобби', label: 'Спорт і хобі' },
+  { value: 'Образование', label: 'Освіта' },
+  { value: 'Прочее', label: 'Інше' },
 ];
 
 const CostsAndIncomesForm = () => {
@@ -109,7 +109,7 @@ const CostsAndIncomesForm = () => {
         className={styles['input-item']}
         type="text"
         name="item"
-        placeholder="Описание товара"
+        placeholder="Опис товару"
         value={descr}
         onChange={handleDescrChange}
       />
@@ -119,7 +119,7 @@ const CostsAndIncomesForm = () => {
         options={options}
         // type="text"
         name="category"
-        placeholder="Выберите категорию"
+        placeholder="Виберіть категорию"
         value={category}
         onChange={handleCategoryChange}
       />
