@@ -5,11 +5,13 @@ import s from './CostsAndIncomesPage.module.scss';
 
 const CostsAndIncomesPage = () => {
   return (
-    <section className={s.section}>
+    <>
       <div className={s.bg}></div>
-      <Balance />
-      <CostsAndIncomesBox />
-    </section>
+      <section className={s.section}>
+        <Balance />
+        <CostsAndIncomesBox />
+      </section>
+    </>
   );
 };
 
