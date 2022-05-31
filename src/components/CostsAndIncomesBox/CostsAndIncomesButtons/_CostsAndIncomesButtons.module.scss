@@ -1,57 +1,42 @@
+@import '../../../assets/sass/mixins';
 
 .tracker {
-    max-width: 1098px;
-    margin-left: auto;
-    margin-right: auto;
+  max-width: 1098px;
+  margin-left: auto;
+  margin-right: auto;
 }
-
-
-.tracker-tab-active {
-    width: 138px;
-    height: 40px;
-    display: inline-flex;
-align-items: center;
-justify-content: center;
-border-radius: 20px 20px 0 0;
-    background-color: #FEFEFE;
- 
-}
-
-.tracker-tab {
-    width: 138px;
-    height: 40px;
-    display: inline-flex;
-align-items: center;
-justify-content: center;
-border-radius: 20px 20px 0 0;
-    background-color: #FAFBFD;
-    
-
-}
-
 
 .link {
+  @include font-style(12px, 700, 1.2, 0.02em);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--highlight-black-color);
 
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 1.2px;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: var(--highlight-black-color);
-    }
-    
-    .link-active {
-    
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 1.2px;
-        letter-spacing: 0.02em;
-        text-transform: uppercase;
-        text-decoration: none;
-        color: #FF751D;
-        }
+  & .tab {
+    width: 138px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px 20px 0 0;
+    background-color: #fafbfd;
+  }
+}
+
+.linkActive {
+  @include font-style(12px, 700, 1.2, 0.02em);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--highlight-black-color);
+
+  & .tab {
+    width: 138px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px 20px 0 0;
+    background-color: #fff;
+    color: var(--background-orange);
+  }
+}
