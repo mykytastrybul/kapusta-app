@@ -13,8 +13,6 @@ import {
 import { useLocation } from 'react-router-dom';
 import NumberFormat from 'react-number-format';
 
-
-
 const CostsAndIncomesForm = () => {
   const location = useLocation();
   const dispatch = useDispatch();
@@ -38,27 +36,30 @@ const CostsAndIncomesForm = () => {
   // console.log('cost: ', cost);
 
   const setOptions = () => {
-    switch(location.pathname) {
+    switch (location.pathname) {
       case '/expenses':
-        return [{ value: 'Продукты', label: 'Продукты' },
-        { value: 'Алкоголь', label: 'Алкоголь' },
-        { value: 'Развлечения', label: 'Развлечения' },
-        { value: 'Здоровье', label: 'Здоровье' },
-        { value: 'Транспорт', label: 'Транспорт' },
-        { value: 'Всё для дома', label: 'Всё для дома' },
-        { value: 'Техника', label: 'Техника' },
-        { value: 'Коммуналка и связь', label: 'Коммуналка и связь' },
-        { value: 'Спорт и хобби', label: 'Спорт и хобби' },
-        { value: 'Образование', label: 'Образование' },
-        { value: 'Прочее', label: 'Прочее' },];
-  
-        case '/incomes':
-          return [{ value: 'З/П', label: 'З/П' },
-          { value: 'Доп. доход', label: 'Доп. доход' },
-          ];
+        return [
+          { value: 'Продукты', label: 'Продукти' },
+          { value: 'Алкоголь', label: 'Алкоголь' },
+          { value: 'Развлечения', label: 'Розваги' },
+          { value: 'Здоровье', label: "Здоров'я" },
+          { value: 'Транспорт', label: 'Транспорт' },
+          { value: 'Всё для дома', label: 'Все для дому' },
+          { value: 'Техника', label: 'Техніка' },
+          { value: 'Коммуналка и связь', label: "Коммуналка и зв'язок" },
+          { value: 'Спорт и хобби', label: 'Спорт і хобі' },
+          { value: 'Образование', label: 'Освіта' },
+          { value: 'Прочее', label: 'Інше' },
+        ];
 
-          default:
-            return;
+      case '/incomes':
+        return [
+          { value: 'З/П', label: 'З/П' },
+          { value: 'Доп. доход', label: 'Дод. дохід' },
+        ];
+
+      default:
+        return;
     }
   };
 
@@ -69,7 +70,7 @@ const CostsAndIncomesForm = () => {
         dispatch(
           expenseTransaction({
             description: descr,
-            amount: cost
+            amount: +cost
               .split(' ')
               .slice(0, cost.split(' ').length - 1)
               .join(''),
@@ -82,7 +83,7 @@ const CostsAndIncomesForm = () => {
         dispatch(
           incomeTransaction({
             description: descr,
-            amount: cost
+            amount: +cost
               .split(' ')
               .slice(0, cost.split(' ').length - 1)
               .join(''),
@@ -103,82 +104,82 @@ const CostsAndIncomesForm = () => {
   return (
     <form action="submit" className={styles.form} onSubmit={submitHandler}>
       <div className={styles['inputs-wrapper']}>
-      <label className={styles['label-date']} htmlFor="date">
-        <DatePicker
-          dateFormat="dd.MM.yyyy"
-          className={styles['input-date']}
-          calendarClassName={styles['calendar']}
-          selected={startDate}
-          onChange={date => setStartDate(date)}
-          required
-        />
-        <svg
-          className={styles['icon-date']}
-          aria-label="calendar"
-          width="20px"
-          height="20px"
-        >
-          <use href={`${iconSprite}#icon-calendar`}></use>
-        </svg>
-      </label>
-      <label htmlFor="item"></label>
-      <input
-        className={styles['input-item']}
-        type="text"
-        name="item"
-        placeholder="Опис товару"
-        value={descr}
-        onChange={handleDescrChange}
-        required
-        minLength={1}
-        maxLength={300}
-      />
-      <label htmlFor="category"></label>
-      <Select
-        className={styles['input-category']}
-        options={setOptions()}
-        // type="text"
-        name="category"
-        placeholder="Виберіть категорию"
-        value={category}
-        onChange={handleCategoryChange}
-        required
-      />
-
-      <label className={styles['label-cost']} htmlFor="cost">
-        <NumberFormat
-          className={styles['input-cost']}
-          name="cost"
-          thousandSeparator=" "
-          decimalSeparator="."
-          decimalScale={2}
-          fixedDecimalScale={true}
-          suffix=" UAH"
+        <label className={styles['label-date']} htmlFor="date">
+          <DatePicker
+            dateFormat="dd.MM.yyyy"
+            className={styles['input-date']}
+            calendarClassName={styles['calendar']}
+            selected={startDate}
+            onChange={date => setStartDate(date)}
+            required
+          />
+          <svg
+            className={styles['icon-date']}
+            aria-label="calendar"
+            width="20px"
+            height="20px"
+          >
+            <use href={`${iconSprite}#icon-calendar`}></use>
+          </svg>
+        </label>
+        <label htmlFor="item"></label>
+        <input
+          className={styles['input-item']}
           type="text"
-          placeholder="00.00 UAH"
-          value={cost}
-          onChange={handleCostChange}
+          name="item"
+          placeholder="Опис товару"
+          value={descr}
+          onChange={handleDescrChange}
           required
           minLength={1}
-          maxLength={1000000000}
+          maxLength={300}
         />
-        <svg
-          className={styles['icon-cost']}
-          aria-label="calendar"
-          width="20px"
-          height="20px"
-        >
-          <use href={`${iconSprite}#icon-calculator`}></use>
-        </svg>
-      </label>
+        <label htmlFor="category"></label>
+        <Select
+          className={styles['input-category']}
+          options={setOptions()}
+          // type="text"
+          name="category"
+          placeholder="Виберіть категорию"
+          value={category}
+          onChange={handleCategoryChange}
+          required
+        />
+
+        <label className={styles['label-cost']} htmlFor="cost">
+          <NumberFormat
+            className={styles['input-cost']}
+            name="cost"
+            thousandSeparator=" "
+            decimalSeparator="."
+            decimalScale={2}
+            fixedDecimalScale={true}
+            suffix=" UAH"
+            type="text"
+            placeholder="00.00 UAH"
+            value={cost}
+            onChange={handleCostChange}
+            required
+            minLength={1}
+            maxLength={1000000000}
+          />
+          <svg
+            className={styles['icon-cost']}
+            aria-label="calendar"
+            width="20px"
+            height="20px"
+          >
+            <use href={`${iconSprite}#icon-calculator`}></use>
+          </svg>
+        </label>
       </div>
       <div className={styles['buttons-wrapper']}>
-      <button type="submit" className={styles['button-submit']}>
-        Ввести
-      </button>
-      <button type="button" className={styles['button-clear']}>
-        Очистити
-      </button>
+        <button type="submit" className={styles['button-submit']}>
+          Ввести
+        </button>
+        <button type="button" className={styles['button-clear']}>
+          Очистити
+        </button>
       </div>
     </form>
   );
