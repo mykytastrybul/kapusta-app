@@ -11,7 +11,6 @@ import {
   getIncomesData,
 } from '../../../redux/reports/reportsSelectors';
 import { useLocation } from 'react-router-dom';
-import { FallingLines } from 'react-loader-spinner';
 
 const ChartReport = () => {
   const location = useLocation();
@@ -27,7 +26,7 @@ const ChartReport = () => {
     labels: userData.map(data => data[0]),
     datasets: [
       {
-        label: 'Размер транзакции',
+        label: 'Размір транзакції',
         data: userData.map(data => data[1]),
         maxBarThickness: 38,
         borderRadius: 10,
@@ -43,7 +42,7 @@ const ChartReport = () => {
     labels: userData.map(data => data[0]),
     datasets: [
       {
-        label: 'Размер транзакции',
+        label: 'Размір транзакції',
         data: userData.map(data => data[1]),
         maxBarThickness: 15,
         borderRadius: 20,
@@ -152,14 +151,6 @@ const ChartReport = () => {
       <div className={s.chart}>
         {isDesktop && <Bar data={userDataDesc} options={optionsDesc} />}
         {isMobile && <Bar data={userDataMob} options={optionsMob} />}
-      </div>
-    );
-  } else {
-    return (
-      <div className={s.chart}>
-        <div className={s.loader}>
-          <FallingLines width="150px" color="var(--background-orange)" />
-        </div>
       </div>
     );
   }

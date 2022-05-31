@@ -1,16 +1,6 @@
 @import '../../assets/sass/rootColors';
 @import '../../assets/sass/mixins';
 
-.page {
-  padding: 0 20px;
-  @include mq(tablet) {
-    padding: 0 32px;
-  }
-  @include mq(desktop) {
-    padding: 0 91px;
-  }
-}
-
 .container {
   display: flex;
   flex-direction: column;

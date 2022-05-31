@@ -110,6 +110,7 @@ const CostsAndIncomesForm = () => {
           calendarClassName={styles['calendar']}
           selected={startDate}
           onChange={date => setStartDate(date)}
+          required
         />
         <svg
           className={styles['icon-date']}
@@ -125,9 +126,12 @@ const CostsAndIncomesForm = () => {
         className={styles['input-item']}
         type="text"
         name="item"
-        placeholder="Описание товара"
+        placeholder="Опис товару"
         value={descr}
         onChange={handleDescrChange}
+        required
+        minLength={1}
+        maxLength={300}
       />
       <label htmlFor="category"></label>
       <Select
@@ -135,9 +139,10 @@ const CostsAndIncomesForm = () => {
         options={setOptions()}
         // type="text"
         name="category"
-        placeholder="Выберите категорию"
+        placeholder="Виберіть категорию"
         value={category}
         onChange={handleCategoryChange}
+        required
       />
 
       <label className={styles['label-cost']} htmlFor="cost">
@@ -153,6 +158,9 @@ const CostsAndIncomesForm = () => {
           placeholder="00.00 UAH"
           value={cost}
           onChange={handleCostChange}
+          required
+          minLength={1}
+          maxLength={1000000000}
         />
         <svg
           className={styles['icon-cost']}

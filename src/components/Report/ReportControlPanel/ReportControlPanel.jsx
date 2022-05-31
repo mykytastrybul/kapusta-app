@@ -12,7 +12,7 @@ const ReportControlPanel = () => {
       <BackToHome />
       <div className={s.balance}>
         <p className={s.text}>
-          Баланс: <span className={s.sum}>{balance} UAH</span>
+          Баланс: <span className={s.sum}>{balance.toFixed(2)} UAH</span>
         </p>
       </div>
       <Data />

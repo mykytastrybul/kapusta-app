@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import CostsAndIncomesForm from '../../components/CostsAndIncomesBox/CostsAndIncomesForm/CostsAndIncomesForm';
 import { NavLink } from 'react-router-dom';
+import s from './CostsAndIncomesPage.module.scss';
 
 const CostsAndIncomesPage = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -46,7 +47,9 @@ const CostsAndIncomesPage = () => {
   };
 
   return (
-    <section className={'page'}>
+<>
+<div className={s.bg}></div>
+    <section className={s.section}>
       {!isMobile && (
         <>
           <Balance />
@@ -55,7 +58,7 @@ const CostsAndIncomesPage = () => {
       )}
 
       {showSuitableBox()}
-    </section>
+    </section></>
   );
 };
 
