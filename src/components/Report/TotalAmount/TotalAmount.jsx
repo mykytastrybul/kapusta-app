@@ -10,15 +10,6 @@ const TotalAmount = () => {
   const incomeTotal = useSelector(getIncomeTotal);
   const expenseTotal = useSelector(getExpenseTotal);
 
-  const makePrettyNumber = number => {
-    if (number === 0) {
-      return number;
-    } else if (number > 0) {
-      return `+ ${number.toLocaleString()}.00`;
-    } else if (number < 0) {
-      return `- ${Math.abs(number).toLocaleString()}.00`;
-    }
-  };
   return (
     <div className={s.wrapper}>
       <div className={s.costsWrap}>
