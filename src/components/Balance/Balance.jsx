@@ -1,3 +1,4 @@
+import NumberFormat from 'react-number-format';
 import { NavLink } from 'react-router-dom';
 import s from './Balance.module.scss';
 import IconSvg from '../../assets/images/symbol-defs.svg';
@@ -19,7 +20,14 @@ const Balance = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(setBalance(balanceState));
+    dispatch(
+      setBalance(
+        +balanceState
+          .split(' ')
+          .slice(0, balanceState.split(' ').length - 1)
+          .join('')
+      )
+    );
   };
 
   useEffect(() => {
@@ -40,14 +48,17 @@ const Balance = () => {
         <div className={s.balance}>
           <p className={s.balance_text}>Баланс:</p>
           <form className={s.form} onSubmit={handleSubmit}>
-            <input
+            <NumberFormat
               className={s.input}
               name="balance"
-              value={balanceState || ''}
+              value={balanceState}
               onChange={handleChange}
-              type="number"
-              min="0.00"
-              step="0.01"
+              thousandSeparator=" "
+              decimalSeparator="."
+              decimalScale={2}
+              fixedDecimalScale={true}
+              suffix=" UAH"
+              type="text"
               placeholder="00.00 UAH"
             />
             <button className={s.button} type="submit">
