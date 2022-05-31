@@ -31,7 +31,7 @@ const FormAuth = () => {
       className={s.wrapper}
     >
       <p className={s.text}>
-        Вы можете авторизоваться с помощью Google Account:
+        Ви можете авторизуватися за допомогою Google Account:
       </p>
       <a
         className={`${s.button} ${s.google}`}
@@ -43,7 +43,7 @@ const FormAuth = () => {
         Google
       </a>
       <p className={s.text}>
-        Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:
+        Або зайти за допомогою e-mail і пароля, попередньо зареєструвавшись:
       </p>
       <Formik
         initialValues={{
@@ -68,7 +68,7 @@ const FormAuth = () => {
               {formik.touched.email && formik.errors.email && (
                 <span className={s.requiredStar}>*</span>
               )}
-              Электронная почта:
+              Электронна пошта:
               <Field
                 className={s.input}
                 name="email"
@@ -103,7 +103,7 @@ const FormAuth = () => {
                   formik.handleSubmit();
                 }}
               >
-                ВОЙТИ
+                УВІЙТИ
               </button>
               <button
                 type="button"
@@ -113,7 +113,7 @@ const FormAuth = () => {
                   formik.handleSubmit();
                 }}
               >
-                РЕГИСТРАЦИЯ
+                РЕЄСТРАЦІЯ
               </button>
             </div>
           </Form>
