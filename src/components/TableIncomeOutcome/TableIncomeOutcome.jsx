@@ -9,6 +9,7 @@ import {
 } from '../../redux/transactions/transactionsOperations';
 import authSelectors from '../../redux/auth/authSelectors';
 import NumberFormat from 'react-number-format';
+import { makeUkrCatsNames } from '../../utils/function/translateBackEndResp';
 
 export default function TableIncomeOutcome() {
   const dispatch = useDispatch();
@@ -46,9 +47,9 @@ export default function TableIncomeOutcome() {
         <thead className={s.thead}>
           <tr className={`${s.title} ${s.line}`}>
             <th className={s.date}>Дата</th>
-            <th className={s.description}>Описание</th>
-            <th className={s.category}>Категория</th>
-            <th className={s.summa}>Сумма</th>
+            <th className={s.description}>Опис</th>
+            <th className={s.category}>Категорія</th>
+            <th className={s.summa}>Сума</th>
             <th className={s.delete}></th>
           </tr>
         </thead>
@@ -60,7 +61,7 @@ export default function TableIncomeOutcome() {
                 <td className={`${s['cell-desc']} ${s.description}`}>
                   <span>{el.description}</span>
                 </td>
-                <td className={s.category}>{el.category}</td>
+                <td className={s.category}>{makeUkrCatsNames(el.category)}</td>
                 <td style={{ color: numColor }} className={s.summa}>
                   <NumberFormat
                     value={el.amount}
