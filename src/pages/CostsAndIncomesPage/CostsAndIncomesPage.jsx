@@ -6,6 +6,7 @@ import { useMediaQuery } from 'react-responsive';
 import CostsAndIncomesForm from '../../components/CostsAndIncomesBox/CostsAndIncomesForm/CostsAndIncomesForm';
 import { NavLink } from 'react-router-dom';
 import s from './CostsAndIncomesPage.module.scss';
+import iconSprite from '../../assets/images/symbol-defs.svg';
 
 const CostsAndIncomesPage = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -19,46 +20,59 @@ const CostsAndIncomesPage = () => {
             <CostsAndIncomesBox />
           </>
         );
-        case '/expenses':
-          if (isMobile) {
-            return (
-              <> <NavLink to="/balance"><div>Back</div></NavLink>
-                <CostsAndIncomesForm />
-                {/* <CostAndIncomesButtons /> */}
-              </>
-            );
-          } return;
-       
-      case '/incomes':
+      case '/expenses':
         if (isMobile) {
           return (
             <>
-            <NavLink to="/balance"><div>Back</div></NavLink>
+              {' '}
+              <NavLink to="/balance">
+                {' '}
+                <svg className={s['icon-back']} width="24px" height="24px">
+                  <use href={`${iconSprite}#icon-arrow-back`}></use>
+                </svg>
+              </NavLink>
               <CostsAndIncomesForm />
               {/* <CostAndIncomesButtons /> */}
             </>
           );
-        } return;
+        }
+        return;
 
-        default:
-          break;
-       
+      case '/incomes':
+        if (isMobile) {
+          return (
+            <>
+              <NavLink to="/balance">
+                <svg className={s['icon-back']} width="24px" height="24px">
+                  <use href={`${iconSprite}#icon-arrow-back`}></use>
+                </svg>
+              </NavLink>
+              <CostsAndIncomesForm />
+              {/* <CostAndIncomesButtons /> */}
+            </>
+          );
+        }
+        return;
+
+      default:
+        break;
     }
   };
 
   return (
-<>
-<div className={s.bg}></div>
-    <section className={s.section}>
-      {!isMobile && (
-        <>
-          <Balance />
-          <CostsAndIncomesBox />
-        </>
-      )}
+    <>
+      <div className={s.bg}></div>
+      <section className={s.section}>
+        {!isMobile && (
+          <>
+            <Balance />
+            <CostsAndIncomesBox />
+          </>
+        )}
 
-      {showSuitableBox()}
-    </section></>
+        {showSuitableBox()}
+      </section>
+    </>
   );
 };
 
