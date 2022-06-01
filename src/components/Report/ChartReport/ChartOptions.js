@@ -31,6 +31,9 @@ export const optionsDesc = {
     legend: {
       display: false,
     },
+    subtitle: {
+      display: true,
+    },
   },
 };
 
@@ -81,6 +84,9 @@ export const optionsMob = {
   plugins: {
     legend: {
       display: false,
+    },
+    subtitle: {
+      display: true,
     },
   },
 };

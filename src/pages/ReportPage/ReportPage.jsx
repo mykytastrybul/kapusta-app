@@ -7,7 +7,7 @@ import s from './ReportPage.module.scss';
 const ReportPage = () => {
   return (
     <>
-      <div className={s.bg}></div>
+      {/* <div className={s.bg}> */}
       <section className={s.section}>
         <Container>
           <ReportControlPanel />
@@ -16,6 +16,7 @@ const ReportPage = () => {
           <ChartReport />
         </Container>
       </section>
+      {/* </div> */}
     </>
   );
 };

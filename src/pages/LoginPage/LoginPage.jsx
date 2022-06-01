@@ -6,7 +6,7 @@ import s from './LoginPage.module.scss';
 const LoginPage = () => {
   return (
     <section className={s.section}>
-      <div className={s.bg}></div>
+      {/* <div className={s.bg}></div> */}
       <div className={s.container}>
         <motion.div
           animate={{ rotate: [0, 5, 0], y: [0, 15, 0] }}
