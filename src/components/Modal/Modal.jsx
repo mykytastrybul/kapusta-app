@@ -20,7 +20,7 @@ export default function Modal({ text, close, onSubmit }) {
   });
 
   return createPortal(
-    <div onClick={null} className={s.overlay}>
+    <div onClick={() => close()} className={s.overlay}>
       <div className={s.modal}>
         <button onClick={close} className={s.close}>
           <svg className={s.icon}>

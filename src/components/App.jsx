@@ -1,30 +1,23 @@
 import React, { lazy, Suspense, useEffect } from 'react';
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import PrivateRoute from '../utils/PrivateRoute';
 import PublicRoute from '../utils/PublicRoute';
-import {
-  allUserInfo,
-  // getExpenseStats,
-  // getIncomeStats,
-} from '../redux/transactions/transactionsOperations';
+import { allUserInfo } from '../redux/transactions/transactionsOperations';
 import { loginGoogle, refreshUser } from '../redux/auth/authOperations';
 import { useDispatch, useSelector } from 'react-redux';
 import authSelectors from '../redux/auth/authSelectors';
 import Loader from './Loader';
 import HeaderNav from './Header/HeaderNav';
-import { useMediaQuery } from 'react-responsive';
 import BackGround from './BackGround/BackGround';
+import Redirect from './Redirect/Redirect';
 
 const CostsAndIncomesPage = lazy(() =>
   import('../pages/CostsAndIncomesPage/CostsAndIncomesPage')
 );
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
-// const HomePage = lazy(() => import('../pages/CostsAndIncomesPage'));
 const ReportPage = lazy(() => import('../pages/ReportPage/ReportPage'));
 
 function App() {
-  const isMobile = useMediaQuery({ maxWidth: 767 });
-  // console.log(isMobile);
   const location = useLocation();
   const accessToken = new URLSearchParams(location.search).get('accessToken');
   const refreshToken = new URLSearchParams(location.search).get('refreshToken');
@@ -50,8 +43,6 @@ function App() {
   useEffect(() => {
     if (token) {
       dispatch(allUserInfo(token));
-      // dispatch(getExpenseStats());
-      // dispatch(getIncomeStats());
     }
   }, [token, dispatch]);
 
@@ -61,20 +52,8 @@ function App() {
       <BackGround>
         <Suspense fallback={<Loader />}>
           <Routes>
-            {isMobile && (
-              <Route
-                path="/balance"
-                element={
-                  <PrivateRoute redirectTo={'/login'}>
-                    {/* переместить */}
-                    <CostsAndIncomesPage />
-                  </PrivateRoute>
-                }
-              />
-            )}
-
             <Route
-              path="/expenses"
+              path="/main/*"
               element={
                 <PrivateRoute redirectTo={'/login'}>
                   <CostsAndIncomesPage />
@@ -82,14 +61,6 @@ function App() {
               }
             />
 
-            <Route
-              path="/incomes"
-              element={
-                <PrivateRoute redirectTo={'/login'}>
-                  <CostsAndIncomesPage />
-                </PrivateRoute>
-              }
-            />
             <Route
               path="report"
               element={
@@ -107,12 +78,7 @@ function App() {
               }
             />
 
-            {!isMobile && (
-              <Route path="*" element={<Navigate to="/expenses" />} />
-            )}
-            {isMobile && (
-              <Route path="*" element={<Navigate to="/balance" />} />
-            )}
+            <Route path="*" element={<Redirect />} />
           </Routes>
         </Suspense>
       </BackGround>

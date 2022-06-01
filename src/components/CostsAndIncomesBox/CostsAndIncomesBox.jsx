@@ -16,17 +16,10 @@ const CostsAndIncomesBox = () => {
         <div className={s['content-box']}>
           {!isMobile && <CostsAndIncomesForm />}
           <div className={s['tablets-box']}>
-            {!isMobile && (
-              <>
-                <TableIncomeOutcome />
-                <Summary />
-              </>
-            )}
-            {isMobile && (
-              <>
-                <TableIncomeOutcome />
-              </>
-            )}
+            <>
+              <TableIncomeOutcome />
+              {!isMobile && <Summary />}
+            </>
           </div>
         </div>
       </div>

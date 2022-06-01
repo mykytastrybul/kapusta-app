@@ -1,5 +1,5 @@
 import NumberFormat from 'react-number-format';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import s from './Balance.module.scss';
 import IconSvg from '../../assets/images/symbol-defs.svg';
 import BalanceModal from './BalanceModal';
@@ -10,8 +10,10 @@ import { setBalance } from '../../redux/transactions/transactionsOperations';
 
 const Balance = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const storeBalance = useSelector(authSelectors.getBalance);
   const [balanceState, setBalanceState] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleChange = e => {
     const value = e.target.value;
@@ -32,13 +34,20 @@ const Balance = () => {
 
   useEffect(() => {
     setBalanceState(storeBalance);
+    if (storeBalance === 0) setModalOpen(true);
   }, [storeBalance]);
 
   return (
     <div className={s.page}>
       <div className={s.container}>
         <div className={s.container_link}>
-          <NavLink className={s.link} to="/report">
+          <NavLink
+            className={s.link}
+            to={{
+              pathname: '/report',
+            }}
+            state={location}
+          >
             Перейти до звітів
             <svg className={s.icon}>
               <use xlinkHref={`${IconSvg}#icon-chart`}></use>
@@ -66,7 +75,7 @@ const Balance = () => {
             <button className={s.button} type="submit">
               ПІДТВЕРДИТИ
             </button>
-            {!balanceState && <BalanceModal />}
+            {modalOpen && <BalanceModal />}
           </form>
         </div>
       </div>

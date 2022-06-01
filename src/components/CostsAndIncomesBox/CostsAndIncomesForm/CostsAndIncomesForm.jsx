@@ -10,7 +10,7 @@ import {
   expenseTransaction,
   incomeTransaction,
 } from '../../../redux/transactions/transactionsOperations';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useMatch } from 'react-router-dom';
 import NumberFormat from 'react-number-format';
 import { setDateFilter } from '../../../redux/transactions/transactionsSlice';
 import Calendar from '../../Calendar/Calendar';
@@ -19,11 +19,11 @@ import { useMediaQuery } from 'react-responsive';
 const CostsAndIncomesForm = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const location = useLocation();
+  const match = useMatch('/main/*');
   const dispatch = useDispatch();
   const [startDate, setStartDate] = useState(new Date());
 
   const refDate = startDate.toISOString().substring(0, 10);
-  // console.log('refDate: ', refDate);
 
   const [descr, setDescr] = useState('');
 
@@ -34,13 +34,10 @@ const CostsAndIncomesForm = () => {
   const handleDescrChange = e => setDescr(e.currentTarget.value);
   const handleCategoryChange = option => setCategory(option);
   const handleCostChange = e => setCost(e.currentTarget.value);
-  // console.log('descr: ', descr);
-  // console.log('category: ', category);
-  // console.log('cost: ', cost);
 
   const setOptions = () => {
-    switch (location.pathname) {
-      case '/expenses':
+    switch (match.params['*']) {
+      case 'expenses':
         return [
           { value: 'Продукты', label: 'Продукти' },
           { value: 'Алкоголь', label: 'Алкоголь' },
@@ -54,17 +51,24 @@ const CostsAndIncomesForm = () => {
           { value: 'Образование', label: 'Освіта' },
           { value: 'Прочее', label: 'Інше' },
         ];
+      // return expensesCats;
 
-      case '/incomes':
+      case 'incomes':
         return [
           { value: 'З/П', label: 'З/П' },
           { value: 'Доп. доход', label: 'Дод. дохід' },
         ];
+      // return incomeCats;
 
       default:
         return;
     }
   };
+
+  const amount = +cost
+    .split(' ')
+    .slice(0, cost.split(' ').length - 1)
+    .join('');
 
   const submitHandler = e => {
     e.preventDefault();
@@ -73,10 +77,7 @@ const CostsAndIncomesForm = () => {
         dispatch(
           expenseTransaction({
             description: descr,
-            amount: +cost
-              .split(' ')
-              .slice(0, cost.split(' ').length - 1)
-              .join(''),
+            amount,
             date: refDate,
             category: category.value,
           })
@@ -86,10 +87,7 @@ const CostsAndIncomesForm = () => {
         dispatch(
           incomeTransaction({
             description: descr,
-            amount: +cost
-              .split(' ')
-              .slice(0, cost.split(' ').length - 1)
-              .join(''),
+            amount,
             date: refDate,
             category: category.value,
           })
@@ -109,6 +107,7 @@ const CostsAndIncomesForm = () => {
     setCost('');
     setCategory(null);
   };
+
   const handleDateChange = date => {
     setStartDate(date);
     const refDate = date.toISOString().substring(0, 10);
