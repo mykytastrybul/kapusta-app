@@ -2,7 +2,8 @@
 
 .form {
   @include mq(mobile-only) {
-    margin-top: 60px;
+    // margin-top: 60px;
+    // width: 280px;
     display: flex;
     flex-direction: column;
   }
@@ -84,15 +85,15 @@
 
 .input-item {
   @include mq(mobile-only) {
-    width: 100%;
+    width:280px;
     background-color: transparent;
-    border: 2px solid white;
+    border: 2px solid #ffffff;
     border-radius: 20px 20px 0 0;
   }
   margin: 0;
   height: 44px;
   padding: 0 0 0 20px;
-  border: 2px solid #c7ccdc;
+  border: 2px solid #f5f6fb;
   border-radius: 20px 0 0 0;
   outline: none;
 
@@ -110,7 +111,7 @@
   }
 
   @include mq(desktop) {
-    width: 290px;
+    width: 270px;
   }
 }
 
@@ -136,17 +137,17 @@
   @include mq(mobile-only) {
     width: 100%;
     background-color: transparent;
-    border: 2px solid white;
+    border: 2px solid #ffffff;
     border-top: none;
     border-radius: 0 0 20px 0;
     margin-bottom: 32px;
   }
-
+  display: flex;
   margin: 0;
-  width: 169px;
+  width: 185px;
   height: 44px;
-  padding: 0 0 0 20px;
-  border: 2px solid #c7ccdc;
+  padding: 0 0 0 15px;
+  border: 2px solid #f5f6fb;
   border-left: none;
   outline: none;
 
@@ -219,13 +220,13 @@
     width: 183px;
     background-color: transparent;
     border-radius: 16px 16px 16px 16px;
-    border: 2px solid white;
+    border: 2px solid #ffffff;
   }
   margin: 0;
   width: 119px;
   height: 44px;
   padding: 0 0 0 20px;
-  border: 2px solid #c7ccdc;
+  border: 2px solid #f5f6fb;
   border-left: none;
   border-radius: 0 16px 16px 0;
   outline: none;

@@ -40,15 +40,18 @@ const CostsAndIncomesPage = () => {
       case '/expenses':
         if (isMobile) {
           return (
-            <>
+            <div className={s.wrap}>
+            <div className={s['btn-back']}>
               <NavLink to="/balance">
                 <svg className={s['icon-back']} width="24px" height="24px">
                   <use href={`${iconSprite}#icon-arrow-back`}></use>
                 </svg>
               </NavLink>
-              <CostsAndIncomesForm />
-              {/* <CostAndIncomesButtons /> */}
-            </>
+            </div>
+
+            <CostsAndIncomesForm />
+            {/* <CostAndIncomesButtons /> */}
+          </div>
           );
         }
         return;
@@ -56,15 +59,17 @@ const CostsAndIncomesPage = () => {
       case '/incomes':
         if (isMobile) {
           return (
-            <>
+            <div className={s.wrap}>
+            <div className={s['btn-back']}>
               <NavLink to="/balance">
                 <svg className={s['icon-back']} width="24px" height="24px">
                   <use href={`${iconSprite}#icon-arrow-back`}></use>
                 </svg>
               </NavLink>
-              <CostsAndIncomesForm />
-              {/* <CostAndIncomesButtons /> */}
-            </>
+            </div>
+            <CostsAndIncomesForm />
+            {/* <CostAndIncomesButtons /> */}
+          </div>
           );
         }
         return;
