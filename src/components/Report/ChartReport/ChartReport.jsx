@@ -57,11 +57,10 @@ const ChartReport = () => {
 
   useEffect(() => {
     if (location.search.length > 0) {
-      location.search.split('&')[0] &&
-        setType(location.search.split('&')[0].slice(6));
+      setType(new URLSearchParams(location.search).get('type'));
       if (location.search.split('&')[1]) {
         let newCategory = '';
-        switch (location.search.split('&')[1].slice(9)) {
+        switch (new URLSearchParams(location.search).get('category')) {
           case 'products':
             newCategory = 'Продукты';
             break;

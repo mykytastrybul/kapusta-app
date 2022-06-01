@@ -11,12 +11,11 @@ import {
 import authSelectors from '../../redux/auth/authSelectors';
 import NumberFormat from 'react-number-format';
 import { langOpts } from '../../utils/function/translateBackEndResp';
+import { setTdColor } from '../../utils/function/setTdColor';
 
 export default function TableIncomeOutcome() {
-  // console.log(categoriesLangOpts['PACХОДЫ'].ua);
   const dispatch = useDispatch();
   const [statsToDraw, setStatsToDraw] = useState([]);
-  // console.log(statsToDraw);
   const expensesStats = useSelector(state => state.transactions.data.expenses);
   const incomesStats = useSelector(state => state.transactions.data.incomes);
   const dateFilter = useSelector(state => state.transactions.dateFilter);
@@ -29,54 +28,6 @@ export default function TableIncomeOutcome() {
     dispatch(getIncomeStats());
     dispatch(allUserInfo(token));
   }, [token, dispatch]);
-
-  const setTdColor = category => {
-    let color = '';
-    switch (category) {
-      case 'Продукты':
-        color = '#e53935';
-        break;
-      case 'Алкоголь':
-        color = '#e53935';
-        break;
-      case 'Развлечения':
-        color = '#e53935';
-        break;
-      case 'Здоровье':
-        color = '#e53935';
-        break;
-      case 'Транспорт':
-        color = '#e53935';
-        break;
-      case 'Всё для дома':
-        color = '#e53935';
-        break;
-      case 'Техника':
-        color = '#e53935';
-        break;
-      case 'Коммуналка и связь':
-        color = '#e53935';
-        break;
-      case 'Спорт и хобби':
-        color = '#e53935';
-        break;
-      case 'Образование':
-        color = '#e53935';
-        break;
-      case 'Прочее':
-        color = '#e53935';
-        break;
-      case 'З/П':
-        color = '#407946';
-        break;
-      case 'Доп. доход':
-        color = '#407946';
-        break;
-      default:
-        break;
-    }
-    return color;
-  };
 
   useEffect(() => {
     switch (location.pathname) {

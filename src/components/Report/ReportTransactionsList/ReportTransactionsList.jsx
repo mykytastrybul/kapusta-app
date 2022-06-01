@@ -9,117 +9,31 @@ import {
 } from '../../../redux/reports/reportsSelectors';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { setIcon } from '../../../utils/function/setIcon';
 
 const ReportTransactionsList = () => {
   const navigate = useNavigate();
-  const [type, setType] = useState('PACХОДЫ');
-  const [transactionsList, setTransactionsList] = useState({
-    icon: '',
-    key: '',
-    name: '',
-    sum: '',
-  });
+  const [type, setType] = useState('expenses');
+  const [transactionsList, setTransactionsList] = useState([]);
   const expensesData = useSelector(getExpensesData);
   const incomesData = useSelector(getIncomesData);
 
   const toggleType = () => {
-    if (type === 'PACХОДЫ') setType('ДОХОДЫ');
-    if (type === 'ДОХОДЫ') setType('PACХОДЫ');
+    if (type === 'expenses') setType('incomes');
+    if (type === 'incomes') setType('expenses');
   };
 
   const setCategory = () => {
-    if (transactionsList.name !== '') {
-      let category = '';
-      switch (transactionsList[0].name) {
-        case 'Продукты':
-          category = 'products';
-          break;
-        case 'Алкоголь':
-          category = 'alcohol';
-          break;
-        case 'Развлечения':
-          category = 'fun';
-          break;
-        case 'Здоровье':
-          category = 'health';
-          break;
-        case 'Транспорт':
-          category = 'transport';
-          break;
-        case 'Всё для дома':
-          category = 'home-depot';
-          break;
-        case 'Техника':
-          category = 'equipment';
-          break;
-        case 'Коммуналка и связь':
-          category = 'utilities';
-          break;
-        case 'Спорт и хобби':
-          category = 'hobby';
-          break;
-        case 'Образование':
-          category = 'education';
-          break;
-        case 'Прочее':
-          category = 'stuff';
-          break;
-        case 'З/П':
-          category = 'salary';
-          break;
-        case 'Доп. доход':
-          category = 'extra-income';
-          break;
-        default:
-          category = '';
-      }
-      return category;
+    if (transactionsList.length !== 0) {
+      return setIcon[transactionsList[0].name].category;
     }
   };
 
   useEffect(() => {
-    if (Object.entries(expensesData).length > 0 && type === 'PACХОДЫ') {
+    if (Object.entries(expensesData).length > 0 && type === 'expenses') {
       setTransactionsList(
         Object.entries(expensesData).map(el => {
-          let icon = '';
-          switch (el[0]) {
-            case 'Продукты':
-              icon = 'products';
-              break;
-            case 'Алкоголь':
-              icon = 'alcohol';
-              break;
-            case 'Развлечения':
-              icon = 'fun';
-              break;
-            case 'Здоровье':
-              icon = 'health';
-              break;
-            case 'Транспорт':
-              icon = 'transport';
-              break;
-            case 'Всё для дома':
-              icon = 'home-depot';
-              break;
-            case 'Техника':
-              icon = 'equipment';
-              break;
-            case 'Коммуналка и связь':
-              icon = 'utilities';
-              break;
-            case 'Спорт и хобби':
-              icon = 'hobby';
-              break;
-            case 'Образование':
-              icon = 'education';
-              break;
-            case 'Прочее':
-              icon = 'stuff';
-              break;
-            default:
-              icon = '';
-          }
-
+          let icon = setIcon[el[0]].icon;
           return {
             key: el[0],
             name: el[0],
@@ -130,17 +44,12 @@ const ReportTransactionsList = () => {
       );
     } else if (
       Object.entries(expensesData).length === 0 &&
-      type === 'PACХОДЫ'
+      type === 'expenses'
     ) {
-      setTransactionsList({
-        sum: '',
-        icon: '',
-        name: '',
-        key: '',
-      });
+      setTransactionsList([]);
     }
 
-    if (Object.entries(incomesData).length > 0 && type === 'ДОХОДЫ') {
+    if (Object.entries(incomesData).length > 0 && type === 'incomes') {
       setTransactionsList(
         Object.entries(incomesData).map(el => {
           let icon = '';
@@ -163,22 +72,19 @@ const ReportTransactionsList = () => {
           };
         })
       );
-    } else if (Object.entries(incomesData).length === 0 && type === 'ДОХОДЫ') {
-      setTransactionsList({
-        sum: '',
-        icon: '',
-        name: '',
-        key: '',
-      });
+    } else if (Object.entries(incomesData).length === 0 && type === 'incomes') {
+      setTransactionsList([]);
     }
   }, [expensesData, incomesData, type]);
 
   useEffect(() => {
-    navigate({
-      search: `type=${type === 'ДОХОДЫ' ? 'incomes' : 'expenses'}&category=${
-        setCategory() || ''
-      }`,
-    });
+    if (transactionsList.length > 0) {
+      navigate({
+        search: `type=${type === 'incomes' ? 'incomes' : 'expenses'}&category=${
+          setCategory() || ''
+        }`,
+      });
+    }
     //eslint-disable-next-line
   }, [type, transactionsList]);
 
