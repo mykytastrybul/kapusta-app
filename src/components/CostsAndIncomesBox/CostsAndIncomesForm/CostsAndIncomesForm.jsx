@@ -14,8 +14,10 @@ import { useLocation } from 'react-router-dom';
 import NumberFormat from 'react-number-format';
 import { setDateFilter } from '../../../redux/transactions/transactionsSlice';
 import Calendar from '../../Calendar/Calendar';
+import { useMediaQuery } from 'react-responsive';
 
 const CostsAndIncomesForm = () => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   const location = useLocation();
   const dispatch = useDispatch();
   const [startDate, setStartDate] = useState(new Date());
@@ -116,9 +118,14 @@ const CostsAndIncomesForm = () => {
   return (
     <form action="submit" className={styles.form} onSubmit={submitHandler}>
       <div className={styles['inputs-wrapper']}>
-        <label className={styles['label-date']} htmlFor="date">
-          <Calendar startDate={startDate} handleDateChange={handleDateChange} />
-          {/* <DatePicker
+        {!isMobile && (
+          <label htmlFor="date">
+            <Calendar
+              startDate={startDate}
+              handleDateChange={handleDateChange}
+            />
+
+            {/* <DatePicker
             dateFormat="dd.MM.yyyy"
             className={styles['input-date']}
             calendarClassName={styles['calendar']}
@@ -126,15 +133,8 @@ const CostsAndIncomesForm = () => {
             onChange={handleDateChange}
             required
           /> */}
-          <svg
-            className={styles['icon-date']}
-            aria-label="calendar"
-            width="20px"
-            height="20px"
-          >
-            <use href={`${iconSprite}#icon-calendar`}></use>
-          </svg>
-        </label>
+          </label>
+        )}
         <label htmlFor="item"></label>
         <input
           className={styles['input-item']}

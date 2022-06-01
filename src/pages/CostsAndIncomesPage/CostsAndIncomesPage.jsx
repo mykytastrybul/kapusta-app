@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Balance from '../../components/Balance/Balance';
 import CostsAndIncomesBox from '../../components/CostsAndIncomesBox/CostsAndIncomesBox';
 import { useLocation } from 'react-router-dom';
@@ -8,18 +8,30 @@ import { NavLink } from 'react-router-dom';
 import s from './CostsAndIncomesPage.module.scss';
 import iconSprite from '../../assets/images/symbol-defs.svg';
 import Calendar from '../../components/Calendar/Calendar';
+import { useDispatch } from 'react-redux';
+import { setDateFilter } from '../../redux/transactions/transactionsSlice';
 // import TableIncomeOutcome from '../../components/TableIncomeOutcome/TableIncomeOutcome';
 
 const CostsAndIncomesPage = () => {
+  const dispatch = useDispatch();
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const location = useLocation();
+  const [startDate, setStartDate] = useState(new Date());
+  const handleDateChange = date => {
+    setStartDate(date);
+    const refDate = date.toISOString().substring(0, 10);
+    dispatch(setDateFilter(refDate));
+  };
   const showSuitableBox = () => {
     switch (location.pathname) {
       case '/balance':
         return (
           <>
             <Balance />
-            <Calendar />
+            <Calendar
+              startDate={startDate}
+              handleDateChange={handleDateChange}
+            />
             {/* <CostsAndIncomesForm /> */}
             <CostsAndIncomesBox />
             {/* <TableIncomeOutcome /> */}

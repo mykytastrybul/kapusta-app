@@ -28,13 +28,16 @@
 
 .input-date {
   @include mq(mobile-only) {
+    background-color: transparent;
+
     // display: none;
   }
   cursor: pointer;
   width: 104px;
   height: 40px;
-  margin: 0 32px 0 0;
-  padding: 0 0 0 30px;
+  //   margin: 0 32px 0 10px;
+  margin-left: 10px;
+  //   padding: 0 0 0 30px;
   border: none;
   outline: none;
 
@@ -56,18 +59,25 @@
 
 .label-date {
   position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
   @include mq(mobile-only) {
-    // display: none;
+    width: 100%;
+    margin-top: 40px;
   }
 }
 
 .icon-date {
+  @include mq(mobile-only) {
+    // display: block;
+  }
   display: flex;
   align-items: center;
   top: 10px;
   bottom: 0;
   left: 0;
-  position: absolute;
+  //   position: absolute;
 }
 
 //=============================================================================Item input styles
