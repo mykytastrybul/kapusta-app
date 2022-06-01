@@ -13,6 +13,7 @@ import authSelectors from '../redux/auth/authSelectors';
 import Loader from './Loader';
 import HeaderNav from './Header/HeaderNav';
 import { useMediaQuery } from 'react-responsive';
+import BackGround from './BackGround/BackGround';
 
 const CostsAndIncomesPage = lazy(() =>
   import('../pages/CostsAndIncomesPage/CostsAndIncomesPage')
@@ -56,62 +57,65 @@ function App() {
 
   return (
     <>
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          {isMobile && (
+      <HeaderNav />
+      <BackGround>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            {isMobile && (
+              <Route
+                path="/balance"
+                element={
+                  <PrivateRoute redirectTo={'/login'}>
+                    {/* переместить */}
+                    <CostsAndIncomesPage />
+                  </PrivateRoute>
+                }
+              />
+            )}
+
             <Route
-              path="/balance"
+              path="/expenses"
               element={
                 <PrivateRoute redirectTo={'/login'}>
-                  <HeaderNav />
                   <CostsAndIncomesPage />
                 </PrivateRoute>
               }
             />
-          )}
 
-          <Route
-            path="/expenses"
-            element={
-              <PrivateRoute redirectTo={'/login'}>
-                <HeaderNav />
-                <CostsAndIncomesPage />
-              </PrivateRoute>
-            }
-          />
+            <Route
+              path="/incomes"
+              element={
+                <PrivateRoute redirectTo={'/login'}>
+                  <CostsAndIncomesPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="report"
+              element={
+                <PrivateRoute redirectTo={'/login'}>
+                  <ReportPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="login"
+              element={
+                <PublicRoute restricted>
+                  <LoginPage />
+                </PublicRoute>
+              }
+            />
 
-          <Route
-            path="/incomes"
-            element={
-              <PrivateRoute redirectTo={'/login'}>
-                <HeaderNav />
-                <CostsAndIncomesPage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="report"
-            element={
-              <PrivateRoute redirectTo={'/login'}>
-                <HeaderNav />
-                <ReportPage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="login"
-            element={
-              <PublicRoute restricted>
-                <HeaderNav />
-                <LoginPage />
-              </PublicRoute>
-            }
-          />
-
-          {!isMobile && <Route path="*" element={<Navigate to="/expenses" />} />}
-          {isMobile && <Route path="*" element={<Navigate to="/balance" />} />}
-        </Routes>
-      </Suspense>
+            {!isMobile && (
+              <Route path="*" element={<Navigate to="/expenses" />} />
+            )}
+            {isMobile && (
+              <Route path="*" element={<Navigate to="/balance" />} />
+            )}
+          </Routes>
+        </Suspense>
+      </BackGround>
     </>
   );
 }

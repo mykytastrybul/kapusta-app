@@ -56,15 +56,15 @@ const CostsAndIncomesPage = () => {
         }
         return;
 
-        // case '/balance':
-        // if (isMobile) {
-        //   return (
-        //     <>
-        //       <CostsAndIncomesForm />
-        //       {/* <CostAndIncomesButtons /> */}
-        //     </>
-        //   );
-        // }
+      // case '/balance':
+      // if (isMobile) {
+      //   return (
+      //     <>
+      //       <CostsAndIncomesForm />
+      //       {/* <CostAndIncomesButtons /> */}
+      //     </>
+      //   );
+      // }
 
       default:
         break;
@@ -73,7 +73,7 @@ const CostsAndIncomesPage = () => {
 
   return (
     <>
-      <div className={s.bg}></div>
+      {/* <div className={s.bg}></div> */}
       <section className={s.section}>
         {!isMobile && (
           <>
