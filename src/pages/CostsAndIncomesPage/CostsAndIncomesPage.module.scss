@@ -9,6 +9,13 @@
   background-repeat: repeat-x, no-repeat;
   background-position: 10px 25px, 17% 100%;
 
+  @include mq(mobile-only) {
+    padding-top: 16px;
+    width: 320px;
+    display: block;
+    margin: 0 auto;
+  }
+
   @include mq(tablet) {
     background: url('../../assets/images/bg-login.svg'),
       url('../../assets/images/bg-login2.svg');
@@ -39,7 +46,8 @@
     padding-right: 10px;
     margin: 0 auto;
   }
-  .btn-back {
-    margin-bottom: 16px;
-  }
+}
+
+.btn {
+  margin-bottom: 50px;
 }

@@ -1,9 +1,9 @@
 import styles from './_CostsAndIncomesForm.module.scss';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import iconSprite from '../../../assets/images/symbol-defs.svg';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Select from 'react-select';
 import {
@@ -15,6 +15,16 @@ import NumberFormat from 'react-number-format';
 import { setDateFilter } from '../../../redux/transactions/transactionsSlice';
 import Calendar from '../../Calendar/Calendar';
 import { useMediaQuery } from 'react-responsive';
+// import {
+//   getExpenseCategoryList,
+//   getIncomesCategoryList,
+// } from '../../../redux/categories/categoriesSelectors';
+import authSelectors from '../../../redux/auth/authSelectors';
+import {
+  getExpenseCats,
+  getIncomeCats,
+} from '../../../redux/categories/categoriesOperations';
+// import { langOpts } from '../../../utils/function/translateBackEndResp';
 
 const CostsAndIncomesForm = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -22,6 +32,9 @@ const CostsAndIncomesForm = () => {
   const match = useMatch('/main/*');
   const dispatch = useDispatch();
   const [startDate, setStartDate] = useState(new Date());
+  const token = useSelector(authSelectors.getToken);
+  // const expensesCats = useSelector(getExpenseCategoryList);
+  // const incomesCats = useSelector(getIncomesCategoryList);
 
   const refDate = startDate.toISOString().substring(0, 10);
 
@@ -38,6 +51,7 @@ const CostsAndIncomesForm = () => {
   const setOptions = () => {
     switch (match.params['*']) {
       case 'expenses':
+        // return expensesCats.map(el => langOpts[el].ua);
         return [
           { value: 'Продукты', label: 'Продукти' },
           { value: 'Алкоголь', label: 'Алкоголь' },
@@ -51,14 +65,12 @@ const CostsAndIncomesForm = () => {
           { value: 'Образование', label: 'Освіта' },
           { value: 'Прочее', label: 'Інше' },
         ];
-      // return expensesCats;
 
       case 'incomes':
         return [
           { value: 'З/П', label: 'З/П' },
           { value: 'Доп. доход', label: 'Дод. дохід' },
         ];
-      // return incomeCats;
 
       default:
         return;
@@ -97,12 +109,10 @@ const CostsAndIncomesForm = () => {
         break;
     }
 
-    setDescr('');
-    setCost('');
-    setCategory(null);
+    handleClear();
   };
 
-  const handleCLick = () => {
+  const handleClear = () => {
     setDescr('');
     setCost('');
     setCategory(null);
@@ -149,6 +159,14 @@ const CostsAndIncomesForm = () => {
     }),
   };
 
+  useEffect(() => {
+    if (token) {
+      dispatch(getIncomeCats());
+      dispatch(getExpenseCats());
+    }
+    //eslint-disable-next-line
+  }, [token, match.params['*']]);
+
   return (
     <form action="submit" className={styles.form} onSubmit={submitHandler}>
       <div className={styles['inputs-wrapper']}>
@@ -158,15 +176,6 @@ const CostsAndIncomesForm = () => {
               startDate={startDate}
               handleDateChange={handleDateChange}
             />
-
-            {/* <DatePicker
-            dateFormat="dd.MM.yyyy"
-            className={styles['input-date']}
-            calendarClassName={styles['calendar']}
-            selected={startDate}
-            onChange={handleDateChange}
-            required
-          /> */}
           </label>
         )}
         <label htmlFor="item"></label>
@@ -228,7 +237,7 @@ const CostsAndIncomesForm = () => {
         <button
           type="button"
           className={styles['button-clear']}
-          onClick={handleCLick}
+          onClick={handleClear}
         >
           Очистити
         </button>

@@ -10,10 +10,10 @@ const ReportTransactionsItem = ({ icon, sum, name, type }) => {
 
   useEffect(() => {
     if (
-      location.search.split('&')[1].slice(9) &&
-      location.search.split('&')[0].slice(6)
+      new URLSearchParams(location.search).get('category') &&
+      new URLSearchParams(location.search).get('type')
     ) {
-      if (location.search.split('&')[1].slice(9) === icon) {
+      if (new URLSearchParams(location.search).get('category') === icon) {
         setIsActive(true);
       } else {
         setIsActive(false);
@@ -28,7 +28,7 @@ const ReportTransactionsItem = ({ icon, sum, name, type }) => {
         to={{
           pathname: '/report',
           search: `type=${
-            type === 'ДОХОДЫ' ? 'incomes' : 'expenses'
+            type === 'incomes' ? 'incomes' : 'expenses'
           }&category=${icon}`,
         }}
         className={() => (isActive ? s.activeLink : s.link)}

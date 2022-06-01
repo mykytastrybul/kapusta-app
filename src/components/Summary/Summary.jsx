@@ -7,7 +7,9 @@ import {
   getMonthIncomesData,
 } from '../../redux/transactions/transactionsSelectors';
 import { langOpts } from '../../utils/function/translateBackEndResp';
+
 import getArrayLastMonths from '../../utils/function/getArrayLastMonths';
+
 
 export default function Summary() {
   const expensesData = useSelector(getMonthExpensesData);

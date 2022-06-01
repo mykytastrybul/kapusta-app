@@ -1,7 +1,6 @@
 import DatePicker from 'react-datepicker';
 import styles from '../CostsAndIncomesBox/CostsAndIncomesForm/_CostsAndIncomesForm.module.scss';
 import iconSprite from '../../assets/images/symbol-defs.svg';
-// import iconSprite from '../../../assets/images/symbol-defs.svg';
 
 const Calendar = ({ startDate, handleDateChange }) => {
   return (

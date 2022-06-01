@@ -1,5 +1,4 @@
-
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Balance from '../../components/Balance/Balance';
 import CostsAndIncomesBox from '../../components/CostsAndIncomesBox/CostsAndIncomesBox';
 import { useMatch, useNavigate } from 'react-router-dom';
@@ -19,15 +18,16 @@ const CostsAndIncomesPage = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const match = useMatch('/main/*');
   const [startDate, setStartDate] = useState(new Date());
-  
+
   const handleDateChange = date => {
     setStartDate(date);
     const refDate = date.toISOString().substring(0, 10);
     dispatch(setDateFilter(refDate));
   };
-  
+
   useEffect(() => {
     !isMobile && navigate('/main/expenses');
+    //eslint-disable-next-line
   }, [isMobile]);
 
   return (
@@ -36,17 +36,12 @@ const CostsAndIncomesPage = () => {
         {!isMobile ? (
           <>
             <Balance />
-            <Calendar
-              startDate={startDate}
-              handleDateChange={handleDateChange}
-            />
-            {/* <CostsAndIncomesForm /> */}
             <CostsAndIncomesBox />
           </>
         ) : (
           <>
             {match.params['*'] !== 'balance' && (
-              <NavLink to="/main/balance">
+              <NavLink to="/main/balance" className={s.btn}>
                 <svg className={s['icon-back']} width="24px" height="24px">
                   <use href={`${iconSprite}#icon-arrow-back`}></use>
                 </svg>
@@ -58,6 +53,10 @@ const CostsAndIncomesPage = () => {
                 element={
                   <>
                     <Balance />
+                    <Calendar
+                      startDate={startDate}
+                      handleDateChange={handleDateChange}
+                    />
                     <CostsAndIncomesBox />
                   </>
                 }
