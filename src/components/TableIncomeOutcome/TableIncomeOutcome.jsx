@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DeleteButton from '../DeleteButton/DeleteButton';
 import {
+  allUserInfo,
   getExpenseStats,
   getIncomeStats,
 } from '../../redux/transactions/transactionsOperations';
@@ -18,15 +19,135 @@ export default function TableIncomeOutcome() {
   const incomesStats = useSelector(state => state.transactions.data.incomes);
   const location = useLocation();
   const token = useSelector(authSelectors.getToken);
+  const allTransactions = useSelector(authSelectors.getTransactions);
   const [numColor, setNumColor] = useState('#e53935');
 
   useEffect(() => {
     dispatch(getExpenseStats());
     dispatch(getIncomeStats());
+    dispatch(allUserInfo(token));
   }, [token, dispatch]);
+
+  const setTdColor = (category)=>{
+    let color = '';
+    switch (category) {
+      case 'Продукты':
+        color ='#e53935';
+        break;
+      case 'Алкоголь':
+          color ='#e53935'
+        break;
+      case 'Развлечения':
+          color ='#e53935'
+        break;
+      case 'Здоровье':
+          color ='#e53935'
+        break;
+      case 'Транспорт':
+          color ='#e53935'
+        break;
+      case 'Всё для дома':
+          color ='#e53935'
+        break;
+      case 'Техника':
+          color ='#e53935'
+        break;
+      case 'Коммуналка и связь':
+          color ='#e53935'
+        break;
+      case 'Спорт и хобби':
+          color ='#e53935'
+        break;
+      case 'Образование':
+          color ='#e53935'
+        break;
+      case 'Прочее':
+        color ='#e53935'
+        break;
+      case 'З/П':
+        color ='#407946';
+        break;
+      case 'Доп. доход':
+        color ='#407946';
+        break;
+      default:
+        break;
+    }
+    return color;
+  }
+  // const stateToDrawWithColor = [...statsToDraw];
+
+  // useEffect(()=>{
+  //   if (stateToDrawWithColor.length){
+  //   stateToDrawWithColor.map(el => {
+  //     switch (el.category) {
+  //       case 'Продукты':
+  //         el.color = '#e53935';
+  //         el.mark = '- ';
+  //         break;
+  //       case 'Алкоголь':
+  //         el.color = '#e53935';
+  //         el.mark = '- ';
+  //         break;
+  //       case 'Развлечения':
+  //         el.color = '#e53935';
+  //         el.mark = '- ';
+  //         break;
+  //       case 'Здоровье':
+  //         el.color = '#e53935';
+  //         el.mark = '- ';
+  //         break;
+  //       case 'Транспорт':
+  //         el.color = '#e53935';
+  //         el.mark = '- ';
+  //         break;
+  //       case 'Всё для дома':
+  //         el.color = '#e53935';
+  //         el.mark = '- ';
+  //         break;
+  //       case 'Техника':
+  //         el.color = '#e53935';
+  //         el.mark = '- ';
+  //         break;
+  //       case 'Коммуналка и связь':
+  //         el.color = '#e53935';
+  //         el.mark = '- ';
+  //         break;
+  //       case 'Спорт и хобби':
+  //         el.color = '#e53935';
+  //         el.mark = '- ';
+  //         break;
+  //       case 'Образование':
+  //         el.color = '#e53935';
+  //         el.mark = '- ';
+  //         break;
+  //       case 'Прочее':
+  //         el.color = '#e53935';
+  //         el.mark = '- ';
+  //         break;
+  //       case 'З/П':
+  //         el.color = '#407946';
+  //         el.mark = '';
+  //         break;
+  //       case 'Доп. доход':
+  //         el.color = '#407946';
+  //         el.mark = '';
+  //         break;
+  //       default:
+  //         break;
+  //     }
+  //     return el;
+  //   });
+  // }
+  // },[stateToDrawWithColor])
+
 
   useEffect(() => {
     switch (location.pathname) {
+      case '/balance':
+        setStatsToDraw(allTransactions);
+       
+        break;
       case '/expenses':
         setStatsToDraw(expensesStats);
         setNumColor('#e53935');
@@ -39,7 +160,13 @@ export default function TableIncomeOutcome() {
         break;
     }
     // console.log('statsToDraw', statsToDraw);
-  }, [expensesStats, incomesStats, statsToDraw, location.pathname]);
+  }, [
+    allTransactions,
+    expensesStats,
+    incomesStats,
+    statsToDraw,
+    location.pathname,
+  ]);
 
   return (
     <div className={s.wrap}>
@@ -62,13 +189,13 @@ export default function TableIncomeOutcome() {
                   <span>{el.description}</span>
                 </td>
                 <td className={s.category}>{makeUkrCatsNames(el.category)}</td>
-                <td style={{ color: numColor }} className={s.summa}>
+                <td style={{ color: setTdColor(el.category) }} className={s.summa}>
                   <NumberFormat
                     value={el.amount}
                     displayType={'text'}
                     thousandSeparator={' '}
                     suffix={' грн.'}
-                    prefix={numColor === '#e53935' && '- '}
+                    prefix={setTdColor(el.category) === '#e53935' && '- '}
                     type="text"
                     decimalSeparator="."
                     decimalScale={2}
