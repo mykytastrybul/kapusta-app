@@ -106,6 +106,9 @@ const authSlice = createSlice({
     },
     [deleteTransaction.fulfilled](state, { payload }) {
       state.user.balance = payload.data.newBalance;
+      state.user.transactions = state.user.transactions.filter(
+        el => el._id !== payload.id
+      );
     },
     [incomeTransaction.fulfilled](state, { payload }) {
       state.user.balance = payload.newBalance;

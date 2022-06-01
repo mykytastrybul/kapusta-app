@@ -7,6 +7,7 @@ import CostsAndIncomesForm from '../../components/CostsAndIncomesBox/CostsAndInc
 import { NavLink } from 'react-router-dom';
 import s from './CostsAndIncomesPage.module.scss';
 import iconSprite from '../../assets/images/symbol-defs.svg';
+// import TableIncomeOutcome from '../../components/TableIncomeOutcome/TableIncomeOutcome';
 
 const CostsAndIncomesPage = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -18,6 +19,7 @@ const CostsAndIncomesPage = () => {
           <>
             <Balance />
             <CostsAndIncomesBox />
+            {/* <TableIncomeOutcome /> */}
           </>
         );
       case '/expenses':
@@ -53,6 +55,16 @@ const CostsAndIncomesPage = () => {
           );
         }
         return;
+
+        // case '/balance':
+        // if (isMobile) {
+        //   return (
+        //     <>
+        //       <CostsAndIncomesForm />
+        //       {/* <CostAndIncomesButtons /> */}
+        //     </>
+        //   );
+        // }
 
       default:
         break;

@@ -22,6 +22,11 @@ const CostsAndIncomesBox = () => {
                 <Summary />
               </>
             )}
+            {isMobile && (
+              <>
+                <TableIncomeOutcome />
+              </>
+            )}
           </div>
         </div>
       </div>
