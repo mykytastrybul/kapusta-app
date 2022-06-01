@@ -1,6 +1,6 @@
 import styles from './_CostsAndIncomesForm.module.scss';
 import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
+// import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import iconSprite from '../../../assets/images/symbol-defs.svg';
 import { useDispatch } from 'react-redux';
@@ -13,8 +13,11 @@ import {
 import { useLocation, useMatch } from 'react-router-dom';
 import NumberFormat from 'react-number-format';
 import { setDateFilter } from '../../../redux/transactions/transactionsSlice';
+import Calendar from '../../Calendar/Calendar';
+import { useMediaQuery } from 'react-responsive';
 
 const CostsAndIncomesForm = () => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   const location = useLocation();
   const match = useMatch('/main/*');
   const dispatch = useDispatch();
@@ -114,24 +117,23 @@ const CostsAndIncomesForm = () => {
   return (
     <form action="submit" className={styles.form} onSubmit={submitHandler}>
       <div className={styles['inputs-wrapper']}>
-        <label className={styles['label-date']} htmlFor="date">
-          <DatePicker
+        {!isMobile && (
+          <label htmlFor="date">
+            <Calendar
+              startDate={startDate}
+              handleDateChange={handleDateChange}
+            />
+
+            {/* <DatePicker
             dateFormat="dd.MM.yyyy"
             className={styles['input-date']}
             calendarClassName={styles['calendar']}
             selected={startDate}
             onChange={handleDateChange}
             required
-          />
-          <svg
-            className={styles['icon-date']}
-            aria-label="calendar"
-            width="20px"
-            height="20px"
-          >
-            <use href={`${iconSprite}#icon-calendar`}></use>
-          </svg>
-        </label>
+          /> */}
+          </label>
+        )}
         <label htmlFor="item"></label>
         <input
           className={styles['input-item']}
@@ -150,7 +152,7 @@ const CostsAndIncomesForm = () => {
           options={setOptions()}
           // type="text"
           name="category"
-          placeholder="Виберіть категорию"
+          placeholder="Виберіть категорію"
           value={category}
           onChange={handleCategoryChange}
           required

@@ -3,10 +3,10 @@ import { useSelector } from 'react-redux';
 import { useMatch } from 'react-router-dom';
 import s from '../../components/Summary/Summary.module.scss';
 import {
-  getMonthExpensesData,
-  getMonthIncomesData,
-} from '../../redux/transactions/transactionsSelectors';
-import { makeUkrMonthNames } from '../../utils/function/translateBackEndResp';
+  langOpts,
+  makeUkrMonthNames,
+} from '../../utils/function/translateBackEndResp';
+
 
 export default function Summary() {
   const expensesData = useSelector(getMonthExpensesData);
@@ -49,7 +49,8 @@ export default function Summary() {
       <ul className={s.list}>
         {months.map((month, idx) => (
           <li key={idx} className={s.item}>
-            <p>{makeUkrMonthNames(month[0])}</p>
+            <p>{langOpts[month[0]].ua}</p>
+
             <p>
               {month[1]
                 .toLocaleString('ua-UA', { minimumFractionDigits: 2 })

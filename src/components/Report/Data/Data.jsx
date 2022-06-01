@@ -7,7 +7,7 @@ import { months, dateNow, getMonth } from './DataOptions';
 import s from './Data.module.scss';
 import { useNavigate } from 'react-router-dom';
 import authSelectors from '../../../redux/auth/authSelectors';
-import { makeUkrMonthNames } from '../../../utils/function/translateBackEndResp';
+import { langOpts } from '../../../utils/function/translateBackEndResp';
 
 const Data = () => {
   const dispatch = useDispatch();
@@ -68,7 +68,7 @@ const Data = () => {
           </svg>
         </button>
         <p className={s.currentDate}>
-          <span className={s.month}>{makeUkrMonthNames(month)}</span>
+          <span className={s.month}>{langOpts[month].ua}</span>
           <span className={s.year}>{year}</span>
         </p>
         <button

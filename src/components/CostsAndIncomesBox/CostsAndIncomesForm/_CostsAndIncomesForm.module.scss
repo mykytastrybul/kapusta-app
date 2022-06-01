@@ -1,362 +1,357 @@
 @import '../../../assets/sass/mixins';
 
-
 .form {
-    @include mq(mobile-only) {
-        margin-top: 60px;
-        display: flex;
-        flex-direction: column;
-    }
-    display: flex;
-    align-items: center;
-@include mq (tablet-only){
+  @include mq(mobile-only) {
+    margin-top: 60px;
     display: flex;
     flex-direction: column;
-}
+  }
+  display: flex;
+  align-items: center;
+  @include mq(tablet-only) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .inputs-wrapper {
-    @include mq (mobile-only) {
-        display: flex;
-        flex-direction: column;
-    }
+  @include mq(mobile-only) {
     display: flex;
-    align-items: center;
-    position: relative;
+    flex-direction: column;
+  }
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
 //==============================================Date input styles
 
 .input-date {
-    @include mq(mobile-only){
-        display: none;
-    }
-    cursor: pointer;
-    width: 104px;
-    height: 40px;
-    margin: 0 32px 0 0;
-    padding: 0 0 0 30px;
-    border: none;
-    outline: none;
+  @include mq(mobile-only) {
+    background-color: transparent;
 
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 900;
-font-size: 12px;
-line-height: 1.2px;
-letter-spacing: 0.04em;
-text-transform: uppercase;
+    // display: none;
+  }
+  cursor: pointer;
+  width: 104px;
+  height: 40px;
+  //   margin: 0 32px 0 10px;
+  margin-left: 10px;
+  //   padding: 0 0 0 30px;
+  border: none;
+  outline: none;
 
-color: var(--primary-text-color);
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 1.2px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  color: var(--primary-text-color);
 }
 
 .input-date:active {
-    border: none;
-    outline: none;
+  border: none;
+  outline: none;
 }
 
 .label-date {
-    position: relative;
-    @include mq(mobile-only){
-        display: none;
-    }
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  @include mq(mobile-only) {
+    width: 100%;
+    margin-top: 40px;
+  }
 }
 
 .icon-date {
-    display: flex;
-    align-items: center;
-    top: 10px;
-    bottom: 0;
-    left: 0;
-    position: absolute;
+  @include mq(mobile-only) {
+    // display: block;
+  }
+  display: flex;
+  align-items: center;
+  top: 10px;
+  bottom: 0;
+  left: 0;
+  //   position: absolute;
 }
 
 //=============================================================================Item input styles
 
 .input-item {
-    @include mq(mobile-only){
-        width: 100%;
-        background-color: transparent;
-        border: 2px solid white;
-        border-radius: 20px 20px 0 0;
-    }
-margin: 0;
-height: 44px;
-padding: 0 0 0 20px;
-border: 2px solid #C7CCDC;
-border-radius: 20px 0 0 0;
-outline: none;
+  @include mq(mobile-only) {
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 20px 20px 0 0;
+  }
+  margin: 0;
+  height: 44px;
+  padding: 0 0 0 20px;
+  border: 2px solid #c7ccdc;
+  border-radius: 20px 0 0 0;
+  outline: none;
 
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 900;
-font-size: 12px;
-line-height: 1.2;
-letter-spacing: 0.04em;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
 
+  color: var(--primary-text-color);
 
-color: var(--primary-text-color);
-
-@include mq (tablet-only) {
+  @include mq(tablet-only) {
     max-width: 290px;
-}
+  }
 
-@include mq (desktop) {
+  @include mq(desktop) {
     width: 290px;
-}
+  }
 }
 
 .input-item::placeholder {
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 1.2;
-letter-spacing: 0.02em;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
 
-color: #C7CCDC;
-
-  }
+  color: #c7ccdc;
+}
 
 .input-item:active {
-    // border: none;
-    outline: none;
+  // border: none;
+  outline: none;
 }
 
 //========================================================================= Category imput styles
 
 .input-category {
+  @include mq(mobile-only) {
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid white;
+    border-top: none;
+    border-radius: 0 0 20px 0;
+    margin-bottom: 32px;
+  }
 
-    @include mq(mobile-only){
-        width: 100%;
-        background-color: transparent;
-        border: 2px solid white;
-        border-top: none;
-        border-radius: 0 0 20px 0;
-        margin-bottom: 32px;
-    }
+  margin: 0;
+  width: 169px;
+  height: 44px;
+  padding: 0 0 0 20px;
+  border: 2px solid #c7ccdc;
+  border-left: none;
+  outline: none;
 
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
 
-        margin: 0;
-        width: 169px;
-        height: 44px;
-        padding: 0 0 0 20px;
-        border: 2px solid #C7CCDC;
-        border-left: none;
-        outline: none;
-
-  
-    
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 12px;
-    line-height: 1.2;
-    letter-spacing: 0.04em;
-    
-    
-    color: var(--primary-text-color);
-    }
-    
-    .input-category::placeholder {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 1.2;
-    letter-spacing: 0.02em;
-    
-    color: #C7CCDC;
-    
-      }
-    
-    .input-category:active {
-        // border: none;
-        outline: none;
-    }
-
-    // .input-category {
-    // margin: 0;
-    // width: 169px;
-    // height: 44px;
-    // padding: 0 0 0 20px;
-    // border: 2px solid #C7CCDC;
-    // border-left: none;
-    // outline: none;
-    
-    // font-family: 'Roboto';
-    // font-style: normal;
-    // font-weight: 900;
-    // font-size: 12px;
-    // line-height: 1.2;
-    // letter-spacing: 0.04em;
-    
-    
-    // color: var(--primary-text-color);
-    // }
-    
-    // .input-category::placeholder {
-    // font-family: 'Roboto';
-    // font-style: normal;
-    // font-weight: 400;
-    // font-size: 12px;
-    // line-height: 1.2;
-    // letter-spacing: 0.02em;
-    
-    // color: #C7CCDC;
-    
-    //   }
-    
-    // .input-category:active {
-    //     // border: none;
-    //     outline: none;
-    // }
-
-    //=========================================================================Cost inputs styles
-
-    .input-cost {
-        @include mq(mobile-only) {
-            width: 183px;
-            background-color: transparent;
-            border-radius: 16px 16px 16px 16px;
-            border: 2px solid white;
-        }
-        margin: 0;
-        width: 119px;
-        height: 44px;
-        padding: 0 0 0 20px;
-        border: 2px solid #C7CCDC;
-        border-left: none;
-        border-radius: 0 16px 16px 0;
-        outline: none;
-        
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 900;
-        font-size: 12px;
-        line-height: 1.2;
-        letter-spacing: 0.04em;
-        
-        
-        color: var(--primary-text-color);
-        }
-        
-        .input-cost::placeholder {
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 1.2;
-        letter-spacing: 0.02em;
-        
-        color: #C7CCDC;
-        
-          }
-        
-        .input-cost:active {
-            // border: none;
-            outline: none;
-        }
-
-        
-        .input-cost::-webkit-outer-spin-button,
-        .input-cost::-webkit-inner-spin-button {
-    display: none;
-    -webkit-appearance: none;
-    margin: 0;
+  color: var(--primary-text-color);
 }
 
-        .label-cost {
-            position: relative;
-        }
-        
-        .icon-cost {
-            display: flex;
-            align-items: center;
-            top: 12px;
-            bottom: 0;
-           right: 10px;
-            position: absolute;
-        }
+.input-category::placeholder {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+
+  color: #c7ccdc;
+}
+
+.input-category:active {
+  // border: none;
+  outline: none;
+}
+
+// .input-category {
+// margin: 0;
+// width: 169px;
+// height: 44px;
+// padding: 0 0 0 20px;
+// border: 2px solid #C7CCDC;
+// border-left: none;
+// outline: none;
+
+// font-family: 'Roboto';
+// font-style: normal;
+// font-weight: 900;
+// font-size: 12px;
+// line-height: 1.2;
+// letter-spacing: 0.04em;
+
+// color: var(--primary-text-color);
+// }
+
+// .input-category::placeholder {
+// font-family: 'Roboto';
+// font-style: normal;
+// font-weight: 400;
+// font-size: 12px;
+// line-height: 1.2;
+// letter-spacing: 0.02em;
+
+// color: #C7CCDC;
+
+//   }
+
+// .input-category:active {
+//     // border: none;
+//     outline: none;
+// }
+
+//=========================================================================Cost inputs styles
+
+.input-cost {
+  @include mq(mobile-only) {
+    width: 183px;
+    background-color: transparent;
+    border-radius: 16px 16px 16px 16px;
+    border: 2px solid white;
+  }
+  margin: 0;
+  width: 119px;
+  height: 44px;
+  padding: 0 0 0 20px;
+  border: 2px solid #c7ccdc;
+  border-left: none;
+  border-radius: 0 16px 16px 0;
+  outline: none;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+
+  color: var(--primary-text-color);
+}
+
+.input-cost::placeholder {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+
+  color: #c7ccdc;
+}
+
+.input-cost:active {
+  // border: none;
+  outline: none;
+}
+
+.input-cost::-webkit-outer-spin-button,
+.input-cost::-webkit-inner-spin-button {
+  display: none;
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.label-cost {
+  position: relative;
+}
+
+.icon-cost {
+  display: flex;
+  align-items: center;
+  top: 12px;
+  bottom: 0;
+  right: 10px;
+  position: absolute;
+}
 
 //================================================================================= Buttons styles
 
 .buttons-wrapper {
-    @include mq(mobile-only) {
-        display: flex;
-        flex-direction: row;
-        margin-top: 80px;
-    }
-@include mq(desktop){
+  @include mq(mobile-only) {
+    display: flex;
+    flex-direction: row;
+    margin-top: 80px;
+  }
+  @include mq(desktop) {
     display: flex;
     margin-left: auto;
     margin-right: auto;
     align-items: center;
-}
+  }
 
-@include mq(tablet-only){
+  @include mq(tablet-only) {
     display: flex;
     margin-left: auto;
     margin-right: auto;
     margin-top: 32px;
     align-items: center;
-}
+  }
 }
 
 .button-submit {
-    cursor: pointer;
-    width: 136px;
-    height: 44px;
-    border: transparent;
-    border-radius: 16px;
-    text-align: center;
+  cursor: pointer;
+  width: 136px;
+  height: 44px;
+  border: transparent;
+  border-radius: 16px;
+  text-align: center;
 
-    
-    margin-right: 16px;
+  margin-right: 16px;
 
-    
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 700;
-font-size: 12px;
-line-height: 1.2;
-// display: flex;
-// align-items: center;
-// text-align: center;
-letter-spacing: 0.02em;
-text-transform: uppercase;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.2;
+  // display: flex;
+  // align-items: center;
+  // text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 
-color: var(--highlight-white-color);
-background-color: var(--background-orange);
+  color: var(--highlight-white-color);
+  background-color: var(--background-orange);
 
-@include mq (tablet){
+  @include mq(tablet) {
     width: 125px;
-}
+  }
 }
 
 .button-clear {
-    cursor: pointer;
-    width: 136px;
-    height: 44px;
-    border: 2px solid #C7CCDC;
-    border-radius: 16px;
-    text-align: center;
+  cursor: pointer;
+  width: 136px;
+  height: 44px;
+  border: 2px solid #c7ccdc;
+  border-radius: 16px;
+  text-align: center;
 
-    font-family: 'Roboto';
-font-style: normal;
-font-weight: 700;
-font-size: 12px;
-line-height: 1.2;
-// display: flex;
-// align-items: center;
-// text-align: center;
-letter-spacing: 0.02em;
-text-transform: uppercase;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.2;
+  // display: flex;
+  // align-items: center;
+  // text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 
-color: var(--primary-text-color);
-background-color: var(--highlight-white-color);
+  color: var(--primary-text-color);
+  background-color: var(--highlight-white-color);
 
-@include mq (tablet){
+  @include mq(tablet) {
     width: 125px;
-}
+  }
 }
