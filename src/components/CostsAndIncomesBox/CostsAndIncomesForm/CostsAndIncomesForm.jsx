@@ -12,13 +12,13 @@ import {
 } from '../../../redux/transactions/transactionsOperations';
 import { useLocation } from 'react-router-dom';
 import NumberFormat from 'react-number-format';
+import { setDateFilter } from '../../../redux/transactions/transactionsSlice';
 
 const CostsAndIncomesForm = () => {
   const location = useLocation();
   const dispatch = useDispatch();
-  // console.log(iconCalendar)
   const [startDate, setStartDate] = useState(new Date());
-  // console.log('startDate: ', startDate);
+
   const refDate = startDate.toISOString().substring(0, 10);
   // console.log('refDate: ', refDate);
 
@@ -101,11 +101,16 @@ const CostsAndIncomesForm = () => {
     setCategory(null);
   };
 
-  const handleCLick = ()=>{
+  const handleCLick = () => {
     setDescr('');
     setCost('');
     setCategory(null);
-  }
+  };
+  const handleDateChange = date => {
+    setStartDate(date);
+    const refDate = date.toISOString().substring(0, 10);
+    dispatch(setDateFilter(refDate));
+  };
 
   return (
     <form action="submit" className={styles.form} onSubmit={submitHandler}>
@@ -116,7 +121,7 @@ const CostsAndIncomesForm = () => {
             className={styles['input-date']}
             calendarClassName={styles['calendar']}
             selected={startDate}
-            onChange={date => setStartDate(date)}
+            onChange={handleDateChange}
             required
           />
           <svg
@@ -183,7 +188,11 @@ const CostsAndIncomesForm = () => {
         <button type="submit" className={styles['button-submit']}>
           Ввести
         </button>
-        <button type="button" className={styles['button-clear']} onClick={handleCLick}>
+        <button
+          type="button"
+          className={styles['button-clear']}
+          onClick={handleCLick}
+        >
           Очистити
         </button>
       </div>

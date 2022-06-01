@@ -17,6 +17,7 @@ export default function TableIncomeOutcome() {
   const [statsToDraw, setStatsToDraw] = useState([]);
   const expensesStats = useSelector(state => state.transactions.data.expenses);
   const incomesStats = useSelector(state => state.transactions.data.incomes);
+  const dateFilter = useSelector(state => state.transactions.dateFilter);
   const location = useLocation();
   const token = useSelector(authSelectors.getToken);
   const allTransactions = useSelector(authSelectors.getTransactions);
@@ -28,125 +29,59 @@ export default function TableIncomeOutcome() {
     dispatch(allUserInfo(token));
   }, [token, dispatch]);
 
-  const setTdColor = (category)=>{
+  const setTdColor = category => {
     let color = '';
     switch (category) {
       case 'Продукты':
-        color ='#e53935';
+        color = '#e53935';
         break;
       case 'Алкоголь':
-          color ='#e53935'
+        color = '#e53935';
         break;
       case 'Развлечения':
-          color ='#e53935'
+        color = '#e53935';
         break;
       case 'Здоровье':
-          color ='#e53935'
+        color = '#e53935';
         break;
       case 'Транспорт':
-          color ='#e53935'
+        color = '#e53935';
         break;
       case 'Всё для дома':
-          color ='#e53935'
+        color = '#e53935';
         break;
       case 'Техника':
-          color ='#e53935'
+        color = '#e53935';
         break;
       case 'Коммуналка и связь':
-          color ='#e53935'
+        color = '#e53935';
         break;
       case 'Спорт и хобби':
-          color ='#e53935'
+        color = '#e53935';
         break;
       case 'Образование':
-          color ='#e53935'
+        color = '#e53935';
         break;
       case 'Прочее':
-        color ='#e53935'
+        color = '#e53935';
         break;
       case 'З/П':
-        color ='#407946';
+        color = '#407946';
         break;
       case 'Доп. доход':
-        color ='#407946';
+        color = '#407946';
         break;
       default:
         break;
     }
     return color;
-  }
-  // const stateToDrawWithColor = [...statsToDraw];
-
-  // useEffect(()=>{
-  //   if (stateToDrawWithColor.length){
-  //   stateToDrawWithColor.map(el => {
-  //     switch (el.category) {
-  //       case 'Продукты':
-  //         el.color = '#e53935';
-  //         el.mark = '- ';
-  //         break;
-  //       case 'Алкоголь':
-  //         el.color = '#e53935';
-  //         el.mark = '- ';
-  //         break;
-  //       case 'Развлечения':
-  //         el.color = '#e53935';
-  //         el.mark = '- ';
-  //         break;
-  //       case 'Здоровье':
-  //         el.color = '#e53935';
-  //         el.mark = '- ';
-  //         break;
-  //       case 'Транспорт':
-  //         el.color = '#e53935';
-  //         el.mark = '- ';
-  //         break;
-  //       case 'Всё для дома':
-  //         el.color = '#e53935';
-  //         el.mark = '- ';
-  //         break;
-  //       case 'Техника':
-  //         el.color = '#e53935';
-  //         el.mark = '- ';
-  //         break;
-  //       case 'Коммуналка и связь':
-  //         el.color = '#e53935';
-  //         el.mark = '- ';
-  //         break;
-  //       case 'Спорт и хобби':
-  //         el.color = '#e53935';
-  //         el.mark = '- ';
-  //         break;
-  //       case 'Образование':
-  //         el.color = '#e53935';
-  //         el.mark = '- ';
-  //         break;
-  //       case 'Прочее':
-  //         el.color = '#e53935';
-  //         el.mark = '- ';
-  //         break;
-  //       case 'З/П':
-  //         el.color = '#407946';
-  //         el.mark = '';
-  //         break;
-  //       case 'Доп. доход':
-  //         el.color = '#407946';
-  //         el.mark = '';
-  //         break;
-  //       default:
-  //         break;
-  //     }
-  //     return el;
-  //   });
-  // }
-  // },[stateToDrawWithColor])
-
+  };
 
   useEffect(() => {
     switch (location.pathname) {
       case '/balance':
         setStatsToDraw(allTransactions);
-       
+
         break;
       case '/expenses':
         setStatsToDraw(expensesStats);
@@ -168,6 +103,9 @@ export default function TableIncomeOutcome() {
     location.pathname,
   ]);
 
+  const filterStatsByDate = stats =>
+    dateFilter ? stats.filter(el => el.date === dateFilter) : stats;
+
   return (
     <div className={s.wrap}>
       <table className={s.table}>
@@ -182,14 +120,17 @@ export default function TableIncomeOutcome() {
         </thead>
         <tbody className={s.tbody}>
           {statsToDraw.length > 0 &&
-            statsToDraw.map(el => (
+            filterStatsByDate(statsToDraw).map(el => (
               <tr key={el._id} className={s.line}>
                 <td className={s.date}>{el.date}</td>
                 <td className={`${s['cell-desc']} ${s.description}`}>
                   <span>{el.description}</span>
                 </td>
                 <td className={s.category}>{makeUkrCatsNames(el.category)}</td>
-                <td style={{ color: setTdColor(el.category) }} className={s.summa}>
+                <td
+                  style={{ color: setTdColor(el.category) }}
+                  className={s.summa}
+                >
                   <NumberFormat
                     value={el.amount}
                     displayType={'text'}
