@@ -7,6 +7,7 @@ import CostsAndIncomesForm from '../../components/CostsAndIncomesBox/CostsAndInc
 import { NavLink } from 'react-router-dom';
 import s from './CostsAndIncomesPage.module.scss';
 import iconSprite from '../../assets/images/symbol-defs.svg';
+import Calendar from '../../components/Calendar/Calendar';
 // import TableIncomeOutcome from '../../components/TableIncomeOutcome/TableIncomeOutcome';
 
 const CostsAndIncomesPage = () => {
@@ -18,6 +19,8 @@ const CostsAndIncomesPage = () => {
         return (
           <>
             <Balance />
+            <Calendar />
+            {/* <CostsAndIncomesForm /> */}
             <CostsAndIncomesBox />
             {/* <TableIncomeOutcome /> */}
           </>
@@ -26,9 +29,7 @@ const CostsAndIncomesPage = () => {
         if (isMobile) {
           return (
             <>
-              {' '}
               <NavLink to="/balance">
-                {' '}
                 <svg className={s['icon-back']} width="24px" height="24px">
                   <use href={`${iconSprite}#icon-arrow-back`}></use>
                 </svg>
@@ -56,15 +57,15 @@ const CostsAndIncomesPage = () => {
         }
         return;
 
-        // case '/balance':
-        // if (isMobile) {
-        //   return (
-        //     <>
-        //       <CostsAndIncomesForm />
-        //       {/* <CostAndIncomesButtons /> */}
-        //     </>
-        //   );
-        // }
+      // case '/balance':
+      // if (isMobile) {
+      //   return (
+      //     <>
+      //       <CostsAndIncomesForm />
+      //       {/* <CostAndIncomesButtons /> */}
+      //     </>
+      //   );
+      // }
 
       default:
         break;

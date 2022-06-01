@@ -1,6 +1,6 @@
 import styles from './_CostsAndIncomesForm.module.scss';
 import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
+// import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import iconSprite from '../../../assets/images/symbol-defs.svg';
 import { useDispatch } from 'react-redux';
@@ -13,6 +13,7 @@ import {
 import { useLocation } from 'react-router-dom';
 import NumberFormat from 'react-number-format';
 import { setDateFilter } from '../../../redux/transactions/transactionsSlice';
+import Calendar from '../../Calendar/Calendar';
 
 const CostsAndIncomesForm = () => {
   const location = useLocation();
@@ -116,14 +117,15 @@ const CostsAndIncomesForm = () => {
     <form action="submit" className={styles.form} onSubmit={submitHandler}>
       <div className={styles['inputs-wrapper']}>
         <label className={styles['label-date']} htmlFor="date">
-          <DatePicker
+          <Calendar startDate={startDate} handleDateChange={handleDateChange} />
+          {/* <DatePicker
             dateFormat="dd.MM.yyyy"
             className={styles['input-date']}
             calendarClassName={styles['calendar']}
             selected={startDate}
             onChange={handleDateChange}
             required
-          />
+          /> */}
           <svg
             className={styles['icon-date']}
             aria-label="calendar"
@@ -151,7 +153,7 @@ const CostsAndIncomesForm = () => {
           options={setOptions()}
           // type="text"
           name="category"
-          placeholder="Виберіть категорию"
+          placeholder="Виберіть категорію"
           value={category}
           onChange={handleCategoryChange}
           required
