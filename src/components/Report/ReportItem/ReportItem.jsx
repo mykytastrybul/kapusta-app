@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import sprite from '../../../assets/images/symbol-defs.svg';
-import { makeUkrCatsNames } from '../../../utils/function/translateBackEndResp';
+import { langOpts } from '../../../utils/function/translateBackEndResp';
 import s from './ReportTransactionsItem.module.scss';
 
 const ReportTransactionsItem = ({ icon, sum, name, type }) => {
@@ -39,7 +39,7 @@ const ReportTransactionsItem = ({ icon, sum, name, type }) => {
             <use href={`${sprite}#icon-${icon}`} />
           </svg>
         </div>
-        <p className={s.text}>{makeUkrCatsNames(name)}</p>
+        <p className={s.text}>{langOpts[name].ua}</p>
       </NavLink>
     </li>
   );
