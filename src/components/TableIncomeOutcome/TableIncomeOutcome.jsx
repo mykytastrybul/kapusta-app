@@ -21,7 +21,6 @@ export default function TableIncomeOutcome() {
   const location = useLocation();
   const token = useSelector(authSelectors.getToken);
   const allTransactions = useSelector(authSelectors.getTransactions);
-  const [numColor, setNumColor] = useState('#e53935');
 
   useEffect(() => {
     dispatch(getExpenseStats());
@@ -79,22 +78,19 @@ export default function TableIncomeOutcome() {
 
   useEffect(() => {
     switch (location.pathname) {
-      case '/balance':
+      case '/main/balance':
         setStatsToDraw(allTransactions);
 
         break;
-      case '/expenses':
+      case '/main/expenses':
         setStatsToDraw(expensesStats);
-        setNumColor('#e53935');
         break;
-      case '/incomes':
+      case '/main/incomes':
         setStatsToDraw(incomesStats);
-        setNumColor('#407946');
         break;
       default:
         break;
     }
-    // console.log('statsToDraw', statsToDraw);
   }, [
     allTransactions,
     expensesStats,
