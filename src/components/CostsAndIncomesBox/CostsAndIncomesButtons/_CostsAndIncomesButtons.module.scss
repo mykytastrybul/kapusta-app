@@ -1,96 +1,89 @@
 @import '../../../assets/sass/mixins';
 
-
 .tracker {
-    @include mq(mobile-only) {
-        // min-width: 320px;
-        width: 100%;
-        margin-right: auto;
-        margin-left: auto;
-        text-align: center;
-        position: absolute;
-        left: 0;
-        right: auto;
-        bottom: 0;
-    }
+  @include mq(mobile-only) {
+    // min-width: 320px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    right: auto;
+    bottom: 0;
+    z-index: 10;
+  }
 
-    @include mq (tablet) {
-        max-width: 704px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+  @include mq(tablet) {
+    max-width: 704px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-    @include mq (desktop) {
-        max-width: 1098px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+  @include mq(desktop) {
+    max-width: 1098px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
-
 .tracker-tab-active {
+  width: 50%;
+  height: 43px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-orange);
 
-    width: 50%;
-    height: 43px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--background-orange);
-    
-
-    @include mq(tablet){
-        width: 138px;
+  @include mq(tablet) {
+    width: 138px;
     height: 40px;
     display: inline-flex;
-align-items: center;
-justify-content: center;
-border-radius: 20px 20px 0 0;
-    background-color: #FEFEFE;
-    }
-
-    @include mq(desktop){
-        width: 138px;
-        height: 40px;
-        display: inline-flex;
     align-items: center;
     justify-content: center;
     border-radius: 20px 20px 0 0;
-        background-color: #FEFEFE;
-    }
- 
+    background-color: #fefefe;
+  }
+
+  @include mq(desktop) {
+    width: 138px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px 20px 0 0;
+    background-color: #fefefe;
+  }
 }
 
 .tracker-tab {
+  width: 50%;
+  height: 43px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fafbfd;
 
-    width: 50%;
-    height: 43px;
+  @include mq(tablet) {
+    width: 138px;
+    height: 40px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: #FAFBFD;
+    border-radius: 20px 20px 0 0;
+    background-color: #fafbfd;
+  }
 
-
-    @include mq(tablet){
-        width: 138px;
-        height: 40px;
-        display: inline-flex;
+  @include mq(desktop) {
+    width: 138px;
+    height: 40px;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     border-radius: 20px 20px 0 0;
-        background-color: #FAFBFD;
-    }
-
-    @include mq (desktop) {
-       width: 138px;
-        height: 40px;
-        display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px 20px 0 0;
-        background-color: #FAFBFD;
-    }
+    background-color: #fafbfd;
+  }
 }
-
 
 .link {
   @include font-style(12px, 700, 1.2, 0.02em);
@@ -107,11 +100,11 @@ border-radius: 20px 20px 0 0;
     border-radius: 20px 20px 0 0;
     background-color: #fafbfd;
 
-    @include mq (mobile-only) {
-        border-radius:0;
-        width: 50%;
-        background-color: var(--background-grey-secondary);
-        color: var(--primary-text-color);
+    @include mq(mobile-only) {
+      border-radius: 0;
+      width: 50%;
+      background-color: var(--background-grey-secondary);
+      color: var(--primary-text-color);
     }
   }
 }
@@ -132,11 +125,11 @@ border-radius: 20px 20px 0 0;
     background-color: #fff;
     color: var(--background-orange);
 
-    @include mq (mobile-only) {
-        border-radius:0;
-        width: 50%;
-        background-color: var(--background-orange);
-        color: white;
+    @include mq(mobile-only) {
+      border-radius: 0;
+      width: 50%;
+      background-color: var(--background-orange);
+      color: white;
     }
   }
 }

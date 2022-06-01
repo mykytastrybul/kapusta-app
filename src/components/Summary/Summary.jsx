@@ -1,21 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useMatch } from 'react-router-dom';
 import s from '../../components/Summary/Summary.module.scss';
 import {
   langOpts,
   makeUkrMonthNames,
 } from '../../utils/function/translateBackEndResp';
 
+
 export default function Summary() {
-  const expensesData = useSelector(
-    state => state.transactions.monthStats.expenses
-  );
-  const incomesData = useSelector(
-    state => state.transactions.monthStats.incomes
-  );
+  const expensesData = useSelector(getMonthExpensesData);
+  const incomesData = useSelector(getMonthIncomesData);
   const [data, setData] = useState([]);
-  const location = useLocation();
+  const match = useMatch('/main/*');
 
   const currentMonth = new Intl.DateTimeFormat('ru-Ru', {
     month: 'long',
@@ -34,17 +31,17 @@ export default function Summary() {
   const months = firstPart.reverse().concat(secondPart.reverse());
 
   useEffect(() => {
-    switch (location.pathname) {
-      case '/expenses':
+    switch (match.params['*']) {
+      case 'expenses':
         setData(expensesData);
         break;
-      case '/incomes':
+      case 'incomes':
         setData(incomesData);
         break;
       default:
         break;
     }
-  }, [expensesData, incomesData, location.pathname]);
+  }, [expensesData, incomesData, match]);
 
   return (
     <div className={s.summary}>

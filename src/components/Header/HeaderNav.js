@@ -5,6 +5,7 @@ import logout_header from '../../assets/images/nav/logout_header.svg';
 import { logoutUser } from '../../redux/auth/authOperations';
 import { useState } from 'react';
 import Modal from '../Modal';
+import authSelectors from '../../redux/auth/authSelectors';
 function HeaderNav() {
   const username = useSelector(state => state.auth.user.email);
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ function HeaderNav() {
     setModalOpen(!modalOpen);
   };
 
-  const isAuth = useSelector(state => Boolean(state.auth.token));
+  const isAuth = useSelector(authSelectors.getIsAuth);
   const isFullView = useMediaQuery({ query: '(min-width:768px' });
   return (
     <>
@@ -28,25 +29,24 @@ function HeaderNav() {
                 <>
                   <span className="login_part__user_name">{username}</span>
                   <span className="login_part_grey_line"></span>
+
+                  <div className="logoutButton_wrapper">
+                    <button
+                      onClick={logoutButtonHandler}
+                      type="button"
+                      className="logoutButton"
+                    >
+                      Вийти
+                    </button>
+                  </div>
                 </>
-              ) : null}
-              {isFullView ? (
-                <div className="logoutButton_wrapper">
-                  <button
-                    onClick={logoutButtonHandler}
-                    type="button"
-                    className="logoutButton"
-                  >
-                    Вийти
-                  </button>
-                </div>
               ) : (
                 <img
                   className="logout_img"
                   onClick={logoutButtonHandler}
                   src={logout_header}
                   alt="logout"
-                ></img>
+                />
               )}
             </div>
           </>
