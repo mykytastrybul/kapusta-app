@@ -1,6 +1,12 @@
 @import '../../assets/sass/rootColors';
 @import '../../assets/sass/mixins';
 
+.page {
+  @include mq(mobile-only) {
+    margin-top: 40px;
+  }
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -9,9 +15,12 @@
   @include mq(tablet) {
     position: relative;
     align-items: flex-start;
+    margin-top: 40px;
+    margin-bottom: 60px;
   }
   @include mq(desktop) {
     align-items: center;
+    margin-bottom: 8px;
   }
   &_link {
     padding: 3px;

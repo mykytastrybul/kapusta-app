@@ -43,18 +43,15 @@ const CostsAndIncomesPage = () => {
             {/* <CostsAndIncomesForm /> */}
             <CostsAndIncomesBox />
           </>
-
         ) : (
           <>
             {match.params['*'] !== 'balance' && (
               <NavLink to="/main/balance">
-
                 <svg className={s['icon-back']} width="24px" height="24px">
                   <use href={`${iconSprite}#icon-arrow-back`}></use>
                 </svg>
               </NavLink>
             )}
-
             <Routes>
               <Route
                 path="balance"

@@ -113,6 +113,41 @@ const CostsAndIncomesForm = () => {
     const refDate = date.toISOString().substring(0, 10);
     dispatch(setDateFilter(refDate));
   };
+  const customStyles = {
+    option: (provided, state) => ({
+      ...provided,
+      color: state.isSelected ? '#52555F' : '#C7CCDC',
+      backgroundColor: state.isSelected ? '#F5F6FB' : '#FFFFFF',
+      fontWeight: 400,
+    }),
+    control: () => ({
+      width: '100%',
+      border: 'none',
+      fontWeight: 400,
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    }),
+
+    placeholder: () => ({
+      color: '#C7CCDC',
+    }),
+
+    valueContainer: () => ({
+      display: 'flex',
+      alignItems: 'center',
+      color: '#C7CCDC',
+    }),
+
+    indicatorSeparator: () => ({
+      display: 'none',
+    }),
+    singleValue: () => ({
+      color: '#52555F',
+      fontWeight: 900,
+      fontSize: 12,
+    }),
+  };
 
   return (
     <form action="submit" className={styles.form} onSubmit={submitHandler}>
@@ -155,6 +190,7 @@ const CostsAndIncomesForm = () => {
           placeholder="Виберіть категорію"
           value={category}
           onChange={handleCategoryChange}
+          styles={customStyles}
           required
         />
 

@@ -183,14 +183,21 @@
 
   span {
     display: block;
-    width: 160px;
+    width: 120px;
     padding-left: 0;
     overflow: hidden;
     text-align: left;
     text-overflow: ellipsis;
     font-size: 12px;
+    color: #52555F;
+    @include mq(mobile-only) {
+      font-weight: 900;
+    }
+  
     @include mq(tablet) {
       padding-left: 24px;
+      width: 160px;
+
     }
     @include mq(desktop) {
       width: 220px;
