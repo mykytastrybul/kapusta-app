@@ -10,11 +10,13 @@ import {
 } from '../../redux/transactions/transactionsOperations';
 import authSelectors from '../../redux/auth/authSelectors';
 import NumberFormat from 'react-number-format';
-import { makeUkrCatsNames } from '../../utils/function/translateBackEndResp';
+import { langOpts } from '../../utils/function/translateBackEndResp';
 
 export default function TableIncomeOutcome() {
+  // console.log(categoriesLangOpts['PACХОДЫ'].ua);
   const dispatch = useDispatch();
   const [statsToDraw, setStatsToDraw] = useState([]);
+  // console.log(statsToDraw);
   const expensesStats = useSelector(state => state.transactions.data.expenses);
   const incomesStats = useSelector(state => state.transactions.data.incomes);
   const dateFilter = useSelector(state => state.transactions.dateFilter);
@@ -126,7 +128,7 @@ export default function TableIncomeOutcome() {
                 <td className={`${s['cell-desc']} ${s.description}`}>
                   <span>{el.description}</span>
                 </td>
-                <td className={s.category}>{makeUkrCatsNames(el.category)}</td>
+                <td className={s.category}>{langOpts[el.category].ua}</td>
                 <td
                   style={{ color: setTdColor(el.category) }}
                   className={s.summa}

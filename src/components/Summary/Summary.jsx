@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import s from '../../components/Summary/Summary.module.scss';
-import { makeUkrMonthNames } from '../../utils/function/translateBackEndResp';
+import {
+  langOpts,
+  makeUkrMonthNames,
+} from '../../utils/function/translateBackEndResp';
 
 export default function Summary() {
   const expensesData = useSelector(
@@ -49,7 +52,8 @@ export default function Summary() {
       <ul className={s.list}>
         {months.map((month, idx) => (
           <li key={idx} className={s.item}>
-            <p>{makeUkrMonthNames(month[0])}</p>
+            <p>{langOpts[month[0]].ua}</p>
+
             <p>
               {month[1]
                 .toLocaleString('ua-UA', { minimumFractionDigits: 2 })
