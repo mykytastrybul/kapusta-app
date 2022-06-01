@@ -20,10 +20,15 @@ const transactionsSlice = createSlice({
       incomes: {},
       expenses: {},
     },
+    dateFilter: '',
     loading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    setDateFilter(state, { payload }) {
+      state.dateFilter = payload;
+    },
+  },
   extraReducers: {
     [setBalance.pending](state) {
       state.loading = true;
@@ -111,3 +116,4 @@ const transactionsSlice = createSlice({
 });
 
 export default transactionsSlice.reducer;
+export const { setDateFilter } = transactionsSlice.actions;
