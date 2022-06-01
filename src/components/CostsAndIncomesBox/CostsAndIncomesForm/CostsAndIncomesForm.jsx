@@ -101,6 +101,12 @@ const CostsAndIncomesForm = () => {
     setCategory(null);
   };
 
+  const handleCLick = ()=>{
+    setDescr('');
+    setCost('');
+    setCategory(null);
+  }
+
   return (
     <form action="submit" className={styles.form} onSubmit={submitHandler}>
       <div className={styles['inputs-wrapper']}>
@@ -177,7 +183,7 @@ const CostsAndIncomesForm = () => {
         <button type="submit" className={styles['button-submit']}>
           Ввести
         </button>
-        <button type="button" className={styles['button-clear']}>
+        <button type="button" className={styles['button-clear']} onClick={handleCLick}>
           Очистити
         </button>
       </div>
