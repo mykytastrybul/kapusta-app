@@ -1,0 +1,15 @@
+@import '../../assets//sass/mixins';
+@import '../../assets/sass/rootColors';
+
+.bg {
+  @include mq(mobile-only) {
+    height: 25%;
+  }
+
+  position: absolute;
+  height: 70%;
+  width: 100%;
+  background-color: var(--background-grey);
+  border-bottom-left-radius: 110px;
+  z-index: -1;
+}

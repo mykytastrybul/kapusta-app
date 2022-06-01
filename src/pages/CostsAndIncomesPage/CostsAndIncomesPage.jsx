@@ -86,7 +86,7 @@ const CostsAndIncomesPage = () => {
 
   return (
     <>
-      <div className={s.bg}></div>
+      {/* <div className={s.bg}></div> */}
       <section className={s.section}>
         {!isMobile && (
           <>

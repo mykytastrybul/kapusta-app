@@ -5,8 +5,6 @@
   padding-top: 40px;
   height: 100vh;
   position: relative;
-  background: url('../../assets/images/bg-login.svg'),
-    url('../../assets/images/bg-single-cabbage.svg');
   background-size: 232px cover;
   background-repeat: repeat-x, no-repeat;
   background-position: 10px 25px, 17% 100%;
@@ -17,6 +15,10 @@
     background-position: 10px 25px, 17% 95%;
     background-size: 232px cover;
     background-repeat: repeat-x, no-repeat;
+  }
+  @include mq(desctop) {
+    background: url('../../assets/images/bg-login.svg'),
+      url('../../assets/images/bg-single-cabbage.svg');
   }
 }
 
