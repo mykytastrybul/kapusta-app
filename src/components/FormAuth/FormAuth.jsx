@@ -9,14 +9,14 @@ import s from './FormAuth.module.scss';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
-    .email('невалидный email')
-    .min(3, 'минимальное количество символов 3')
-    .max(254, 'максимальное количество символов 254')
-    .required('это обязательное поле'),
+    .email('невалідний email')
+    .min(3, 'мінімальна кількість символів 3')
+    .max(254, 'максимальна кількість символів 254')
+    .required("це обов'язкове поле"),
   password: Yup.string()
-    .min(8, 'пароль должен иметь минимум  8 символов')
-    .max(100, 'пароль должен иметь максимум 100 символов')
-    .required('это обязательное поле'),
+    .min(8, 'пароль повинен мати мінімум 8 символів')
+    .max(100, 'пароль повинен мати максимум 100 символів')
+    .required("це обов'язкове поле"),
 });
 
 const FormAuth = () => {
@@ -68,7 +68,7 @@ const FormAuth = () => {
               {formik.touched.email && formik.errors.email && (
                 <span className={s.requiredStar}>*</span>
               )}
-              Электронна пошта:
+              Електронна пошта:
               <Field
                 className={s.input}
                 name="email"
