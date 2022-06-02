@@ -10,6 +10,7 @@ import Loader from './Loader';
 import HeaderNav from './Header/HeaderNav';
 import BackGround from './BackGround/BackGround';
 import Redirect from './Redirect/Redirect';
+import ErrorWrapper from './ErrorWrapper/ErrorWrapper';
 
 const CostsAndIncomesPage = lazy(() =>
   import('../pages/CostsAndIncomesPage/CostsAndIncomesPage')
@@ -47,7 +48,7 @@ function App() {
   }, [token, dispatch]);
 
   return (
-    <>
+    <ErrorWrapper>
       <HeaderNav />
       <BackGround>
         <Suspense fallback={<Loader />}>
@@ -82,7 +83,7 @@ function App() {
           </Routes>
         </Suspense>
       </BackGround>
-    </>
+    </ErrorWrapper>
   );
 }
 
