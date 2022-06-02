@@ -41,11 +41,13 @@ const CostsAndIncomesPage = () => {
         ) : (
           <>
             {match.params['*'] !== 'balance' && (
-              <NavLink to="/main/balance" className={s.btn}>
-                <svg className={s['icon-back']} width="24px" height="24px">
-                  <use href={`${iconSprite}#icon-arrow-back`}></use>
-                </svg>
-              </NavLink>
+              <div className={s.btn}>
+                <NavLink to="/main/balance" >
+                  <svg className={s['icon-back']} width="24px" height="24px">
+                    <use href={`${iconSprite}#icon-arrow-back`}></use>
+                  </svg>
+                </NavLink>
+              </div>
             )}
             <Routes>
               <Route
