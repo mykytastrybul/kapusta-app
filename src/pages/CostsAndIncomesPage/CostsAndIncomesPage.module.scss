@@ -2,7 +2,6 @@
 @import '../../assets/sass/rootColors';
 
 .section {
-  // padding-top: 40px;
   height: 100vh;
   position: relative;
   background-size: 232px cover;
@@ -10,7 +9,6 @@
   background-position: 10px 25px, 17% 100%;
 
   @include mq(mobile-only) {
-    padding-top: 16px;
     width: 320px;
     display: block;
     margin: 0 auto;
@@ -49,5 +47,7 @@
 }
 
 .btn {
-  margin-bottom: 50px;
+  margin-left: 20px;
+  margin-top: 22px;
+  margin-bottom: 22px;
 }
