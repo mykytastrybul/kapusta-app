@@ -23,7 +23,7 @@ export const optionsDesc = {
         borderColor: 'white',
       },
       ticks: {
-        display: false,
+        display: true,
       },
     },
   },
@@ -66,7 +66,7 @@ export const optionsMob = {
         borderColor: 'white',
       },
       ticks: {
-        display: false,
+        display: true,
       },
     },
     y: {

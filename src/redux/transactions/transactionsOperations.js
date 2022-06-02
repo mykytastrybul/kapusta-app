@@ -12,11 +12,19 @@ import { errorHandler } from '../error/errorHandler';
 
 export const setBalance = createAsyncThunk(
   'transactions/setBalance',
-  async (newBalance, { rejectWithValue }) => {
+  async (newBalance, { rejectWithValue, dispatch }) => {
     try {
       const data = await fetchSetBalance(newBalance);
       return data;
     } catch (error) {
+      setTimeout(() => {
+        dispatch(
+          errorHandler({
+            error,
+            cb: setBalance(newBalance),
+          })
+        );
+      }, 0);
       return rejectWithValue(error.message);
     }
   }
@@ -24,11 +32,19 @@ export const setBalance = createAsyncThunk(
 
 export const incomeTransaction = createAsyncThunk(
   'transactions/incomeTransaction',
-  async (transactionObject, { rejectWithValue }) => {
+  async (transactionObject, { rejectWithValue, dispatch }) => {
     try {
       const data = await fetchIncomeTransaction(transactionObject);
       return data;
     } catch (error) {
+      setTimeout(() => {
+        dispatch(
+          errorHandler({
+            error,
+            cb: incomeTransaction(transactionObject),
+          })
+        );
+      }, 0);
       return rejectWithValue(error.message);
     }
   }
@@ -36,11 +52,19 @@ export const incomeTransaction = createAsyncThunk(
 
 export const expenseTransaction = createAsyncThunk(
   'transactions/expenseTransaction',
-  async (transactionObject, { rejectWithValue }) => {
+  async (transactionObject, { rejectWithValue, dispatch }) => {
     try {
       const data = await fetchExpenseTransaction(transactionObject);
       return data;
     } catch (error) {
+      setTimeout(() => {
+        dispatch(
+          errorHandler({
+            error,
+            cb: expenseTransaction(transactionObject),
+          })
+        );
+      }, 0);
       return rejectWithValue(error.message);
     }
   }
@@ -48,11 +72,19 @@ export const expenseTransaction = createAsyncThunk(
 
 export const deleteTransaction = createAsyncThunk(
   'transactions/deleteTransaction',
-  async (id, { rejectWithValue }) => {
+  async (id, { rejectWithValue, dispatch }) => {
     try {
       const data = await fetchDeleteTransaction(id);
       return { id, data };
     } catch (error) {
+      setTimeout(() => {
+        dispatch(
+          errorHandler({
+            error,
+            cb: deleteTransaction(id),
+          })
+        );
+      }, 0);
       return rejectWithValue(error.message);
     }
   }
@@ -80,11 +112,19 @@ export const allUserInfo = createAsyncThunk(
 
 export const getIncomeStats = createAsyncThunk(
   'transactions/getIncomeStats',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, dispatch }) => {
     try {
       const data = await fetchIncomeStats();
       return data;
     } catch (error) {
+      setTimeout(() => {
+        dispatch(
+          errorHandler({
+            error,
+            cb: getIncomeStats,
+          })
+        );
+      }, 0);
       return rejectWithValue(error.message);
     }
   }
@@ -92,11 +132,19 @@ export const getIncomeStats = createAsyncThunk(
 
 export const getExpenseStats = createAsyncThunk(
   'transactions/getExpenseStats',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, dispatch }) => {
     try {
       const data = await fetchExpenseStats();
       return data;
     } catch (error) {
+      setTimeout(() => {
+        dispatch(
+          errorHandler({
+            error,
+            cb: getExpenseStats,
+          })
+        );
+      }, 0);
       return rejectWithValue(error.message);
     }
   }

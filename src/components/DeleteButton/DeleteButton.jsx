@@ -9,7 +9,6 @@ const DeleteButton = ({ id }) => {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const handleDeleteSubmit = () => {
-    console.log('del transaction id', id);
     dispatch(deleteTransaction(id));
     setShowModal(false);
   };

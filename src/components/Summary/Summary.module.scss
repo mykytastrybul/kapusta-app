@@ -9,6 +9,7 @@
     width: 230px;
     left: 0;
     bottom: -50%;
+    padding-bottom: 10px;
   }
   @include mq(desktop) {
     width: 213px;
