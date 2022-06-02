@@ -1,6 +1,8 @@
-import DatePicker from 'react-datepicker';
+import DatePicker, { registerLocale } from 'react-datepicker';
+import uk from 'date-fns/locale/uk';
 import styles from '../CostsAndIncomesBox/CostsAndIncomesForm/_CostsAndIncomesForm.module.scss';
 import iconSprite from '../../assets/images/symbol-defs.svg';
+registerLocale('uk', uk);
 
 const Calendar = ({ startDate, handleDateChange }) => {
   return (
@@ -17,6 +19,7 @@ const Calendar = ({ startDate, handleDateChange }) => {
           calendarClassName={styles['calendar']}
           selected={startDate}
           onChange={handleDateChange}
+          locale={uk}
           required
         />
       </div>
