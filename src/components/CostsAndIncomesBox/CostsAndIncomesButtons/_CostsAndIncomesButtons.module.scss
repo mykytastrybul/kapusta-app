@@ -2,7 +2,6 @@
 
 .tracker {
   @include mq(mobile-only) {
-    // min-width: 320px;
     width: 100%;
     margin-right: auto;
     margin-left: auto;
@@ -12,6 +11,10 @@
     right: auto;
     bottom: 0;
     z-index: 10;
+    display: flex;
+    :last-child {
+      margin-left: 4px;
+    }
   }
 
   @include mq(tablet) {
@@ -87,9 +90,24 @@
 
 .link {
   @include font-style(12px, 700, 1.2, 0.02em);
+
   text-transform: uppercase;
   text-decoration: none;
   color: var(--highlight-black-color);
+  @include mq(mobile-only) {
+    display: inline-block;
+    // margin-right: 4px;
+    width: 50%;
+    background-color: var(--background-grey-secondary);
+    color: var(--highlight-black-color);
+    &:hover {
+      background-color: var(--background-orange);
+      color: var(--highlight-white-color);
+      :only-child {
+        background-color: var(--background-orange);
+      }
+    }
+  }
 
   & .tab {
     width: 138px;
@@ -101,10 +119,12 @@
     background-color: #fafbfd;
 
     @include mq(mobile-only) {
-      border-radius: 0;
-      width: 50%;
+      height: 53px;
       background-color: var(--background-grey-secondary);
-      color: var(--primary-text-color);
+      // &:hover {
+      //   background-color: var(--background-orange);
+      //   color: var(--highlight-white-color);
+      // }
     }
   }
 }
