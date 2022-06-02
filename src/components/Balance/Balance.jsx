@@ -35,6 +35,7 @@ const Balance = () => {
   useEffect(() => {
     setBalanceState(storeBalance);
     if (storeBalance === 0) setModalOpen(true);
+    if (storeBalance !== 0) setModalOpen(false);
   }, [storeBalance]);
 
   return (
