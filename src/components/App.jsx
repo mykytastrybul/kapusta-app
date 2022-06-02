@@ -3,7 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import PrivateRoute from '../utils/PrivateRoute';
 import PublicRoute from '../utils/PublicRoute';
 import { allUserInfo } from '../redux/transactions/transactionsOperations';
-import { loginGoogle, refreshUser } from '../redux/auth/authOperations';
+import { loginGoogle } from '../redux/auth/authOperations';
 import { useDispatch, useSelector } from 'react-redux';
 import authSelectors from '../redux/auth/authSelectors';
 import Loader from './Loader';
@@ -32,13 +32,6 @@ function App() {
       dispatch(allUserInfo(accessToken));
     } // eslint-disable-next-line
   }, [accessToken, refreshToken, sid]);
-
-  useEffect(() => {
-    if (token) {
-      dispatch(refreshUser());
-    }
-    //eslint-disable-next-line
-  }, []);
 
   useEffect(() => {
     if (token) {

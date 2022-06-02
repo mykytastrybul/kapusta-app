@@ -59,6 +59,9 @@ const authSlice = createSlice({
     [logoutUser.fulfilled]: () => ({
       ...initialState,
     }),
+    [logoutUser]: () => ({
+      ...initialState,
+    }),
     //refresh
     [refreshUser.fulfilled]: (state, { payload }) => ({
       ...state,
