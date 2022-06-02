@@ -10,7 +10,7 @@ import {
   expenseTransaction,
   incomeTransaction,
 } from '../../../redux/transactions/transactionsOperations';
-import { useLocation, useMatch } from 'react-router-dom';
+import { useMatch } from 'react-router-dom';
 import NumberFormat from 'react-number-format';
 import { setDateFilter } from '../../../redux/transactions/transactionsSlice';
 import Calendar from '../../Calendar/Calendar';
@@ -28,7 +28,7 @@ import {
 
 const CostsAndIncomesForm = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  const location = useLocation();
+  // const location = useLocation();
   const match = useMatch('/main/*');
   const dispatch = useDispatch();
   const [startDate, setStartDate] = useState(new Date());
