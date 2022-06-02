@@ -13,7 +13,7 @@ export const registerUser = createAsyncThunk(
     try {
       return await fetchRegisterUser(newUser);
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error.request.status);
     }
   }
 );
@@ -24,7 +24,7 @@ export const loginUser = createAsyncThunk(
     try {
       return await fetchLoginUser(userData);
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error.request.status);
     }
   }
 );
