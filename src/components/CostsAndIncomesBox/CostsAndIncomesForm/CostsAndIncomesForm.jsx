@@ -84,8 +84,8 @@ const CostsAndIncomesForm = () => {
 
   const submitHandler = e => {
     e.preventDefault();
-    switch (location.pathname) {
-      case '/expenses':
+    switch (match.params['*']) {
+      case 'expenses':
         dispatch(
           expenseTransaction({
             description: descr,
@@ -95,7 +95,7 @@ const CostsAndIncomesForm = () => {
           })
         );
         break;
-      case '/incomes':
+      case 'incomes':
         dispatch(
           incomeTransaction({
             description: descr,
