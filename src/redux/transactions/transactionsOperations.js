@@ -8,6 +8,7 @@ import {
   fetchIncomeTransaction,
   fetchSetBalance,
 } from '../../utils/backendApi';
+import { errorHandler } from '../error/errorHandler';
 
 export const setBalance = createAsyncThunk(
   'transactions/setBalance',
@@ -59,11 +60,19 @@ export const deleteTransaction = createAsyncThunk(
 
 export const allUserInfo = createAsyncThunk(
   'transactions/allUserInfo',
-  async (token, { rejectWithValue }) => {
+  async (token, { rejectWithValue, dispatch }) => {
     try {
       const data = await fetchAllUserInfo(token);
       return data;
     } catch (error) {
+      setTimeout(() => {
+        dispatch(
+          errorHandler({
+            error,
+            cb: allUserInfo,
+          })
+        );
+      }, 0);
       return rejectWithValue(error.message);
     }
   }

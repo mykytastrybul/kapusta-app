@@ -5,6 +5,7 @@ import {
   fetchRefreshUser,
   fetchRegisterUser,
 } from '../../utils/backendApi';
+import { errorHandler } from '../error/errorHandler';
 
 export const registerUser = createAsyncThunk(
   'auth/registerUser',
@@ -34,6 +35,14 @@ export const logoutUser = createAsyncThunk(
     try {
       return await fetchLogoutUser();
     } catch (error) {
+      setTimeout(() => {
+        thunkApi.dispatch(
+          errorHandler({
+            error,
+            cb: logoutUser,
+          })
+        );
+      }, 0);
       return thunkApi.rejectWithValue(error.message);
     }
   }
